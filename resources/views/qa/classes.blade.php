@@ -7,11 +7,11 @@
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb">
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-primary display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Classes</h1>
+            <h3 class="text-primary display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">ISTBQ MCQS PREPARATION</h1>
                 <ol class="breadcrumb justify-content-center text-white mb-0 wow fadeInDown" data-wow-delay="0.3s">
                     <li class="breadcrumb-item"><a href="index" class="text-dark">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#" class="text-dark">Pages</a></li>
-                    <li class="breadcrumb-item active text-primary">Classes</li>
+                    <li class="breadcrumb-item"><a href="#" class="text-dark">Quiz</a></li>
+                    <li class="breadcrumb-item active text-primary">ISTBQ MCQS</li>
                 </ol>
         </div>
     </div>

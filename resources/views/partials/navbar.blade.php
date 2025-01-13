@@ -9,20 +9,21 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="index" class="nav-item nav-link">Home</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quiz</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="classes" class="dropdown-item">ISTQB 40 MCQS</a>
+                        <a href="training" class="dropdown-item">Topic wise MCQS</a>
+                        {{-- <a href="team" class="dropdown-item">Mix MCQS</a> --}}
+                        {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
+                        <a href="gallery" class="dropdown-item">Dance Gallery</a>
+                        <a href="404" class="dropdown-item">404 Page</a> --}}
+                    </div>
+                </div>
                 <a href="about" class="nav-item nav-link">About</a>
                 <a href="event" class="nav-item nav-link">Events</a>
                 <a href="blog" class="nav-item nav-link">Blogs</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="classes" class="dropdown-item">Our classes</a>
-                        <a href="training" class="dropdown-item">Dance Training</a>
-                        <a href="team" class="dropdown-item">Our Team</a>
-                        <a href="testimonial" class="dropdown-item">Testimonial</a>
-                        <a href="gallery" class="dropdown-item">Dance Gallery</a>
-                        <a href="404" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
+               
                 <a href="contact" class="nav-item nav-link">Contact Us</a>
             </div>
             <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4">Register Now</a>
