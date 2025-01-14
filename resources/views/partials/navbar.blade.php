@@ -12,7 +12,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quiz</a>
                     <div class="dropdown-menu m-0">
-                        <a href="classes" class="dropdown-item">ISTQB 40 MCQS</a>
+                        <a href="quiz" class="dropdown-item">ISTQB 40 MCQS</a>
                         <a href="training" class="dropdown-item">Topic wise MCQS</a>
                         {{-- <a href="team" class="dropdown-item">Mix MCQS</a> --}}
                         {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>

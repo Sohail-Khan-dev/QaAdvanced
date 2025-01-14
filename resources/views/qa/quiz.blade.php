@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('title', 'Dance Training')
+@push('head')
+    <link href="{{ asset('css/quiz.css') }}" rel="stylesheet">
+@endpush
 
 @section('content')
 
@@ -21,84 +24,116 @@
     <div class="container-fluid bg-secondary wow zoomInDown" data-wow-delay="0.1s">
         <div class="container">
             <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center text-center p-5">
-                <h1 class="me-4"><span class="fw-normal">Join us today for </span><span> your first dance</span></h1>
-                <a href="#" class="text-white fw-bold fs-2"> <i class="fa fa-phone me-1"></i> 714-783-2205</a>
+                <h1 class="me-4"><span class="fw-normal">Join us today for </span><span> your first Quiz</span></h1>
+                {{-- <a href="#" class="text-white fw-bold fs-2"> <i class="fa fa-phone me-1"></i> 714-783-2205</a> --}}
             </div>
         </div>
     </div>
     <!-- Banner End -->
 
-    <!-- Dance Class Start -->
+    <!-- quizes section  Start -->
     <div class="container-fluid class bg-light py-5">
         <div class="container py-5">
             <div class="pb-5">
-                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Our Dance Classes</h4>
-                <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Dance Classes for everyone</h1>
+                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Our Top Quizes </h4>
+                <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Quiz for everyone</h1>
             </div>
-            <div class="class-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="class-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="class-img rounded-top">
-                        <img src="img/class-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 mb-3 d-block">Classical Dance class</a>
-                        <p class="mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni vero excepturi
-                            blanditiis quidem</p>
-                        <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Explore Details</a>
+            <div class="d-flex gap-4">
+                <div class="panel-heading fadeInUp wow" data-wow-delay=".5s">
+                    <p class="heading-text d-flex justify-content-center mb-n5 p-4 h4">ISTQB topic based tests - foundation level
+                    </p>
+                    <div class="pt-5 w-100 bg-white mt-5 rounded-bottom quiz-parent-div">
+                        <div class="class-item bg-white rounded row m-0 gap-4">
+                            <div class="rounded  w-50 border col">
+                                <div class="quiz-content p-4">
+                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
+                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
+                                        Quiz</a>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
+                                        Questions</a>
+                                </div>
+                            </div>
+                            <div class="rounded  w-50 border col col-4">
+                                <div class="quiz-content p-4">
+                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
+                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
+                                        Quiz</a>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
+                                        Questions</a>
+                                </div>
+                            </div>
+                            <div class="rounded  w-50 border col ">
+                                <div class="quiz-content p-4">
+                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
+                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
+                                        Quiz</a>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
+                                        Questions</a>
+                                </div>
+                            </div>
+                            <div class="rounded  w-50 border col col-4">
+                                <div class="quiz-content p-4">
+                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
+                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
+                                        Quiz</a>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
+                                        Questions</a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div class="class-item bg-white rounded wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="class-img rounded-top">
-                        <img src="img/class-2.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 mb-3 d-block">Classical Dance class</a>
-                        <p class="mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni vero excepturi
-                            blanditiis quidem</p>
-                        <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Explore Details</a>
-                    </div>
-                </div>
-                <div class="class-item bg-white rounded wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="class-img rounded-top">
-                        <img src="img/class-3.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 mb-3 d-block">Classical Dance class</a>
-                        <p class="mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni vero excepturi
-                            blanditiis quidem</p>
-                        <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Explore Details</a>
-                    </div>
-                </div>
-                <div class="class-item bg-white rounded wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="class-img rounded-top">
-                        <img src="img/class-2.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 mb-3 d-block">Classical Dance class</a>
-                        <p class="mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni vero excepturi
-                            blanditiis quidem</p>
-                        <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Explore Details</a>
-                    </div>
-                </div>
-                <div class="class-item bg-white rounded wow fadeInUp" data-wow-delay="0.9s">
-                    <div class="class-img rounded-top">
-                        <img src="img/class-3.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                    </div>
-                    <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 mb-3 d-block">Classical Dance class</a>
-                        <p class="mb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni vero excepturi
-                            blanditiis quidem</p>
-                        <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Explore Details</a>
+                <div class="panel-heading fadeInUp wow m-0" data-wow-delay=".5s">
+                    <p class="heading-text d-flex justify-content-center p-4 h4">ISTQB full mock tests - foundation level </p>
+                    <div class="quiz-links w-100 bg-white rounded-bottom">
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-evenly pt-2">
+                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
+                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <!-- Dance Class End -->
 
 
     <!-- Training Start -->
-    <div class="container-fluid training py-5">
+    {{-- <div class="container-fluid training py-5">
         <div class="container py-5">
             <div class="pb-5">
                 <div class="row g-4 align-items-end">
@@ -762,6 +797,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Video Gallery End -->
 @endsection

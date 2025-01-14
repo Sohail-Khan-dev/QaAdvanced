@@ -525,11 +525,11 @@
     right: 0;
 }
 
-.class-carousel .owl-nav .owl-prev:hover,
+/* .class-carousel .owl-nav .owl-prev:hover,
 .class-carousel .owl-nav .owl-next:hover {
     box-shadow: inset 100px 0 0 0 var(--bs-light) !important;
     color: var(--bs-primary) !important;
-}
+} */
 
 .class .class-item .class-img {
     position: relative;
