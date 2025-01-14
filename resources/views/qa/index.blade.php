@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Dance Training')
+@section('title', 'QA Advance ')
 
 @section('content')
     <!-- Carousel Start -->
@@ -10,11 +10,10 @@
             <div class="carousel-caption">
                 <div class="carousel-caption-content p-3" style="max-width: 900px;">
                     <h4 class="text-secondary text-uppercase sub-title fw-bold mb-4 wow fadeInUp" data-wow-delay="0.1s"
-                        style="letter-spacing: 3px;">Let's Dance</h4>
-                    <h1 class="display-1 text-capitalize text-white mb-4 wow fadeInUp" data-wow-delay="0.3s">Once A Dancer,
-                        Is Always A Dance</h1>
-                    <p class="fs-5 wow fadeInUp" data-wow-delay="0.5s">Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        style="letter-spacing: 3px;">Let's Test!</h4>
+                    <h1 class="display-1 text-capitalize text-white mb-4 wow fadeInUp" data-wow-delay="0.3s">Once a Tester, Always a Quality Advocate</h1>
+                    <p class="fs-5 wow fadeInUp" data-wow-delay="0.5s">Master ISTQB with QAadvance
+                    Achieve software testing excellence and boost your career with expert-led preparation and resources.
                     </p>
                     <div class="pt-2">
                         <a class="btn btn-primary rounded-pill text-white py-3 px-5 m-2 wow fadeInLeft"
@@ -30,10 +29,9 @@
             <div class="carousel-caption">
                 <div class="carousel-caption-content p-3" style="max-width: 900px;">
                     <h4 class="text-secondary text-uppercase sub-title fw-bold mb-4" style="letter-spacing: 3px;">Let's
-                        Dance</h4>
-                    <h1 class="display-1 text-capitalize text-white mb-4">Once A Dancer, Is Always A Dance</h1>
-                    <p class="fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                        has been the industry's standard dummy text ever since the 1500s,
+                        Test</h4>
+                    <h1 class="display-1 text-capitalize text-white mb-4">Master ISTQB with QAadvance</h1>
+                    Achieve software testing excellence and boost your career with expert-led preparation and resources.</p>
                     </p>
                     <div class="pt-2">
                         <a class="btn btn-primary rounded-pill text-white py-3 px-5 m-2 wow fadeInLeft"
@@ -49,10 +47,10 @@
             <div class="carousel-caption">
                 <div class="carousel-caption-content p-3" style="max-width: 900px;">
                     <h4 class="text-secondary text-uppercase sub-title fw-bold mb-4" style="letter-spacing: 3px;">Let's
-                        Dance</h4>
-                    <h1 class="display-1 text-capitalize text-white mb-4">Once A Dancer, Is Always A Dance</h1>
-                    <p class="fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                        has been the industry's standard dummy text ever since the 1500s,
+                        Test</h4>
+                    <h1 class="display-1 text-capitalize text-white mb-4">Once a Tester, Always a Quality Advocate</h1>
+                    <p class="fs-5">Master ISTQB with QAadvance
+                    Achieve software testing excellence and boost your career with expert-led preparation and resources
                     </p>
                     <div class="pt-2">
                         <a class="btn btn-primary rounded-pill text-white py-3 px-5 m-2 wow fadeInLeft"
@@ -70,8 +68,8 @@
     <div class="container-fluid bg-secondary wow zoomInDown" data-wow-delay="0.1s">
         <div class="container">
             <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center text-center p-5">
-                <h1 class="me-4"><span class="fw-normal">Join us today for </span><span> your first dance</span></h1>
-                <a href="#" class="text-white fw-bold fs-2"> <i class="fa fa-phone me-1"></i> 714-783-2205</a>
+                <h1 class="me-4"><span class="fw-normal">Join us today to </span><span> ace your ISTQB exam</span></h1>
+                <!-- <a href="#" class="text-white fw-bold fs-2"> <i class="fa fa-phone me-1"></i> 714-783-2205</a> -->
             </div>
         </div>
     </div>
@@ -87,18 +85,13 @@
                     </div>
                 </div>
                 <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.3s">
-                    <h4 class="text-secondary sub-title fw-bold">about The Dance School</h4>
-                    <h1 class="display-3 mb-4"><strong class="text-primary">JustDance</strong>, We have been teaching dance
-                        since 2001</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint commodi alias, eius incidunt similique
-                        exercitationem magni quod recusandae maiores ducimus non porro neque odio explicabo, doloribus
-                        deleniti rem sequi adipisci sed ab qui dolorem. Optio sint eius illum consequuntur. Odit.
+                    <h4 class="text-secondary sub-title fw-bold">About QA Advance ISTBQ Preparations </h4>
+                    <h1 class="display-3 mb-4"><strong class="text-primary">QA Advance</strong>, We have been empowering testers
+                    since 2025 with expert ISTQB preparation.</h1>
+                    <p>At QA Advance, we believe in the power of knowledge and skill. Our expert-led ISTQB preparation guides individuals of all levels, from beginners to advanced testers, helping them achieve software testing excellence. We are committed to providing comprehensive resources, fostering confidence, 
+                        and supporting every learner in their journey to ISTQB certification.
                     </p>
-                    <p class="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore illum nemo
-                        deserunt reiciendis perferendis incidunt ullam expedita dolor, voluptas repellat necessitatibus
-                        dolore repellendus dolorum, voluptate dolorem. Debitis quis ipsa ullam neque corrupti maxime ad
-                        magni, tempore, aperiam rerum, perspiciatis fuga.
-                    </p>
+                    
                     <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Learn More</a>
                 </div>
             </div>
@@ -114,7 +107,7 @@
                 <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="counter">
                         <div class="counter-icon w-100 d-flex align-items-center justify-content-center">
-                            <h3>Dance Classes</h3>
+                            <h3>Topic-Wise Quizzes</h3>
                         </div>
                         <div class="counter-content d-flex align-items-center justify-content-center mt-4">
                             <span class="counter-value" data-toggle="counter-up">158</span>
@@ -125,10 +118,10 @@
                 <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="counter">
                         <div class="counter-icon w-100 d-flex align-items-center justify-content-center">
-                            <h3>Best Instructor</h3>
+                            <h3>ISTQB Exam</h3>
                         </div>
                         <div class="counter-content d-flex align-items-center justify-content-center mt-4">
-                            <span class="counter-value" data-toggle="counter-up">49</span>
+                            <span class="counter-value" data-toggle="counter-up">100</span>
                             <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">+</h4>
                         </div>
                     </div>
@@ -136,10 +129,10 @@
                 <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="counter">
                         <div class="counter-icon w-100 d-flex align-items-center justify-content-center">
-                            <h3>Total Brunch</h3>
+                            <h3>QA Topics</h3>
                         </div>
                         <div class="counter-content d-flex align-items-center justify-content-center mt-4">
-                            <span class="counter-value" data-toggle="counter-up">17</span>
+                            <span class="counter-value" data-toggle="counter-up">250</span>
                             <h4 class="text-secondary mb-0" style="font-weight: 600; font-size: 25px;">+</h4>
                         </div>
                     </div>
@@ -147,7 +140,7 @@
                 <div class="col-12 col-sm-6 col-md-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="counter">
                         <div class="counter-icon w-100 d-flex align-items-center justify-content-center">
-                            <h3>Happy customer</h3>
+                            <h3>Register Testers</h3>
                         </div>
                         <div class="counter-content d-flex align-items-center justify-content-center mt-4">
                             <span class="counter-value" data-toggle="counter-up">567</span>
@@ -167,12 +160,12 @@
             <div class="pb-5">
                 <div class="row g-4 align-items-end">
                     <div class="col-xl-8">
-                        <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Dance Training
+                        <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">QA Advance
                         </h4>
-                        <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Our Training Platform</h1>
+                        <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">QA Topics</h1>
                     </div>
                     <div class="col-xl-4 text-xl-end wow fadeInUp" data-wow-delay="0.3s">
-                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">View All Training</a>
+                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">View All Topics</a>
                     </div>
                 </div>
             </div>
@@ -252,8 +245,8 @@
     <div class="container-fluid class bg-light py-5">
         <div class="container py-5">
             <div class="pb-5">
-                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Our Dance Classes</h4>
-                <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Dance Classes for everyone</h1>
+                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">ISTQB Quizzes</h4>
+                <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">ISTQB Quizzes Preparation</h1>
             </div>
             <div class="class-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="class-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
@@ -323,11 +316,11 @@
             <div class="pb-5">
                 <div class="row g-4 align-items-end">
                     <div class="col-xl-8">
-                        <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Events</h4>
-                        <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Upcoming Events</h1>
+                        <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Topic-Wise</h4>
+                        <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">ISTQB Topic-Wise Quizzes</h1>
                     </div>
                     <div class="col-xl-4 text-xl-end pb-3 wow fadeInUp" data-wow-delay="0.3s">
-                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">View All Events</a>
+                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">View All Quizzes</a>
                     </div>
                 </div>
             </div>
@@ -513,7 +506,7 @@
     <div class="container-fluid team pb-5">
         <div class="container pb-5">
             <div class="pb-5">
-                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Dance Teachers</h4>
+                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Top Instructor</h4>
                 <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Our Professional Instructor</h1>
             </div>
             <div class="team-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -617,606 +610,6 @@
     </div>
     <!-- Team End -->
 
-    <!-- Video Gallery Start -->
-    <div class="container-fluid gallery pb-5">
-        <div class="container pb-5">
-            <div class="pb-5">
-                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Dance Gallery</h4>
-                <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Our Dance class gallery</h1>
-            </div>
-            <div class="tab-class wow fadeInUp" data-wow-delay="0.1s">
-                <ul class="nav nav-pills d-inline-flex justify-content-center pb-4">
-                    <li class="nav-item bg-light border border-primary rounded-pill mb-4">
-                        <a class="d-flex py-2 px-5 rounded-pill active" data-bs-toggle="pill" href="#GalleryTab-1">
-                            <span class="text-dark">All</span>
-                        </a>
-                    </li>
-                    <li class="nav-item bg-light border border-primary rounded-pill mb-4">
-                        <a class="d-flex py-2 px-5 rounded-pill" data-bs-toggle="pill" href="#GalleryTab-2">
-                            <span class="text-dark">Dance Practice</span>
-                        </a>
-                    </li>
-                    <li class="nav-item bg-light border border-primary rounded-pill mb-4">
-                        <a class="d-flex py-2 px-5 rounded-pill" data-bs-toggle="pill" href="#GalleryTab-3">
-                            <span class="text-dark">Dance Training</span>
-                        </a>
-                    </li>
-                    <li class="nav-item bg-light border border-primary rounded-pill mb-4">
-                        <a class="d-flex py-2 px-5 rounded-pill" data-bs-toggle="pill" href="#GalleryTab-4">
-                            <span class="text-dark">Dance Growth</span>
-                        </a>
-                    </li>
-                    <li class="nav-item bg-light border border-primary rounded-pill mb-4">
-                        <a class="d-flex py-2 px-5 rounded-pill" data-bs-toggle="pill" href="#GalleryTab-5">
-                            <span class="text-dark">Dance Improvement</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="tab-content">
-                    <div id="GalleryTab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-2">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.9s">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2 wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2 wow fadeInUp" data-wow-delay="0.9s">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="GalleryTab-2" class="tab-pane fade show p-0">
-                        <div class="row g-2">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="GalleryTab-3" class="tab-pane fade show p-0">
-                        <div class="row g-2">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="GalleryTab-4" class="tab-pane fade show p-0">
-                        <div class="row g-2">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="GalleryTab-5" class="tab-pane fade show p-0">
-                        <div class="row g-2">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-2.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                <div class="video h-100">
-                                    <img src="img/class-1.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-2">
-                                <div class="video h-100">
-                                    <img src="img/class-3.jpg" class="img-fluid rounded w-100 h-100"
-                                        style="object-fit: cover;" alt="">
-                                    <button type="button" class="btn btn-play" data-bs-toggle="modal"
-                                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
-                                        data-bs-target="#videoModal">
-                                        <span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Video -->
-    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- 16:9 aspect ratio -->
-                    <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
-                            allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Video Gallery End -->
 
     <!-- Testimonial Start -->
     <div class="container-fluid testimonial pb-5">
