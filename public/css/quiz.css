@@ -1,0 +1,10 @@
+.panel-heading {
+    background: #f28b00 ;   
+    border-radius: 1rem;
+}
+.quiz-links{
+    min-height: 88%;
+}
+.quiz-parent-div{
+    min-height: 86%;   
+}
