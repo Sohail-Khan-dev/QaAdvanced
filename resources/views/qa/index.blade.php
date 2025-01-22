@@ -363,7 +363,7 @@
 
 
     <!-- Team Start -->
-    <div class="container-fluid team pb-5">
+    <!-- <div class="container-fluid team pb-5">
         <div class="container pb-5">
             <div class="pb-5">
                 <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Top Instructor</h4>
@@ -467,12 +467,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Team End -->
 
 
     <!-- Testimonial Start -->
-    <div class="container-fluid testimonial pb-5">
+    <!-- <div class="container-fluid testimonial pb-5">
         <div class="container pb-5">
             <div class="pb-5">
                 <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">OUR CLIENTS RIVIEWS</h4>
@@ -573,7 +573,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Testimonial End -->
 
 @endsection
