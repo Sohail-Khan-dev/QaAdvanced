@@ -20,10 +20,10 @@
                         <a href="404" class="dropdown-item">404 Page</a> --}}
                     </div>
                 </div>
-                <a href="about" class="nav-item nav-link">About</a>
-                <a href="event" class="nav-item nav-link">Events</a>
-                <a href="blog" class="nav-item nav-link">Blogs</a>
                
+                <a href="event" class="nav-item nav-link">ISTQB Guide</a>
+                <a href="blog" class="nav-item nav-link">Blogs</a>
+                <a href="about" class="nav-item nav-link">About</a>
                 <a href="contact" class="nav-item nav-link">Contact Us</a>
             </div>
             <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4">Register Now</a>
