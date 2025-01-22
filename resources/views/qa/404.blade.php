@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Dance Training')
+@section('title', 'Quality Assurance')
 
 @section('content')
 
