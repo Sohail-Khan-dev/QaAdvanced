@@ -1,0 +1,22 @@
+.panel-heading {
+    background: #f28b00 ;   
+    border-radius: 1rem;
+}
+.quiz-links{
+    min-height: 88%;
+}
+.quiz-parent-div{
+    min-height: 86%;   
+}
+.guide .display-2{
+    font-size: 3.5rem;
+}
+.guide .guide-list>li{
+    list-style: none;
+    padding-top: .5rem;
+}
+.guide .guide-list>li>a{
+    font-weight: 600;
+    margin-left: -1rem;
+    text-decoration: underline;
+}

@@ -171,7 +171,7 @@
 
 
     <!-- Events Start -->
-    <div class="container-fluid events py-5">
+    <div class="container-fluid guide py-5">
         <div class="container py-5">
             <div class="pb-5">
                 <div class="row g-4 align-items-end">

@@ -1,9 +1,9 @@
 @extends('layout')
 
 @section('title', 'Dance Training')
-@push('head')
-    <link href="{{ asset('css/quiz.css') }}" rel="stylesheet">
-@endpush
+{{-- @push('head')
+   
+@endpush --}}
 
 @section('content')
 
