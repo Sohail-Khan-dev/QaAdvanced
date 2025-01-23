@@ -1,3 +1,6 @@
+.align-text-left{
+    text-align: left;
+}
 .panel-heading {
     background: #f28b00 ;   
     border-radius: 1rem;
@@ -24,5 +27,12 @@
     margin-left : -1rem;
 }
 .guide .post-content h2, .guide .post-content h3, .guide .post-content h4{
-        scroll-margin-top: 5.5rem; /* Adjust this value as needed */
+    scroll-margin-top: 5.5rem; /* Adjust this value as needed */
+}
+.istqb-guide .card{
+    width: 100%; 
+    max-width: 300px;
+}
+.istqb-guide .card-topic{
+
 }

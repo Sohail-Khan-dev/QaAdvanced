@@ -1,6 +1,6 @@
  <!-- Footer Start -->
- <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
+ <div class="container-fluid footer wow py-5 fadeIn" data-wow-delay="0.1s">
+    <div class="container">
         <div class="row g-5">
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
@@ -72,7 +72,7 @@
 
 
 <!-- Copyright Start -->
-<div class="container-fluid copyright py-4">
+<div class="container-fluid copyright pt-3 pb-2">
     <div class="container">
         <div class="row g-4 align-items-center">
             <div class="col-md-6 text-center text-md-start mb-md-0">
@@ -82,7 +82,7 @@
                 <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                 <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                 <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">Sohail</a>
+                Designed By <a class="border-bottom text-white" href="https://www.linkedin.com/in/sohailshinwari/">Sohail</a>
             </div>
         </div>
     </div>

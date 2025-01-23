@@ -367,7 +367,7 @@
 .bg-breadcrumb {
 	position: relative;
 	padding: 145px 0 50px 0;
-    background: linear-gradient(rgba(242, 139, 0, 0.2), rgba(242, 139, 0, 0.3)), url(../img/breadcrumb.jpg);
+    background: linear-gradient(rgba(17, 139, 0, 0.1), #d1dbe7), url(../img/breadcrumb.jpg);
     background-position: center top;
     background-repeat: no-repeat;
     background-attachment: fixed;

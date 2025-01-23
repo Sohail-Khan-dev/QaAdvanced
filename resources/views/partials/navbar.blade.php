@@ -22,7 +22,7 @@
                 </div>
                
                 <a href="guide" class="nav-item nav-link">ISTQB Guide</a>
-                <a href="guide" class="nav-item nav-link">Learn QA</a>
+                <a href="learnQA" class="nav-item nav-link">Learn QA</a>
                 <a href="blog" class="nav-item nav-link">Blogs</a>
                 <a href="about" class="nav-item nav-link">About</a>
                 <a href="contact" class="nav-item nav-link">Contact Us</a>
