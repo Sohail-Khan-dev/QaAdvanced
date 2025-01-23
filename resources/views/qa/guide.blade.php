@@ -34,9 +34,9 @@
                         </nav>
                     </div>
                     <div class="col-8">
-                        <div class="feature-blog-three pr-0">
-                            <div class="tab-content pl-0">
-                                <div class="post-content post-content--en-US js-progress-reading">
+                        <div class=" pr-0">
+                            <div class="pl-0">
+                                <div class="post-content">
                                             {{-- here were the Image  --}}
                                     <div class="post-import-seoptimer-en">
                                         <p>Your site needs to work like was intended to when you first built it. Otherwise, your users will end up losing trust in your brand, resulting in the loss of revenue and leads. 67% of consumers cite <a href="https://www.huffpost.com/entry/50-important-customer-exp_b_8295772">bad experiences</a> as reason for churn.&nbsp; <a href="http://www.huffingtonpost.com/vala-afshar/50-important-customer-exp_b_8295772.html">4% of customers</a> complain directly to a company about a poor experience, and 91% of unhappy customers will simply leave without voicing their complaints.</p>                                                    

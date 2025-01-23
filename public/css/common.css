@@ -20,3 +20,9 @@
     margin-left: -1rem;
     text-decoration: underline;
 }
+.guide .guide-list{
+    margin-left : -1rem;
+}
+.guide .post-content h2, .guide .post-content h3, .guide .post-content h4{
+        scroll-margin-top: 5.5rem; /* Adjust this value as needed */
+}
