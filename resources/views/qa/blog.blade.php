@@ -14,17 +14,13 @@
     <script>
         async function fetchMediumBlogs() {
             const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@zubairkhansh');
+            /// "https://medium2.p.rapidapi.com/user/5142451174a3/publications"  //  "https://medium2.p.rapidapi.com/user/id_for/nishu-jain"
             const data = await response.json();
-
             const blogContainer = document.getElementById('blog-container');
             blogContainer.innerHTML = '';
             
             if (data && data.items) {
-            // console.log(date);
-
                 data.items.forEach(post => {
-                    console.log(post);
-                    
                     const blogCard = document.createElement('div');
                     blogCard.className = 'bg-white rounded-lg shadow-md p-4';
 
@@ -41,8 +37,26 @@
                 blogContainer.innerHTML = '<p class="text-center text-gray-500">No blogs found.</p>';
             }
         }
+        function getBlogs(){
+            const data = null;
 
-        fetchMediumBlogs();
+            const xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+
+            xhr.addEventListener('readystatechange', function () {
+                if (this.readyState === this.DONE) {
+                    console.log(this.responseText);
+                }
+            });
+
+            xhr.open('GET', 'https://medium2.p.rapidapi.com/');
+            xhr.setRequestHeader('x-rapidapi-key', 'tuHpQNGEa5mshM5bZwkh2SXA22wmp1NLRL7jsn2W6JO7CeVADu');
+            xhr.setRequestHeader('x-rapidapi-host', 'medium2.p.rapidapi.com');
+
+            xhr.send(data);
+        }
+        // getBlogs();
+         fetchMediumBlogs();
     </script>
 </div>
 @endsection

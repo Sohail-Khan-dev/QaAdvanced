@@ -202,7 +202,9 @@
     transition: .5s;
     opacity: 1;
 }
-
+.navbar-light{
+    background: aliceblue !important;
+}
 @media (max-width: 991.98px) {
     .sticky-top.navbar-light {
         position: relative;
