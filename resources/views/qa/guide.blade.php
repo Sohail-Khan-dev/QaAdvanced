@@ -1,7 +1,9 @@
 @extends('layout')
 
 @section('title', 'ISTQB Guide')
-
+@push('styles')
+    <link href="{{ asset('CSS/ISTBQgUIDE.css') }}" rel="stylesheet">
+@endpush    
 @section('content')
 
 <div class="container-fluid bg-breadcrumb">
@@ -52,32 +54,15 @@
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Why is Testing Necessary</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Why is Testing Necessary" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 3 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Testing Principles</span>
-                    </div>
-                </div>
-
+                @include('components.overlay', ['topic_name'=> "Testing Principles" , 'learn_link' => "#", 'quiz_link' => "#"])
                 <!-- Card 4 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>New Activities, Testware & Test Roles</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "New Activities, Testware & Test Roles" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 5 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Essential Skills & Good Practices in Testing</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Essential Skills & Good Practices in Testing" , 'learn_link' => "#", 'quiz_link' => "#"])
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6">
@@ -89,25 +74,13 @@
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Testing in the Context of SDLC</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Testing in the Context of SDLC" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 3 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Test Levels & Test Types</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Test Levels & Test Types" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 4 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Maintenance Testing</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Maintenance Testing" , 'learn_link' => "#", 'quiz_link' => "#"])
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6">
@@ -119,18 +92,11 @@
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Static Testing Basics</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Static Testing Basics" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 3 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Feedback & Review Process</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Feedback & Review Process" , 'learn_link' => "#", 'quiz_link' => "#"])
+                
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6">
@@ -142,38 +108,16 @@
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Test Techniques Overview</span>
-                    </div>
-                </div>
-
+                @include('components.overlay', ['topic_name'=>"Test Techniques Overview" ,'learn_link' => "#", 'quiz_link' => "#"])
                 <!-- Card 3 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Back-Box Test Techniques</span>
-                    </div>
-                </div>
-
+                @include('components.overlay', ['topic_name'=>"Back-Box Test Techniques" , 'learn_link' => "#", 'quiz_link' => "#"])
                 <!-- Card 4 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>White-Box Test Techniques</span>
-                    </div>
-                </div>
-
+                <span></span>
+                @include('components.overlay', ['topic_name'=>"White-Box Test Techniques", 'learn_link' => "#", 'quiz_link' => "#"])
                 <!-- Card 5 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Experience Based Test Techniques</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=>"Experience Based Test Techniques", 'learn_link' => "#", 'quiz_link' => "#"])
                 <!-- Card 6 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Collaboration Based Test Approaches</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Collaboration Based Test Approaches" , 'learn_link' => "#", 'quiz_link' => "#"])
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6">
@@ -185,38 +129,19 @@
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Test Planning</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Test Planning" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 3 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Risk Management</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Risk Management" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 4 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Test Monitoring, Test Control & Test Completion</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Test Monitoring, Test Control & Test Completion" , 'learn_link' => "#", 'quiz_link' => "#"])
+
 
                 <!-- Card 5 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Configuration Management</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Configuration Management" , 'learn_link' => "#", 'quiz_link' => "#"])
                 <!-- Card 6 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Defect Management</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Defect Management" , 'learn_link' => "#", 'quiz_link' => "#"])
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6">
@@ -228,18 +153,10 @@
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Tool Support For Testing</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Tool Support For Testing" , 'learn_link' => "#", 'quiz_link' => "#"])
 
                 <!-- Card 3 -->
-                <div class="card mb-3 card-topic">
-                    <div class="card-body text-center bg-light rounded">
-                        <span>Benefits & Risks of Test Automation</span>
-                    </div>
-                </div>
+                @include('components.overlay', ['topic_name'=> "Benefits & Risks of Test Automation" , 'learn_link' => "#", 'quiz_link' => "#"])
             </div>
         </div>
 

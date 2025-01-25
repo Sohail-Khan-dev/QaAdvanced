@@ -28,7 +28,8 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
-    @stack('head')
+   <!-- Include the stack for styles -->
+   @stack('styles')
 </head>
 
 <body>
@@ -37,7 +38,7 @@
     <!-- Spinner End -->
 
     <!-- Topbar Start -->
-    @include('partials.topbar')
+    {{-- @include('partials.topbar') --}}
     <!-- Topbar End -->
 
     <!-- Navbar Start -->
