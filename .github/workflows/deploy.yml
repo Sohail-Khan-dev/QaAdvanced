@@ -1,0 +1,43 @@
+name: Deploy to Namecheap Production Server
+
+on:
+  push:
+    branches:
+      - master  # Replace 'main' with your branch name if different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up SSH
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # Step 3: Deploy via SSH
+      - name: Deploy to Namecheap server
+        run: |
+          ssh qaadxdgj@198.54.125.67 << 'EOF'
+          cd /public_html
+          # Create a deployment script
+          cat << 'SCRIPT' > deploy.sh
+          #!/bin/bash
+          cd /public_html
+          git fetch origin master
+          if ! git diff-index --quiet HEAD --; then
+            echo "Uncommitted changes found, aborting deployment."
+            exit 1
+          fi
+          git reset --hard origin/master
+          # Add other commands, e.g., restarting services
+          SCRIPT
+          chmod +x deploy.sh
+          ./deploy.sh
+          # Add other commands, e.g., restarting services
+          EOF
