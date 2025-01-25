@@ -8,10 +8,10 @@
                         <h4 class="text-white mb-4">QaAdvance</h4>
                         <p class="text-white mb-3">Enhance your testing skills with QAadvance. Your trusted platform for ISTQB preparation, providing comprehensive resources and guidance to help you excel in software quality assurance.</p>
                         <div class="d-flex">
-                            <a class="btn btn-lg-square btn-primary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-lg-square btn-primary rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61550327523726"><i class="fab fa-facebook-f"></i></a>
+                            <!-- <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-twitter"></i></a> -->
+                            <!-- <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a> -->
+                            <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href="https://www.linkedin.com/company/qa-advance/?viewAsMember=true"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -46,8 +46,8 @@
                     <h4 class="text-white mb-4">Quick Links</h4>
                     <a href="#" class="footer-link"> About Us</a>
                     <!-- <a href="#" class="footer-link"> Classes</a> -->
-                    <a href="#" class="footer-link"> Privacy Policy</a>
-                    <a href="#" class="footer-link"> Terms & Conditions</a>
+                    <a href="privacy-policy" class="footer-link"> Privacy Policy</a>
+                    <a href="privacy-term" class="footer-link"> Terms & Conditions</a>
                     <!-- //<a href="#" class="footer-link"> Schedule</a> -->
                     <a href="#" class="footer-link"> FAQ</a>
                     <a href="#" class="footer-link"> Contact Us</a>
