@@ -24,14 +24,39 @@ jobs:
           SERVER_USER: qaadxdgj
         run: |
             ssh -p 21098 -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
-            cd /public_html
+            # Determine exact path to public_html
+            SITE_ROOT=$(find /home/$SERVER_USER -name public_html -type d)
+            
+            if [ -z "$SITE_ROOT" ]; then
+                echo "Could not find public_html directory"
+                exit 1
+            fi
+            
+            cd "$SITE_ROOT"
+            
+            # Verify git repository exists
+            if [ ! -d .git ]; then
+                echo "Initializing git repository"
+                git init
+                git remote add origin YOUR_REPOSITORY_URL
+            fi
+            
             git pull origin master
-            composer install --no-interaction --prefer-dist --optimize-autoloader
-            php artisan migrate --force
-            php artisan config:clear
-            php artisan cache:clear
-            php artisan view:clear
-            php artisan route:clear
-            php artisan optimize
+            
+            # Check if composer.json exists
+            if [ -f composer.json ]; then
+                composer install --no-interaction --prefer-dist --optimize-autoloader
+            fi
+            
+            # Check if Laravel project
+            if [ -f artisan ]; then
+                php artisan migrate --force
+                php artisan config:clear
+                php artisan cache:clear
+                php artisan view:clear
+                php artisan route:clear
+                php artisan optimize
+            fi
+            
             exit
             EOF
