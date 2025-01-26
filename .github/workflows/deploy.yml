@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,33 +22,36 @@ jobs:
         env:
           SERVER_IP: 198.54.125.67
           SERVER_USER: qaadxdgj
+          REPO_URL: git@github.com:Sohail-Khan-dev/QaAdvanced.git 
         run: |
             ssh -p 21098 -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
-            # Determine exact path to public_html
             SITE_ROOT=$(find /home/$SERVER_USER -name public_html -type d)
-            
+
             if [ -z "$SITE_ROOT" ]; then
                 echo "Could not find public_html directory"
                 exit 1
             fi
-            
+
             cd "$SITE_ROOT"
-            
-            # Verify git repository exists
+
             if [ ! -d .git ]; then
                 echo "Initializing git repository"
                 git init
-                git remote add origin YOUR_REPOSITORY_URL
+                git remote add origin $REPO_URL
+                git fetch origin
+                git checkout -b master origin/master
+            else
+                git pull origin master
             fi
-            
-            git pull origin master
-            
-            # Check if composer.json exists
+
             if [ -f composer.json ]; then
+                if ! command -v composer &> /dev/null; then
+                    echo "Composer is not installed. Please install it on the server."
+                    exit 1
+                fi
                 composer install --no-interaction --prefer-dist --optimize-autoloader
             fi
-            
-            # Check if Laravel project
+
             if [ -f artisan ]; then
                 php artisan migrate --force
                 php artisan config:clear
@@ -56,7 +59,9 @@ jobs:
                 php artisan view:clear
                 php artisan route:clear
                 php artisan optimize
+                chmod -R 775 storage bootstrap/cache
+                chown -R $USER:www-data storage bootstrap/cache
             fi
-            
+
             exit
             EOF
