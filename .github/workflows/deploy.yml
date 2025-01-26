@@ -23,7 +23,7 @@ jobs:
       # Step 3: Deploy to Server
       - name: Deploy to Namecheap server
         run: |
-          ssh qaadxdgj@198.54.125.67 <<EOF
+          ssh -T qaadxdgj@198.54.125.67 <<EOF
           cd /public_html
           chmod +x deploy.sh
           ./deploy.sh
