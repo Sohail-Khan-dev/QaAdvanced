@@ -23,15 +23,15 @@ jobs:
           SERVER_IP: 198.54.125.67
           SERVER_USER: qaadxdgj
         run: |
-          ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
-          cd /public_html
-          git pull origin master
-          composer install --no-interaction --prefer-dist --optimize-autoloader
-          php artisan migrate --force
-          php artisan config:clear
-          php artisan cache:clear
-          php artisan view:clear
-          php artisan route:clear
-          php artisan optimize
-          exit
-          EOF
+            ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
+            cd /public_html
+            git pull origin master
+            composer install --no-interaction --prefer-dist --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan view:clear
+            php artisan route:clear
+            php artisan optimize
+            exit
+            EOF
