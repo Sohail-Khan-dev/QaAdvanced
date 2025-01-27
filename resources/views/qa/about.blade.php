@@ -58,51 +58,36 @@
 
 
     <!-- Team Start -->
-    <div class="container-fluid team py-5">
-        <div class="container py-5">
-            <div class="pb-5">
-                <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Our Team</h1>
+    <div class="container-fluid bg-light py-5">
+        <div class="container">
+            <div class="text-center pb-5">
+                <h1 class="display-4 fw-bold text-primary mb-3">Meet Our Team</h1>
+                <p class="text-muted">We’re proud to introduce our exceptional team member.</p>
             </div>
-            <div class="team-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-                
-                
-                
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="img/team-4.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                        <div class="team-icon">
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="team-item border rounded shadow-lg bg-white p-4 text-center">
+                        <div class="team-content">
+                            <h4 class="fw-bold mb-1">Sohail Khan</h4>
+                            <p class="text-primary fw-semibold mb-3">Chief Technology Officier</p>
+                            <p class="text-muted mb-4">
+                                An experienced developer with a passion for creating innovative solutions and delivering high-quality applications.
+                            </p>
                         </div>
-                    </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4">zubair khan</a>
-                        <p class="mb-0 text-primary">QA Engineer</p>
-                    </div>
-                </div>
-                <div class="team-item border rounded wow fadeInUp" data-wow-delay="0.9s">
-                    <div class="team-img bg-secondary rounded-top">
-                        <img src="img/team-4.jpg" class="img-fluid rounded-top w-100" alt="Image">
-                        <div class="team-icon">
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                            <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-content text-center p-4">
-                        <a href="#" class="h4">Sohail khan</a>
-                        <p class="mb-0 text-primary">Senior Developer</p>
+                        {{-- <div class="team-social pt-3 mt-3 border-top">
+                            <a class="btn btn-primary btn-square rounded-circle mx-1" href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="btn btn-primary btn-square rounded-circle mx-1" href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-primary btn-square rounded-circle mx-1" href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="btn btn-primary btn-square rounded-circle mx-1" href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div> --}}
                     </div>
                 </div>
             </div>

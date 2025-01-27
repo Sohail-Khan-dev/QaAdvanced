@@ -185,7 +185,8 @@
                 </div>
             </div>
             <div class="row g-4 justify-content-center">
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                <h1>Comming Soon </h1>
+                {{-- <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="event-item rounded">
                         <div class="position-relative">
                             <img src="img/service-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
@@ -272,7 +273,7 @@
                             <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Watch Now</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -288,7 +289,8 @@
                 <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Our Latest News & Articles</h1>
             </div>
             <div class="blog-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="blog-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
+                <H1>Comming Soon . . .</H1>
+                {{-- <div class="blog-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                     <div class="blog-img rounded-top">
                         <img src="img/class-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
                     </div>
@@ -355,7 +357,7 @@
                             blanditiis quidem</p>
                         <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Read More</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

@@ -13,7 +13,8 @@
             </div>
         </div>
         <div class="training-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
+            <h2>Comming Soon</h2>
+            {{-- <div class="training-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                 <div class="training-img rounded-top">
                     <img src="img/service-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
                     <h1 class="fs-1 fw-bold bg-primary text-white d-inline-block rounded p-2 position-absolute"
@@ -77,7 +78,7 @@
                         blanditiis quidem</p>
                     <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Read More</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
