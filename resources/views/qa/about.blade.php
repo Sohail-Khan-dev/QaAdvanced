@@ -69,7 +69,7 @@
                     <div class="team-item border rounded shadow-lg bg-white p-4 text-center">
                         <div class="team-content">
                             <h4 class="fw-bold mb-1">Sohail Khan</h4>
-                            <p class="text-primary fw-semibold mb-3">Chief Technology Officier</p>
+                            <p class="text-primary fw-semibold mb-3">CEO & FOUNDER</p>
                             <p class="text-muted mb-4">
                                 An experienced developer with a passion for creating innovative solutions and delivering high-quality applications.
                             </p>
