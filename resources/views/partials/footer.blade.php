@@ -28,7 +28,7 @@
                     <div class="d-flex align-items-center mb-3">
                         <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i class="fa fa-phone-alt"></i></a>
                         <div class="text-white ms-2">
-                            <p class="mb-0">+923075000238</p>
+                            {{-- <p class="mb-0">+923075000238</p> --}}
                             <p class="mb-0">+923469127630</p>
                         </div>
                     </div>
