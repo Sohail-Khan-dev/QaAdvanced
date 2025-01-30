@@ -20,9 +20,22 @@
                 </div>
             </div>
             
+
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Automation</a>
+                <div class="dropdown-menu m-0">
+                    <a href="automation" class="dropdown-item">Automation</a>
+                    <a href="aitoollist" class="dropdown-item">AI Automation Tool list</a>
+                        <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
+                    {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
+                    <a href="gallery" class="dropdown-item">Dance Gallery</a>
+                    <a href="404" class="dropdown-item">404 Page</a> --}}
+                </div>
+            </div>
+
             <a href="guide" class="nav-item nav-link">ISTQB Guide</a>
             <a href="learnQA" class="nav-item nav-link">Learn QA</a>
-            <a href="automation" class="nav-item nav-link">Automation</a>
+            <!-- <a href="automation" class="nav-item nav-link">Automation</a> -->
             <a href="blog" class="nav-item nav-link">Blogs</a>
             <a href="about" class="nav-item nav-link">About</a>
             <a href="contact" class="nav-item nav-link">Contact Us</a>
