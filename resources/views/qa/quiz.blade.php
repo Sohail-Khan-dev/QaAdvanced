@@ -123,11 +123,5 @@
 
         </div>
     </div>
-    <!-- Dance Class End -->
-
-
-    <!-- Training Start -->
-    {{-- @include('partials.training') --}}
-    <!-- Training End -->
 
 @endsection
