@@ -37,7 +37,7 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
                 <div class="dropdown-menu m-0">
-                    <a href="learnqa" class="dropdown-item">Testing</a>
+                    <a href="qatopics.learnqa" class="dropdown-item">Testing</a>
                     <a href="#" class="dropdown-item">Agile</a>
                     <a href="#" class="dropdown-item">Jira</a>
                     <a href="#" class="dropdown-item">Comming Soon...</a>
