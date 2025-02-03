@@ -34,7 +34,19 @@
             </div>
 
             <a href="guide" class="nav-item nav-link">ISTQB Guide</a>
-            <a href="learnQA" class="nav-item nav-link">Learn QA</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
+                <div class="dropdown-menu m-0">
+                    <a href="learnqa" class="dropdown-item">Testing</a>
+                    <a href="#" class="dropdown-item">Agile</a>
+                    <a href="#" class="dropdown-item">Jira</a>
+                    <a href="#" class="dropdown-item">Comming Soon...</a>
+                        <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
+                    {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
+                    <a href="gallery" class="dropdown-item">Dance Gallery</a>
+                    <a href="404" class="dropdown-item">404 Page</a> --}}
+                </div>
+            </div>
             <!-- <a href="automation" class="nav-item nav-link">Automation</a> -->
             <a href="blog" class="nav-item nav-link">Blogs</a>
             <a href="about" class="nav-item nav-link">About</a>
