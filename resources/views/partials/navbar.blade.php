@@ -37,10 +37,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
                 <div class="dropdown-menu m-0">
-                    <a href="qatopics.learnqa" class="dropdown-item">Testing</a>
-                    <a href="#" class="dropdown-item">Agile</a>
-                    <a href="#" class="dropdown-item">Jira</a>
-                    <a href="#" class="dropdown-item">Comming Soon...</a>
+                    <a href="qatopics.softwareTesting" class="dropdown-item">Software Testing</a>
+                    <a href="qatopics.agailTesting" class="dropdown-item">Agile Testing</a>
                         <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
                     {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
                     <a href="gallery" class="dropdown-item">Dance Gallery</a>
