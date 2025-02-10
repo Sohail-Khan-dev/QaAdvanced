@@ -39,6 +39,7 @@
                 <div class="dropdown-menu m-0">
                     <a href="qatopics.softwareTesting" class="dropdown-item">Software Testing</a>
                     <a href="qatopics.agailTesting" class="dropdown-item">Agile Testing</a>
+                    <a href="qatopics.istqbTopics" class="dropdown-item">ISTQB Topics</a>
                         <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
                     {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
                     <a href="gallery" class="dropdown-item">Dance Gallery</a>
