@@ -31,6 +31,8 @@
                 <div class="dropdown-menu m-0">
                     <a href={{ url("qa/qatopics/softwareTesting") }} class="dropdown-item">Software Testing</a>
                     <a href={{ url("qa/qatopics/agailTesting") }} class="dropdown-item">Agile Testing</a>
+                    <a href={{ url("qa/qatopics/istqbTopics")}} class="dropdown-item">ISTQB Topics</a>
+
                 </div>
             </div>
             <a href={{ url("qa/blog") }} class="nav-item nav-link">Blogs</a>
