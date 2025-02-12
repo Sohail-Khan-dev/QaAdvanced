@@ -52,7 +52,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="text-center bg-light p-3 mb-4 rounded">
-                    <strong>ISTQB® Certified Tester Foundation Level (CTFL)</strong>
+                    <strong>ISTQB® Certified Tester Foundation Level (CTFL) 4.0 </strong>
                 </div>
             </div>
         </div>
@@ -258,6 +258,108 @@
                 </div>
             </div>
 
+
+
+            <div class="container mt-4">
+    <div class="row justify-content-center">
+        <!-- Left Column: ISTQB Exam Pattern & Certification Target Audience -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <!-- Card for ISTQB Exam Pattern -->
+            <div class="card mb-4 shadow-sm border-0 text-center" style="max-width: 400px;">
+                <div class="card-body bg-warning text-dark rounded py-3">
+                    <h5 class="fw-bold mb-0">📘 ISTQB Exam Pattern</h5>
+                </div>
+            </div>
+
+            <!-- Exam Details Section -->
+            <div class="bg-light p-4 rounded shadow-sm text-start w-100" style="max-width: 400px;">
+                <p class="mb-2"><span class="fw-bold text-success">✅ Total Questions:</span> 40 MCQs</p>
+                <p class="mb-2"><span class="fw-bold text-danger">🎯 Passing Marks:</span> 65% (26/40 correct answers)</p>
+                <p class="mb-0"><span class="fw-bold text-primary">⏳ Exam Duration:</span> 1 hour (+25% extra for non-native speakers)</p>
+            </div>
+
+            <!-- Card for Certification Target -->
+            <div class="card mb-4 shadow-sm border-0 text-center mt-4" style="max-width: 400px;">
+                <div class="card-body bg-warning text-dark rounded py-3">
+                    <h5 class="fw-bold mb-0">🎯 Certification Target Audience</h5>
+                </div>
+            </div>
+
+            <!-- Target Audience List Section -->
+            <div class="bg-light p-4 rounded shadow-sm text-center w-100" style="max-width: 400px;">
+                <p class="mb-3">The target for this certification program are the following professionals:</p>
+                <ul class="list-group list-group-flush text-start">
+                    <li class="list-group-item">✔ Test Designers</li>
+                    <li class="list-group-item">✔ Test Analysts</li>
+                    <li class="list-group-item">✔ Test Engineers</li>
+                    <li class="list-group-item">✔ Test Consultants</li>
+                    <li class="list-group-item">✔ Test Managers</li>
+                    <li class="list-group-item">✔ User Acceptance Testers</li>
+                    <li class="list-group-item">✔ IT Professionals</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Column: Exam Syllabus & Chapter Prioritization -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <!-- Card for Exam Syllabus -->
+            <div class="card mb-4 shadow-sm border-0 text-center" style="max-width: 400px;">
+                <div class="card-body bg-warning text-dark rounded py-3">
+                    <h5 class="fw-bold mb-0">📄 Exam Syllabus</h5>
+                </div>
+            </div>
+
+            <!-- Download PDF Section -->
+            <div class="bg-light p-4 rounded shadow-sm text-center w-100" style="max-width: 400px;">
+                <p class="mb-3">Click below to download the ISTQB Exam Syllabus 4.0:</p>
+                <a href="{{ asset('pdf/istqb-syllabus.pdf') }}" download class="btn btn-primary fw-bold">
+                    📥 Download Syllabus
+                </a>
+            </div>
+
+            <!-- Card for Chapter Prioritization -->
+            <div class="card mb-4 shadow-sm border-0 text-center mt-4" style="max-width: 500px;">
+                <div class="card-body bg-warning text-dark rounded py-3">
+                    <h5 class="fw-bold mb-0">📖 Chapter Prioritization and Exam Structure</h5>
+                </div>
+            </div>
+
+            <!-- Table for Prioritization -->
+            <div class="table-responsive w-100" style="max-width: 500px;">
+                <table class="table table-bordered table-striped text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Chapter</th>
+                            <th>Priority Level</th>
+                            <th>Questions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>4</td><td>Critical</td><td>11</td></tr>
+                        <tr><td>5</td><td>High Priority</td><td>9</td></tr>
+                        <tr><td>1</td><td>High Priority</td><td>8</td></tr>
+                        <tr><td>2</td><td>Moderate Priority</td><td>5</td></tr>
+                        <tr><td>3</td><td>Moderate Priority</td><td>5</td></tr>
+                        <tr><td>6</td><td>Basic Priority</td><td>2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+             
+            
+
+    
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
         </div>
     </div>
