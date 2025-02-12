@@ -1,28 +1,23 @@
 <?php
 
+use App\Http\Controllers\ArticalDetailsController;
+use App\Http\Controllers\CommonController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-
+///////////////////////////// Here we have to edit the Rout and set all the Routes .
 Route::get('/', function () {
     return view('qa.index');
 });
+
 Route::get('/app-ads.txt', function () {
     return view('qa.index');
 });
 
-Route::get('/{routename}', function ($routename) {
-    $filePath = base_path($routename . '.txt'); // Look for the .txt file in the root folder
+Route::post('dashboard/{$viewName}',[DashboardController::class,"showView"]);
+Route::get('dashboard',[DashboardController::class,"index"]);
 
-    if (File::exists($filePath)) {
-        return response()->file($filePath, [
-            'Content-Type' => 'text/plain'
-        ]);
-    }
-     $viewPath = 'qa.' . $routename;
+Route::get('getTopic',[ArticalDetailsController::class,'getTopic']);
+Route::post('storeTopic', [ArticalDetailsController::class, 'storeTopic'])->name('storeTopic');
 
-    if (View::exists($viewPath)) {
-        return view($viewPath);
-    }
 
-    abort(404, 'View not found');
-    return view('qa.' . $routename);
-});
+Route::get('qa/{routename}/{route2name?}', [CommonController::class,"showView"]);

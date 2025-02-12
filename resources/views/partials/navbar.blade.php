@@ -7,48 +7,35 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-            <a href="index" class="nav-item nav-link">Home</a>
+            <a href="/" class="nav-item nav-link">Home</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quiz</a>
                 <div class="dropdown-menu m-0">
-                    <a href="quiz" class="dropdown-item">ISTQB 40 MCQS</a>
-                    <a href="training" class="dropdown-item">Topic wise MCQS</a>
-                        <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
-                    {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
-                    <a href="gallery" class="dropdown-item">Dance Gallery</a>
-                    <a href="404" class="dropdown-item">404 Page</a> --}}
+                    <a href={{ url("qa/quiz") }} class="dropdown-item">ISTQB 40 MCQS</a>
+                    <a href={{ url("qa/training") }} class="dropdown-item">Topic wise MCQS</a>
                 </div>
             </div>
-            
+
 
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Automation</a>
                 <div class="dropdown-menu m-0">
-                    <a href="automation" class="dropdown-item">Automation</a>
-                    <a href="aitoollist" class="dropdown-item">AI Automation Tool list</a>
-                        <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
-                    {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
-                    <a href="gallery" class="dropdown-item">Dance Gallery</a>
-                    <a href="404" class="dropdown-item">404 Page</a> --}}
+                    <a href={{ url("qa/automation") }} class="dropdown-item">Automation</a>
+                    <a href={{ url("qa/aitoollist") }} class="dropdown-item">AI Automation Tool list</a>
                 </div>
             </div>
 
-            <a href="guide" class="nav-item nav-link">ISTQB Guide</a>
+            <a href={{ url("qa/guide") }} class="nav-item nav-link">ISTQB Guide</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
                 <div class="dropdown-menu m-0">
-                    <a href="qatopics.softwareTesting" class="dropdown-item">Software Testing</a>
-                    <a href="qatopics.agailTesting" class="dropdown-item">Agile Testing</a>
-                        <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
-                    {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
-                    <a href="gallery" class="dropdown-item">Dance Gallery</a>
-                    <a href="404" class="dropdown-item">404 Page</a> --}}
+                    <a href={{ url("qa/qatopics/softwareTesting") }} class="dropdown-item">Software Testing</a>
+                    <a href={{ url("qa/qatopics/agailTesting") }} class="dropdown-item">Agile Testing</a>
                 </div>
             </div>
-            <!-- <a href="automation" class="nav-item nav-link">Automation</a> -->
-            <a href="blog" class="nav-item nav-link">Blogs</a>
-            <a href="about" class="nav-item nav-link">About</a>
-            <a href="contact" class="nav-item nav-link">Contact Us</a>
+            <a href={{ url("qa/blog") }} class="nav-item nav-link">Blogs</a>
+            <a href={{ url("qa/about") }} class="nav-item nav-link">About</a>
+            <a href={{ url("qa/contact") }} class="nav-item nav-link">Contact Us</a>
         </div>
         <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4">Register Now</a>
     </div>

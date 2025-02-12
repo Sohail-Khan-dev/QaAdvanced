@@ -38,11 +38,11 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#qaTopics">
                     <div class="card-body">
                         <ul>
-                            <li><a href="qatopicdetail.showguide">Agile Methodology — What is Agile Software Development Model?</a></li>
-                            <li><a href="qatopicdetail.showguide">What is Agile Testing? — Methodology, Process & Life Cycle</a></li>
-                            <li><a href="qatopicdetail.showguide">Scrum Testing Methodology Tutorial — What is, Process, Artifacts, Sprint</a></li>
-                            <li><a href="qatopicdetail.showguide">Automation Testing Framework — Agile/Scrum Methodology</a></li>
-                            <li><a href="qatopicdetail.showguide">Agile Model — Agile Model in Software Engineering</a></li>
+                            <li><a href={{ url("qa/qatopicdetail/showguide") }}>Agile Methodology — What is Agile Software Development Model?</a></li>
+                            <li><a href={{ url("qa/qatopicdetail/showguide") }}>What is Agile Testing? — Methodology, Process & Life Cycle</a></li>
+                            <li><a href={{ url("qa/qatopicdetail/showguide") }}>Scrum Testing Methodology Tutorial — What is, Process, Artifacts, Sprint</a></li>
+                            <li><a href={{ url("qa/qatopicdetail/showguide") }}>Automation Testing Framework — Agile/Scrum Methodology</a></li>
+                            <li><a href={{ url("qa/qatopicdetail/showguide") }}>Agile Model — Agile Model in Software Engineering</a></li>
                         </ul>
                     </div>
                 </div>
