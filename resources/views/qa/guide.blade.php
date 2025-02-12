@@ -5,10 +5,17 @@
     <link href="{{ asset('css/istbqguide.css') }}" rel="stylesheet">
 @endpush
 @section('content')
+<style>
+        .custom-box {
+            border: 2px solid #ffc107; /* Adds border around each section */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
 
     <div class="container-fluid bg-breadcrumb">
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Certified Tester Foundation Level (CTFL) v5.0
+            <h3 class="display-3 mb-4 wow fadeInDown" data-wow-delay="0.1s">Certified Tester Foundation Level (CTFL) v4.0
                 </h1>
                 <h5>Overview</h5>
                 <P style="color: cornsilk;">The ISTQB® Certified Tester Foundation Level (CTFL) certification is the
@@ -52,7 +59,7 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="text-center bg-light p-3 mb-4 rounded">
-                    <strong>ISTQB® Certified Tester Foundation Level (CTFL)</strong>
+                    <strong>ISTQB® Certified Tester Foundation Level (CTFL) 4.0 </strong>
                 </div>
             </div>
         </div>
@@ -258,6 +265,99 @@
                 </div>
             </div>
 
+
+
+            <div class="container mt-4">
+    <div class="row justify-content-center">
+        <!-- Left Column: ISTQB Exam Pattern & Certification Target Audience -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <!-- ISTQB Exam Pattern -->
+            <div class="custom-box mb-4 shadow-sm text-center" style="max-width: 400px;">
+                <div class="card-body bg-warning text-dark py-3">
+                    <h5 class="fw-bold mb-0">📘 ISTQB Exam Pattern</h5>
+                </div>
+                <div class="bg-light p-4 text-start">
+                    <p class="mb-2"><span class="fw-bold text-success">✅ Total Questions:</span> 40 MCQs</p>
+                    <p class="mb-2"><span class="fw-bold text-danger">🎯 Passing Marks:</span> 65% (26/40 correct answers)</p>
+                    <p class="mb-0"><span class="fw-bold text-primary">⏳ Exam Duration:</span> 1 hour (+25% extra for non-native speakers)</p>
+                </div>
+            </div>
+
+            <!-- Certification Target Audience -->
+            <div class="custom-box mb-4 shadow-sm text-center" style="max-width: 400px;">
+                <div class="card-body bg-warning text-dark py-3">
+                    <h5 class="fw-bold mb-0">🎯 Certification Target Audience</h5>
+                </div>
+                <div class="bg-light p-4">
+                    <p class="mb-3">The target for this certification program includes:</p>
+                    <ul class="list-group list-group-flush text-start">
+                        <li class="list-group-item">✔ Test Designers</li>
+                        <li class="list-group-item">✔ Test Analysts</li>
+                        <li class="list-group-item">✔ Test Engineers</li>
+                        <li class="list-group-item">✔ Test Consultants</li>
+                        <li class="list-group-item">✔ Test Managers</li>
+                        <li class="list-group-item">✔ User Acceptance Testers</li>
+                        <li class="list-group-item">✔ IT Professionals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Exam Syllabus & Chapter Prioritization -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <!-- Exam Syllabus -->
+            <div class="custom-box mb-4 shadow-sm text-center" style="max-width: 400px;">
+                <div class="card-body bg-warning text-dark py-3">
+                    <h5 class="fw-bold mb-0">📄 Exam Syllabus</h5>
+                </div>
+                <div class="bg-light p-4">
+                    <p class="mb-3">Click below to download the ISTQB Exam Syllabus 4.0:</p>
+                    <a href="{{ asset('pdf/istqb-syllabus.pdf') }}" download class="btn btn-primary fw-bold">
+                        📥 Download Syllabus
+                    </a>
+                </div>
+            </div>
+
+            <!-- Chapter Prioritization and Exam Structure -->
+            <div class="custom-box mb-4 shadow-sm text-center" style="max-width: 500px;">
+                <div class="card-body bg-warning text-dark py-3">
+                    <h5 class="fw-bold mb-0">📖 Chapter Prioritization and Exam Structure</h5>
+                </div>
+                <div class="table-responsive p-4">
+                    <table class="table table-bordered table-striped text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Chapter</th>
+                                <th>Priority Level</th>
+                                <th>Questions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>4</td><td>Critical</td><td>11</td></tr>
+                            <tr><td>5</td><td>High Priority</td><td>9</td></tr>
+                            <tr><td>1</td><td>High Priority</td><td>8</td></tr>
+                            <tr><td>2</td><td>Moderate Priority</td><td>5</td></tr>
+                            <tr><td>3</td><td>Moderate Priority</td><td>5</td></tr>
+                            <tr><td>6</td><td>Basic Priority</td><td>2</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+             
+            
+
+    
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
         </div>
     </div>

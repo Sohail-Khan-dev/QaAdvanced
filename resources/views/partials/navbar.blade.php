@@ -29,13 +29,10 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
                 <div class="dropdown-menu m-0">
-                    <a href="qatopics.softwareTesting" class="dropdown-item">Software Testing</a>
-                    <a href="qatopics.agailTesting" class="dropdown-item">Agile Testing</a>
-                    <a href="qatopics.istqbTopics" class="dropdown-item">ISTQB Topics</a>
-                        <!-- <a href="privacy-policy" class="dropdown-item">Privacy Policy</a>  -->
-                    {{-- <a href="testimonial" class="dropdown-item">Testimonial</a>
-                    <a href="gallery" class="dropdown-item">Dance Gallery</a>
-                    <a href="404" class="dropdown-item">404 Page</a> --}}
+                    <a href={{ url("qa/qatopics/softwareTesting") }} class="dropdown-item">Software Testing</a>
+                    <a href={{ url("qa/qatopics/agailTesting") }} class="dropdown-item">Agile Testing</a>
+                    <a href={{ url("qa/qatopics/istqbTopics")}} class="dropdown-item">ISTQB Topics</a>
+
                 </div>
             </div>
             <a href={{ url("qa/blog") }} class="nav-item nav-link">Blogs</a>
