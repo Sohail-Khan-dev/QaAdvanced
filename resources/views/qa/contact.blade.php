@@ -26,17 +26,18 @@
     <div class="container-fluid contact py-5">
         <div class="container py-5">
             <div class="pb-5">
-                <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Contact Us</h4>
+                
                 <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Get In Touch</h1>
             </div>
             <div class="bg-light rounded p-4 pb-0">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
-                        <h2 class="display-5 mb-2">Form</h2>
-                        <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form
-                            with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're
-                            done. <a class="text-primary fw-bold" href="https://htmlcodex.com/contact-form">Download
-                                Now</a>.</p>
+                        <h2 class="display-5 mb-2">Contact Us</h2>
+                        <p class="mb-4">We’d love to hear from you! At QAAdvance, we not only provide top-quality 
+                            QA learning resources but also offer professional QA services to help businesses ensure
+                             the highest software quality. Whether you have questions, feedback, or collaboration 
+                             opportunities, feel free to reach out. Our team is committed to supporting your software testing journey. 
+                            Contact us today, and we’ll get back to you as soon as possible!</p>
                         <form>
                             <div class="row g-3">
                                 <div class="col-lg-12 col-xl-6">
@@ -83,33 +84,25 @@
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
                         <div class="d-flex align-items-center mb-5">
-                            <div class="mb-3"><i class="fa fa-home fa-2x text-primary"></i></div>
-                            <div class="ms-4">
-                                <h4>Addresses</h4>
-                                <p class="mb-0">123 ranking Street, New York, USA</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mb-5">
                             <div class="mb-3"><i class="fa fa-map-marker-alt fa-2x text-primary"></i></div>
                             <div class="ms-4">
                                 <h4>Addresses</h4>
-                                <p class="mb-0">123 ranking Street, New York, USA</p>
+                                <p class="mb-0">Islamabad Pakistan</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center mb-5">
                             <div class="mb-3"><i class="fa fa-phone-alt fa-2x text-primary"></i></div>
                             <div class="ms-4">
                                 <h4>Mobile</h4>
-                                <p class="mb-0">+012 345 67890</p>
-                                <p class="mb-0">+012 345 67890</p>
+                                <p class="mb-0">+923025504938</p>
+                                
                             </div>
                         </div>
                         <div class="d-flex align-items-center mb-5">
                             <div class="mb-3"><i class="fa fa-envelope-open fa-2x text-primary"></i></div>
                             <div class="ms-4">
                                 <h4>Email</h4>
-                                <p class="mb-0">info@example.com</p>
-                                <p class="mb-0">info@example.com</p>
+                                <p class="mb-0">info@qaadvance.com</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
@@ -117,13 +110,9 @@
                                 <i class="fas fa-share-alt fa-2x text-primary"></i>
                             </div>
                             <div class="d-flex">
-                                <a class="btn btn-lg-square btn-primary rounded-circle me-2" href=""><i
+                                <a class="btn btn-lg-square btn-primary rounded-circle me-2" href="https://www.facebook.com/profile.php?id=61550327523726"><i
                                         class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i
-                                        class="fab fa-instagram"></i></a>
-                                <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href=""><i
+                                <a class="btn btn-lg-square btn-primary rounded-circle mx-2" href="https://www.linkedin.com/company/qa-advance/?viewAsMember=true"><i
                                         class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
