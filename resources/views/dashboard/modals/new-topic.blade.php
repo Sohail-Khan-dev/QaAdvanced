@@ -9,7 +9,7 @@
         </div>
        
         <div class="modal-body">
-            <form action="{{ route('storeTopic') }}" method="POST" enctype="multipart/form-data">
+            <form id="new-topic-form" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -17,8 +17,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="editor" class="form-label">Content</label>
-                    <div id="editor"></div>
-                    <input type="hidden" name="content" id="content">
+                    <div id="topic-html"></div>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>

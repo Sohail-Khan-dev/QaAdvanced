@@ -1,19 +1,46 @@
-var quill = new Quill('#editor', {
-    theme: 'snow',
-    placeholder: 'Write something...',
-    modules: {
-        toolbar: [
-            ['bold', 'italic', 'underline'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ align: [] }]
-        ]
-    }
-});
 
-quill.on('text-change', function () {
-    document.querySelector("#content").value = quill.root.innerHTML;
-});
 $(document).ready(function() {
+    $('#topic-html').summernote({
+        height: 300,
+        minHeight: 200,
+        placeholder: 'Write your topic here...',
+    });
+
+    $(document).on("submit","#new-topic-form", function(e){
+        e.preventDefault();
+        let title = $("#title").val();
+        let markupStr = $('#topic-html').summernote('code');
+        let image = $("#image").val();
+        
+        let formData = new FormData();
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content')); // Get CSRF token
+        formData.append('title', title);
+        formData.append('content', markupStr);
+        
+        // Correct way to log
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ": " + pair[1]);
+        }
+        $.ajax({
+            url : "/storeTopic",
+            method: 'POST',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                title: title,
+                content: markupStr
+            },
+           
+            success: function(response){
+                console.log(response);
+                alert('Topic created successfully');
+                $('#new-topic-modal').modal('hide');
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", xhr.responseText , status , error);
+            }
+        });
+
+    });
     function loadTopic(url) {
         $.ajax({
             url: url,
@@ -48,4 +75,8 @@ $(document).ready(function() {
         
         loadTopic(url);
     });
+
+    function destroyTopicHTML(){
+        $('#topic-html').summernote('destroy');
+    }
 });

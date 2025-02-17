@@ -12,11 +12,13 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>    
     <!-- Bootstrap Bundle (includes Popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    {{-- quill. for the Html editor  --}}
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-     
     
+    <!-- include summernote css/js-->
+    <link href="summernote-bs5.css" rel="stylesheet">
+    <script src="summernote-bs5.js"></script>
+
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 <body>
@@ -48,6 +50,8 @@
             
         </div>
     </div>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+   <!-- include summernote css/js-->
+<script src="{{ asset('js/dashboard.js')}}" > </script>
+<script src="summernote-bs5.js"></script>
 </body>
 </html>

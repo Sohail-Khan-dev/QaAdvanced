@@ -14,6 +14,7 @@ class ArticalDetailsController extends Controller
     }
     public function storeTopic(Request $request)
     {
-        dd($request);
+        dd($request->all());
+        return $request;
     }
 }
