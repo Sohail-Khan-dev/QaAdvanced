@@ -9,8 +9,11 @@ class ArticalDetails extends Model
 {
    
     use HasFactory;
+    protected $table = 'artical_details';
+    protected $fillable = ['title','content'];
 
-    public function getFristOne(){
-        return $this->first();
+    public static function storeTopic($data)
+    {
+        return self::create($data); // Use create() instead of manually instantiating and saving
     }
 }

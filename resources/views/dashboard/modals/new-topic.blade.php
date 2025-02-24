@@ -19,10 +19,10 @@
                     <label for="editor" class="form-label">Content</label>
                     <div id="topic-html"></div>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
                     <input type="file" class="form-control" id="image" name="image">
-                </div>
+                </div> --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>

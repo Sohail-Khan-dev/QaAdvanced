@@ -36,9 +36,9 @@
                     <table id="dataTable" class="table table-striped table-bordered">
                         <thead class="table-dark">
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Value</th>
+                                <th>title</th>
+                                <th>content</th>
+                                {{-- <th>Value</th> --}}
                             </tr>
                         </thead>
                         <tbody>

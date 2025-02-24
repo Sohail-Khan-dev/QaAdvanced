@@ -16,8 +16,8 @@ Route::get('/app-ads.txt', function () {
 Route::post('dashboard/{$viewName}',[DashboardController::class,"showView"]);
 Route::get('dashboard',[DashboardController::class,"index"]);
 
-Route::get('getTopic',[ArticalDetailsController::class,'getTopic']);
-Route::post('storeTopic', [ArticalDetailsController::class, 'storeTopic'])->name('storeTopic');
+Route::get('get-topics',[ArticalDetailsController::class,'getTopics'])->name('get-topics');
+Route::post('store-topic', [ArticalDetailsController::class, 'storeTopic'])->name('store-topic');
 
 
 Route::get('qa/{routename}/{route2name?}', [CommonController::class,"showView"]);

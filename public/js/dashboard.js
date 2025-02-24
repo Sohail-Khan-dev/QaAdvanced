@@ -1,11 +1,8 @@
 
 $(document).ready(function() {
-    $('#topic-html').summernote({
-        height: 300,
-        minHeight: 200,
-        placeholder: 'Write your topic here...',
-    });
-
+    loadSummernote();
+    loadTopic('/get-topics');
+ 
     $(document).on("submit","#new-topic-form", function(e){
         e.preventDefault();
         let title = $("#title").val();
@@ -13,27 +10,22 @@ $(document).ready(function() {
         let image = $("#image").val();
         
         let formData = new FormData();
-        formData.append('_token', $('meta[name="csrf-token"]').attr('content')); // Get CSRF token
         formData.append('title', title);
         formData.append('content', markupStr);
-        
-        // Correct way to log
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ": " + pair[1]);
-        }
         $.ajax({
-            url : "/storeTopic",
+            url : "/store-topic",
             method: 'POST',
             data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
                 title: title,
                 content: markupStr
             },
-           
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             success: function(response){
                 console.log(response);
-                alert('Topic created successfully');
                 $('#new-topic-modal').modal('hide');
+                resetTheModal();
             },
             error: function(xhr, status, error) {
                 console.error("Error:", xhr.responseText , status , error);
@@ -51,14 +43,14 @@ $(document).ready(function() {
             },
             success: function(data) {
                 console.log('return data : ' , data);
-                return;
                 var table = $('#dataTable').DataTable();
                 table.clear().draw();
                 data.forEach(function(item) {
+                    var trimmedContent = item.content.split('\n')[0]; // Get only the first line
+                    // var lines = item.content.split('\n').slice(0, 2).join('<br>'); // Get first two lines
                     table.row.add([
-                        item.id,
-                        item.name,
-                        item.value
+                        item.title,
+                        trimmedContent,
                     ]).draw(false);
                 });
             }
@@ -75,6 +67,22 @@ $(document).ready(function() {
         
         loadTopic(url);
     });
+    function resetTheModal(){
+        // Clear all input fields
+        $('#new-topic-form')[0].reset();
+
+        // Clear Summernote content
+        $('#topic-html').summernote('code', ''); 
+        $('.note-placeholder').show();
+
+    }
+    function loadSummernote(){
+        $('#topic-html').summernote({
+            height: 300,
+            minHeight: 200,
+            placeholder: 'Write your topic here...',
+        });
+    }
 
     function destroyTopicHTML(){
         $('#topic-html').summernote('destroy');
