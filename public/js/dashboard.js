@@ -26,6 +26,7 @@ $(document).ready(function() {
                 console.log(response);
                 $('#new-topic-modal').modal('hide');
                 resetTheModal();
+                loadTopic('/get-topics');
             },
             error: function(xhr, status, error) {
                 console.error("Error:", xhr.responseText , status , error);
@@ -46,11 +47,13 @@ $(document).ready(function() {
                 var table = $('#dataTable').DataTable();
                 table.clear().draw();
                 data.forEach(function(item) {
-                    var trimmedContent = item.content.split('\n')[0]; // Get only the first line
+                    // var lines = item.content.split('\n').filter(line => line.trim() !== ""); // Remove empty lines
+                    // var trimmedContent = lines.length > 0 ? lines[0] : ''; // Get first non-empty line
+                    var words = item.content.split(/\s+/).slice(0, 30).join(' '); // Get first 50 words
                     // var lines = item.content.split('\n').slice(0, 2).join('<br>'); // Get first two lines
                     table.row.add([
                         item.title,
-                        trimmedContent,
+                        words,
                     ]).draw(false);
                 });
             }
