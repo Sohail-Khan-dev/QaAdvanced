@@ -8,7 +8,7 @@ $(document).ready(function() {
         let title = $("#title").val();
         let markupStr = $('#topic-html').summernote('code');
         let image = $("#image").val();
-        
+        $("#save-btn").prop('disabled', true);
         let formData = new FormData();
         formData.append('title', title);
         formData.append('content', markupStr);
@@ -34,6 +34,9 @@ $(document).ready(function() {
         });
 
     });
+    $(document).on("click", "#new-topic-btn", function(){
+        $("#save-btn").prop('disabled', false);
+    })
     function loadTopic(url) {
         $.ajax({
             url: url,
@@ -47,10 +50,7 @@ $(document).ready(function() {
                 var table = $('#dataTable').DataTable();
                 table.clear().draw();
                 data.forEach(function(item) {
-                    // var lines = item.content.split('\n').filter(line => line.trim() !== ""); // Remove empty lines
-                    // var trimmedContent = lines.length > 0 ? lines[0] : ''; // Get first non-empty line
                     var words = item.content.split(/\s+/).slice(0, 30).join(' '); // Get first 50 words
-                    // var lines = item.content.split('\n').slice(0, 2).join('<br>'); // Get first two lines
                     table.row.add([
                         item.title,
                         words,
