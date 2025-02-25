@@ -20,4 +20,4 @@ Route::get('get-topics',[ArticalDetailsController::class,'getTopics'])->name('ge
 Route::post('store-topic', [ArticalDetailsController::class, 'storeTopic'])->name('store-topic');
 
 
-Route::get('qa/{routename}/{route2name?}', [CommonController::class,"showView"]);
+Route::get('qa/{routename}/{route2name?}/{id?}', [CommonController::class,"showView"]);

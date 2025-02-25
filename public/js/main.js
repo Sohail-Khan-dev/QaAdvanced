@@ -25,20 +25,20 @@
         }
     });
 
-    // Hero Header carousel
-    $(".header-carousel").owlCarousel({
-        animateOut: 'slideOutDown',
-        items: 1,
-        autoplay: true,
-        smartSpeed: 1000,
-        dots: true,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-    });
+    // // Hero Header carousel
+    // $(".header-carousel").owlCarousel({
+    //     animateOut: 'slideOutDown',
+    //     items: 1,
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     dots: true,
+    //     loop: true,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="bi bi-arrow-left"></i>',
+    //         '<i class="bi bi-arrow-right"></i>'
+    //     ],
+    // });
 
 
     // Modal Video
@@ -91,141 +91,141 @@
     // });
 
     // blog carousel
-    $(".blog-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        dots: false,
-        loop: true,
-        margin: 25,
-        nav : true,
-        navText : [
-            '<i class="fas fa-chevron-left"></i>',
-            '<i class="fas fa-chevron-right"></i>'
-        ],
-        responsiveClass: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            },
-            1200:{
-                items:3
-            }
-        }
-    });
+    // $(".blog-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1500,
+    //     dots: false,
+    //     loop: true,
+    //     margin: 25,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="fas fa-chevron-left"></i>',
+    //         '<i class="fas fa-chevron-right"></i>'
+    //     ],
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0:{
+    //             items:1
+    //         },
+    //         576:{
+    //             items:1
+    //         },
+    //         768:{
+    //             items:2
+    //         },
+    //         992:{
+    //             items:3
+    //         },
+    //         1200:{
+    //             items:3
+    //         }
+    //     }
+    // });
 
-    // Dance Training carousel
-    $(".training-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        dots: false,
-        loop: true,
-        margin: 25,
-        nav : true,
-        navText : [
-            '<i class="fas fa-chevron-left"></i>',
-            '<i class="fas fa-chevron-right"></i>'
-        ],
-        responsiveClass: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            },
-            1200:{
-                items:3
-            }
-        }
-    });
-
-
-    // team carousel
-    $(".team-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        dots: false,
-        loop: true,
-        margin: 25,
-        nav : true,
-        navText : [
-            '<i class="fas fa-chevron-left"></i>',
-            '<i class="fas fa-chevron-right"></i>'
-        ],
-        responsiveClass: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            },
-            1200:{
-                items:4
-            }
-        }
-    });
+    // // Dance Training carousel
+    // $(".training-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     dots: false,
+    //     loop: true,
+    //     margin: 25,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="fas fa-chevron-left"></i>',
+    //         '<i class="fas fa-chevron-right"></i>'
+    //     ],
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0:{
+    //             items:1
+    //         },
+    //         576:{
+    //             items:1
+    //         },
+    //         768:{
+    //             items:2
+    //         },
+    //         992:{
+    //             items:3
+    //         },
+    //         1200:{
+    //             items:3
+    //         }
+    //     }
+    // });
 
 
-    // testimonial carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        dots: false,
-        loop: true,
-        margin: 25,
-        nav : true,
-        navText : [
-            '<i class="fas fa-chevron-left"></i>',
-            '<i class="fas fa-chevron-right"></i>'
-        ],
-        responsiveClass: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            },
-            1200:{
-                items:3
-            }
-        }
-    });
+    // // team carousel
+    // $(".team-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     dots: false,
+    //     loop: true,
+    //     margin: 25,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="fas fa-chevron-left"></i>',
+    //         '<i class="fas fa-chevron-right"></i>'
+    //     ],
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0:{
+    //             items:1
+    //         },
+    //         576:{
+    //             items:1
+    //         },
+    //         768:{
+    //             items:2
+    //         },
+    //         992:{
+    //             items:3
+    //         },
+    //         1200:{
+    //             items:4
+    //         }
+    //     }
+    // });
 
 
-    // Facts counter
-    $('[data-toggle="counter-up"]').counterUp({
-        delay: 5,
-        time: 2000
-    });
+    // // testimonial carousel
+    // $(".testimonial-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     dots: false,
+    //     loop: true,
+    //     margin: 25,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="fas fa-chevron-left"></i>',
+    //         '<i class="fas fa-chevron-right"></i>'
+    //     ],
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0:{
+    //             items:1
+    //         },
+    //         576:{
+    //             items:1
+    //         },
+    //         768:{
+    //             items:2
+    //         },
+    //         992:{
+    //             items:3
+    //         },
+    //         1200:{
+    //             items:3
+    //         }
+    //     }
+    // });
+
+
+    // // Facts counter
+    // $('[data-toggle="counter-up"]').counterUp({
+    //     delay: 5,
+    //     time: 2000
+    // });
 
 
     

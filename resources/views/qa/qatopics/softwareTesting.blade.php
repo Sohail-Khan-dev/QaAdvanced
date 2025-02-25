@@ -44,12 +44,13 @@
                 </div>
                 <div id="collapseOne" class="collapse show" aria-labelledby="TestingFundamentals" data-parent="#qaTopics">
                     <div class="card-body">
-                        <ul>
-                            <li><a href={{ url("qa/qatopicdetail/showguide")}}>What is Software Testing? Definition, Basics & Types</a></li>
+                        <ul id="testing-fundamentals">
+                            {{-- Here we will add the Title and the link to the topic --}}
+                            {{-- {{-- <li><a href={{ url("qa/qatopicdetail/showguide")}}>What is Software Testing? Definition, Basics & Types</a></li> --}}
                             <li><a href={{ url("qa/qatopicdetail/showguide")}}>Software Testing as a Career Path (Skills, Salary, Growth)</a></li>
-                            <li><a href={{ url("qa/qatopicdetail/showguide")}}>7 Software Testing Principles: Learn with Examples</a></li>
-                            <li><a href={{ url("qa/qatopicdetail/showguide")}}>V-Model in Software Testing</a></li>
-                            <li><a href={{ url("qa/qatopicdetail/showguide")}}>STLC – Software Testing Life Cycle Phases & Entry, Exit Criteria</a></li>
+                            {{-- <li><a href={{ url("qa/qatopicdetail/showguide")}}>7 Software Testing Principles: Learn with Examples</a></li>
+                            <li><a href={{ url("qa/qatopicdetail/showguide")}}>V-Model in Software Testing</a></li> --}}
+                            <li><a href={{ url("qa/qatopicdetail/showguide")}}>STLC – Software Testing Life Cycle Phases & Entry, Exit Criteria</a></li> 
                         </ul>
                     </div>
                 </div>
@@ -243,3 +244,30 @@
 </div>
 
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function(){
+        console.log("Document is ready");
+        getAllTopics();
+        function getAllTopics(){
+            console.log("Getting all topics");
+           let baseUrl  = "{{ url("qa/qatopicdetail/showguide")}}";
+           console.log(baseUrl);
+           
+            $.ajax({
+                url: '/get-topics',
+                type: 'GET',
+                success: function(response){
+                    console.log(response);
+                    let ul = $("#testing-fundamentals");
+                    ul.empty();
+                    response.forEach(element => {
+                        ul.append(`<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`);
+                        
+                    });
+                }
+            }); 
+        }
+});
+</script>
+@endpush
