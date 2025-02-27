@@ -12,42 +12,65 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>    
     <!-- Bootstrap Bundle (includes Popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <!-- include summernote css/js-->
     <link href="summernote-bs5.css" rel="stylesheet">
     <script src="summernote-bs5.js"></script>
-
-    
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <style>
+        label{
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     @include('dashboard.navbar')    
     <div class="container-fluid">
-        <div class="row">
-           
-            <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
-                <div class="d-flex align-items-center justify-content-between py-3">
-                    <h2 class="mb-0">Dashboard</h2>
-                    <button class="btn btn-primary" id='new-topic-btn' data-bs-toggle="modal" data-bs-target="#new-topic-modal"> Create New Topic</button>
-                </div>
-                @include('dashboard.modals.new-topic')     
-                <div class="table-responsive">
-                    <table id="dataTable" class="table table-striped table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>title</th>
-                                <th>content</th>
-                                {{-- <th>Value</th> --}}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Data will be loaded here via AJAX -->
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-            
+        <div class="row" id="main">
+            <div id="topic-content" class="">
+                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <h2 class="mb-0">Topic Dashboard</h2>
+                        <button class="btn btn-primary" id='new-topic-btn' data-bs-toggle="modal" data-bs-target="#new-topic-modal"> Create New Topic</button>
+                    </div>
+                    @include('dashboard.modals.new-topic')     
+                    <div class="table-responsive">
+                        <table id="topic-dataTable" class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+            <div id="quiz-content" class="d-none">
+                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <h2 class="mb-0">Quiz Dashboard</h2>
+                        <button class="btn btn-primary" id='new-quiz-btn' data-bs-toggle="modal" data-bs-target="#new-quiz-modal"> Create New Quiz</button>
+                    </div>
+                    @include('dashboard.modals.new-quiz')     
+                    <div class="table-responsive">
+                        <table id="quiz-dataTable" class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Answers</th>
+                                    <th>Correct Answer</th>
+                                    <th style="max-width: 10%">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
         </div>
     </div>
    <!-- include summernote css/js-->

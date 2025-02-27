@@ -9,6 +9,7 @@ class ArticalDetailsController extends Controller
 {
     public function getTopics(){
         $articals  = ArticalDetails::all();
+        // dd($articals);
        return response()->json($articals);
     }
     public function storeTopic(Request $request)
