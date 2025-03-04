@@ -39,6 +39,7 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Content</th>
+                                    <th>Topic</th>
                                     <th>action</th>
                                 </tr>
                             </thead>

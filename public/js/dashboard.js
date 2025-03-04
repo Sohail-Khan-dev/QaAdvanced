@@ -92,6 +92,7 @@ $(document).ready(function () {
                         table.row.add([
                             item.title,
                             words,
+                            item.topic,
                             actionsBtn
                         ]).draw(false);
                     } else {

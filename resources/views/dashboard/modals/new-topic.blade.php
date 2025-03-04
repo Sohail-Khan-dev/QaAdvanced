@@ -19,10 +19,15 @@
                     <label for="editor" class="form-label">Content</label>
                     <div id="topic-html"></div>
                 </div>
-                {{-- <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input type="file" class="form-control" id="image" name="image">
-                </div> --}}
+                {{-- we will add a select picker here and add topic names recently we have add ids to it  --}}
+                <div class="mb-3">
+                    <label for="topic" class="form-label">Topic</label>
+                    <select class="form-select" id="topic" name="topic" required>
+                        <option value="">Select Topic</option>
+                        @foreach ($topics as $topic)
+                            <option value="{{$topic->id}}">{{$topic->name}}</option>
+                        @endforeach
+                    </select>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
