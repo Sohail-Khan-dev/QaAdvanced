@@ -258,7 +258,7 @@
                 url: '/get-topics',
                 type: 'GET',
                 success: function(response){
-                    console.log(response);
+                    console.log( "Topics are : ",  response);
                     let ul = $("#testing-fundamentals");
                     ul.empty();
                     response.forEach(element => {

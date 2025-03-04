@@ -3,7 +3,6 @@
 @section('title', 'ISTQB Guide')
 
 @section('content')
-
     <!-- Events Start -->
     <div class="container-fluid guide py-5">
         <div class="container py-5">
@@ -32,7 +31,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-8">
+                    <div class="col-8" id="artical-content">
                         {!! $artical->content !!}
                     </div>
                 </div>
@@ -40,5 +39,20 @@
         </div>
     </div>
     <!-- Events End -->
-
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            let headingsText = $("#artical-content").find('h1').map(function() {
+                return { text: $(this).text(), id: $(this).attr("id") || "" };
+            }).get();
+
+            let listHtml = headingsText.map(h => 
+                `<li><a href="#${h.id}">${h.text}</a></li>`
+            ).join("");
+
+            $(".guide-list").html(listHtml);
+        });
+
+    </script>
+@endpush()

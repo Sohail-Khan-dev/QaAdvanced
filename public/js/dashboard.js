@@ -96,7 +96,6 @@ $(document).ready(function () {
                         ]).draw(false);
                     } else {
                         console.log(item.questions[0]);
-                        
                         table.row.add([
                             item.questions[0].question,
                             item.questions[0].options[0].option + ' | ' + item.questions[0].options[1].option + ' | ' + item.questions[0].options[2].option + ' | ' + item.questions[0].options[3].option,

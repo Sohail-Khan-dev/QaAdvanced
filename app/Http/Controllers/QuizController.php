@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
-use App\Models\option;
-use App\Models\Question;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -21,8 +19,6 @@ class QuizController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->explanation);
-        // Find an existing quiz or create a new one
         $quiz = Quiz::firstOrCreate(
             ['id' => $request->quiz],  // Check if quiz exists by ID
             [
