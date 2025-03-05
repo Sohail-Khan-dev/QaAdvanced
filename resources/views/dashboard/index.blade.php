@@ -32,7 +32,6 @@
                         <h2 class="mb-0">Topic Dashboard</h2>
                         <button class="btn btn-primary" id='new-topic-btn' data-bs-toggle="modal" data-bs-target="#new-topic-modal"> Create New Topic</button>
                     </div>
-                    @include('dashboard.modals.new-topic')     
                     <div class="table-responsive">
                         <table id="topic-dataTable" class="table table-striped table-bordered">
                             <thead class="table-dark">
@@ -55,7 +54,6 @@
                         <h2 class="mb-0">Quiz Dashboard</h2>
                         <button class="btn btn-primary" id='new-quiz-btn' data-bs-toggle="modal" data-bs-target="#new-quiz-modal"> Create New Quiz</button>
                     </div>
-                    @include('dashboard.modals.new-quiz')     
                     <div class="table-responsive">
                         <table id="quiz-dataTable" class="table table-striped table-bordered">
                             <thead class="table-dark">
@@ -74,6 +72,9 @@
             </div>
         </div>
     </div>
+    @include('dashboard.modals.new-topic')
+    @include('dashboard.modals.new-quiz')     
+
    <!-- include summernote css/js-->
 <script src="{{ asset('js/dashboard.js')}}" > </script>
 <script src="summernote-bs5.js"></script>

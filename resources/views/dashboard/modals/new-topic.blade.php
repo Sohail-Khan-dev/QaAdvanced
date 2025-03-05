@@ -23,7 +23,7 @@
                 @php $topics = \App\Models\TopicName::all(); @endphp
                 <div class="mb-3">
                     <label for="topic" class="form-label">Topic</label>
-                    <select class="form-select" id="topic" name="topic" required>
+                    <select class="form-select" id="topic-id" name="topic" required>
                         <option value="">Select Topic</option>
                         @foreach ($topics as $topic)
                             <option value="{{$topic->topic_id}}">{{$topic->name}}</option>

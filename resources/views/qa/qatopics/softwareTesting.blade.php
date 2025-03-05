@@ -26,21 +26,9 @@
                 @foreach ($topics as $topic )
                 <li><a href="#{{$topic->name}}">{{ $topic->name }}</a></li>                    
                 @endforeach
-                {{-- <li><a href="#TypesofTesting">Types of Testing</a></li>
-                <li><a href="#TestCaseDevelopment">TestCase Development</a></li>
-                <li><a href="#TestingTechniques">Testing Techniques</a></li>
-                <li><a href="#TestManagement&Control">Test Management & Control</a></li>
-                <li><a href="#Defects">Defects</a></li>
-                <li><a href="#Agile">Agile</a></li>
-                <li><a href="#TestingDifferentDomains">Testing Different Domains</a></li>
-                <li><a href="#WhiteBoxTesting">WhiteBox Testing</a></li>
-                <li><a href="#PerformanceTesting">Performance Testing</a></li>
-                <li><a href="#AdvanceTestingTopics">Advance Testing Topics</a></li> --}}
-                
             </ul>
         </div>
         <div class="accordion" id="qaTopics">
-            {{-- @dd($topics) --}}
             @foreach($topics as $topic)
             <div class="card">
                 <div class="card-header" id="{{($topic->name) }}">
@@ -63,23 +51,15 @@
 @push('scripts')
 <script>
     $(document).ready(function(){
-        console.log("Document is ready");
         getAllTopics();
         function getAllTopics(){
-            console.log("Getting all topics");
            let baseUrl  = "{{ url("qa/qatopicdetail/showguide")}}";
-           console.log(baseUrl);
-           
             $.ajax({
                 url: '/get-topics',
                 type: 'GET',
                 success: function(response){
-                    console.log( "Topics are : ",  response);
-                    let ul = $("#testing-fundamentals");
-                    ul.empty();
-                    response.forEach(element => {
-                        ul.append(`<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`);
-                        
+                    response.forEach(element => {                        
+                        $("#"+element.slug).append(`<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`);
                     });
                 }
             }); 

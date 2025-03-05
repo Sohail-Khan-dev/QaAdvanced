@@ -18,6 +18,7 @@ class ArticalDetailsController extends Controller
         $artical = ArticalDetails::storeTopic([
             'title' => $request->title,
             'content' => $request->content,
+            'slug' => $request->slug
         ]);
         return response()->json($artical);
     }

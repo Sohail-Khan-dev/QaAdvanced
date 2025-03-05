@@ -9,23 +9,19 @@ $(document).ready(function () {
         e.preventDefault();
         let title = $("#title").val();
         let markupStr = $('#topic-html').summernote('code');
-        // let image = $("#image").val();
-        // $("#save-btn").prop('disabled', true);
-        // let formData = new FormData();
-        // formData.append('title', title);
-        // formData.append('content', markupStr);
+       let slug = $("#topic-id").val();
         $.ajax({
             url: "/store-topic",
             method: 'POST',
             data: {
                 title: title,
-                content: markupStr
+                content: markupStr,
+                slug : slug
             },
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                console.log(response);
                 $('#new-topic-modal').modal('hide');
                 resetTopicModal();
                 loadTopic('/get-topics');
@@ -44,10 +40,6 @@ $(document).ready(function () {
 
         let formData = new FormData(this);
         formData.append('question', question);
-        // Debugging: Log FormData contents properly
-        for (let [key, value] of formData.entries()) {
-            console.log(key, value);
-        }
         $.ajax({
             url: "/store-quizzes",
             method: 'POST',
@@ -58,7 +50,6 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                console.log(response);
                 $('#new-quiz-modal').modal('hide');
                 resetTopicModal();
                 loadTopic('/get-quizzes', 'quiz-content');
@@ -85,18 +76,17 @@ $(document).ready(function () {
                 var tableId = content === 'topic-content' ? '#topic-dataTable' : '#quiz-dataTable';
                 var table = $(tableId).DataTable();
                 table.clear().draw();
-                data.forEach(function (item) {
+                data.forEach(function (item) { 
                     var textContent = $(item.content).text(); // Extract text content only
                     var words = textContent.split(/\s+/).slice(0, 25).join(' '); // Get first 25 words
                     if (content === "topic-content") {
                         table.row.add([
                             item.title,
                             words,
-                            item.topic,
+                            item.slug,
                             actionsBtn
                         ]).draw(false);
                     } else {
-                        console.log(item.questions[0]);
                         table.row.add([
                             item.questions[0].question,
                             item.questions[0].options[0].option + ' | ' + item.questions[0].options[1].option + ' | ' + item.questions[0].options[2].option + ' | ' + item.questions[0].options[3].option,
@@ -111,13 +101,10 @@ $(document).ready(function () {
     // Handle nav link clicks
     $('.nav-link').on('click', function (e) {
         e.preventDefault();
-        console.log("this is clicked on nav linke ");
         hideAllContent();
         var content = $(this).data('content');
         $("#" + content).removeClass('d-none');
         let url = content == 'topic-content' ? '/get-topics' : '/get-quizzes';
-        console.log("url is : ", url);
-
         loadTopic(url, content); // we will edit this for the Quiz
     });
     function hideAllContent() {
@@ -126,9 +113,10 @@ $(document).ready(function () {
 
     }
     function resetTopicModal() {
-        $('#new-topic-form').reset();
+        $("#title").val("");
         $('#topic-html').summernote('code', '');
         $('.note-placeholder').show();
+        $("#topic-id").val("");
     }
     function loadSummernote() {
         $('#topic-html').summernote({
