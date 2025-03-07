@@ -29,9 +29,10 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
                 <div class="dropdown-menu m-0">
-                    <a href={{ url("qa/qatopics/softwareTesting") }} class="dropdown-item">Software Testing</a>
-                    <a href={{ url("qa/qatopics/agailTesting") }} class="dropdown-item">Agile Testing</a>
-                    <a href={{ url("qa/qatopics/istqbTopics")}} class="dropdown-item">ISTQB Topics</a>
+                    @php $categories = \App\Models\LearningCategory::all(); @endphp
+                    @foreach ($categories as $category)
+                        <a href="{{ url("qa/qatopics/softwaretesting") }}" class="dropdown-item">{{ $category->name }}</a>
+                    @endforeach
 
                 </div>
             </div>

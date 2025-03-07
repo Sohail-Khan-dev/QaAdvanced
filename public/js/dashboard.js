@@ -99,7 +99,7 @@ $(document).ready(function () {
         });
     }
     // Handle nav link clicks
-    $('.nav-link').on('click', function (e) {
+    $('.nav-link #blog-detail-collapse.').on('click', function (e) {
         e.preventDefault();
         hideAllContent();
         var content = $(this).data('content');

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->string('topic_id');
+            $table->string('topic_id'); // this is the ID used in the front of the topic syllabus . 
+            $table->foreign('learning_category_id')->references('id')->on('learning_categories');
             $table->timestamps();
         });
     }

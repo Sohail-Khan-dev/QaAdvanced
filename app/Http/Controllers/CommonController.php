@@ -13,7 +13,9 @@ class CommonController extends Controller
             return view('qa/' . $routeName.'/'.$route2Name, compact('artical'));
         }
         if($route2Name){
-            return view('qa/' . $routeName.'/'.$route2Name);
+            $topics = \App\Models\TopicName::all();
+            // Here we will pass the Learning Category Along with the Topic Name
+            return view('qa/' . $routeName.'/'.$route2Name, compact('topics'));
         }
         return view('qa/'. $routeName);
     }

@@ -14,9 +14,7 @@
 
 </style>
 @section('content')
-@php
-    $topics = \App\Models\TopicName::all();
-@endphp
+
 <div class="container mt-5 pt-5" id="topic-main-content">
     <h1 class="mb-4">Software Testing Syllabus</h1>
     <div class="d-flex gap-2">
@@ -37,7 +35,6 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="{{ Str::slug($topic->topic_name) }}" data-parent="#qaTopics">
                     <div class="card-body">
                         <ul id="{{($topic->topic_id) }}">
-                           
                         </ul>
                     </div>
                 </div>
