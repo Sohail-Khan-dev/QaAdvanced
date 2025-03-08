@@ -14,14 +14,19 @@ Route::get('/app-ads.txt', function () {
     return view('qa.index');
 });
 
+Route::get('/show-syllabus/{category_id}', [CommonController::class,"showSyllabus"])->name('show-syllabus');
+
 Route::post('dashboard/{$viewName}',[DashboardController::class,"showView"]);
 Route::get('dashboard',[DashboardController::class,"index"]);
 
-Route::get('get-blog',[BlogDetailsController::class,'getBlogDetail'])->name('get-blog');
+Route::get('get-blog/{category_id?}',[BlogDetailsController::class,'getBlogDetail'])->name('get-blog');
 Route::post('store-blog', [BlogDetailsController::class, 'storeBlog'])->name('store-blog');
+Route::post('store-category', [BlogDetailsController::class, 'storeCategory'])->name('store-category');
+Route::post('store-topic', [BlogDetailsController::class, 'storeTopic'])->name('store-topic');
 
-Route::get('get-topic/{id}', [BlogDetailsController::class, 'getTopic'])->name('get-topic');
-Route::get('get-categories',[BlogDetailsController::class,'getCategories'])->name('get-categories');
+Route::get('get-topic', [BlogDetailsController::class, 'getTopic'])->name('get-topic');
+Route::get('get-category',[BlogDetailsController::class,'getCategories'])->name('get-category');
+
 ////////////////////////// Here we have all routes related to Quiz 
 Route::get('get-quizzes',[QuizController::class,'getQuiz'])->name('get-quizzes');
 Route::post('store-quizzes',[QuizController::class,'store'])->name('store-quizzes');

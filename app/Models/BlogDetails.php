@@ -9,8 +9,8 @@ class BlogDetails extends Model
 {
    
     use HasFactory;
-    protected $table = 'artical_details';
-    protected $fillable = ['title','content','slug'];
+    protected $table = 'blogs_detail';
+    protected $fillable = ['title','content','slug','learning_category_id'];
     
     
     // Slug is the topic_id used in the showdetail of topic. this id is used in UL of that topic 

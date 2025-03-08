@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TopicName extends Model
 {
     protected $table = 'topic_name';
-    protected $fillable = ['name', 'description', 'topic_id'];
+    protected $fillable = ['name', 'description', 'topic_id', 'learning_category_id',];
 
     public function learningCategory()
     {

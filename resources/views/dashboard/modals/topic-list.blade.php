@@ -14,10 +14,10 @@
                 @php $categories = \App\Models\LearningCategory::all(); @endphp
                 <div class="mb-3">
                     <label for="category" class="form-label">Learning Category</label>
-                    <select class="form-select" id="category-id" name="category" required>
+                    <select class="form-select" id="category-id" name="category_id" required>
                         <option value="">Select Topic</option>
                         @foreach ($categories as $category)
-                            <option value="{{$category->name}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -26,8 +26,12 @@
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="editor" class="form-label">Details</label>
-                    <div id="topic-html"></div>
+                    <label for="topic_id" class="form-label">Topic ID</label>
+                    <input type="text" class="form-control" id="topic_id" name="topic_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="detail" class="form-label">Details</label>
+                    <div class="topic-html"></div>
                 </div>
               
                 <div class="modal-footer">

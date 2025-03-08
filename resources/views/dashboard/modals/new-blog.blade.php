@@ -9,15 +9,15 @@
         </div>
        
         <div class="modal-body">
-            <form id="new-topic-form" method="POST" enctype="multipart/form-data">
+            <form id="new-blog-form" method="POST" enctype="multipart/form-data">
                 @csrf
                 @php $categories = \App\Models\LearningCategory::all(); @endphp
                 <div class="mb-3">
                     <label for="category" class="form-label">Learning Category</label>
-                    <select class="form-select" id="category-id" name="category" required>
+                    <select class="form-select" id="category-id" name="category_id" required>
                         <option value="">Select Topic</option>
                         @foreach ($categories as $category)
-                            <option value="{{$category->name}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -25,7 +25,7 @@
                 @php $topics = \App\Models\TopicName::all(); @endphp
                 <div class="mb-3">
                     <label for="topic" class="form-label">Topic</label>
-                    <select class="form-select" id="topic-id" name="topic" required>
+                    <select class="form-select" id="topic-id" name="topic_id" required>
                         <option value="">Select Topic</option>
                         @foreach ($topics as $topic)
                             <option value="{{$topic->topic_id}}">{{$topic->name}}</option>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="editor" class="form-label">Content</label>
-                    <div id="topic-html"></div>
+                    <div class="topic-html"></div>
                 </div>
               
                 <div class="modal-footer">

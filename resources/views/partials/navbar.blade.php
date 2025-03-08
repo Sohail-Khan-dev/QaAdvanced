@@ -31,7 +31,7 @@
                 <div class="dropdown-menu m-0">
                     @php $categories = \App\Models\LearningCategory::all(); @endphp
                     @foreach ($categories as $category)
-                        <a href="{{ url("qa/qatopics/softwaretesting") }}" class="dropdown-item">{{ $category->name }}</a>
+                    <a href="{{ url("show-syllabus/{$category->id}") }}" class="dropdown-item">{{ $category->name }}</a>
                     @endforeach
 
                 </div>

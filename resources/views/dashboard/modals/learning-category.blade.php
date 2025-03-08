@@ -16,8 +16,8 @@
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="editor" class="form-label">Description</label>
-                    <div id="topic-html"></div>
+                    <label for="description" class="form-label">Description</label>
+                    <div class="topic-html"></div>
                 </div>
               
                 <div class="modal-footer">
