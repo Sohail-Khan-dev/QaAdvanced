@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ArticalDetails;
+use App\Models\BlogDetails;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         // ArticalDetails::factory(10)->create();
         $this->call([
-            LearnCategorySeeder::class,
+            LearningCategorySeeder::class,
             TopicNameSeeder::class,
         ]);
     }

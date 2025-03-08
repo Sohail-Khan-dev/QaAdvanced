@@ -52,7 +52,7 @@
         function getAllTopics(){
            let baseUrl  = "{{ url("qa/qatopicdetail/showguide")}}";
             $.ajax({
-                url: '/get-topics',
+                url: '/get-blog',
                 type: 'GET',
                 success: function(response){
                     response.forEach(element => {                        

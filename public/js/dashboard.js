@@ -1,17 +1,15 @@
 
 $(document).ready(function () {
     loadSummernote();
-    loadTopic('/get-topics');
-    let title = $("#title");
-    let topicContent = $("#topic-content");
-    let quizContent = $("#quiz-content");
+    loadTopic('/get-blog');
+   
     $(document).on("submit", "#new-topic-form", function (e) {
         e.preventDefault();
         let title = $("#title").val();
         let markupStr = $('#topic-html').summernote('code');
        let slug = $("#topic-id").val();
         $.ajax({
-            url: "/store-topic",
+            url: "/store-blog",
             method: 'POST',
             data: {
                 title: title,
@@ -24,7 +22,7 @@ $(document).ready(function () {
             success: function (response) {
                 $('#new-topic-modal').modal('hide');
                 resetTopicModal();
-                loadTopic('/get-topics');
+                loadTopic('/get-blog');
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -60,7 +58,7 @@ $(document).ready(function () {
         });
 
     });
-    $(document).on("click", "#new-topic-btn #new-quiz-btn", function () {
+    $(document).on("click", "#new-blog-btn #new-quiz-btn #topic-list-btn #learning-category-btn" , function () {
         $("#save-btn").prop('disabled', false);
     })
     function loadTopic(url, content = 'topic-content') {
@@ -72,6 +70,7 @@ $(document).ready(function () {
                 'Accept': 'application/json' // Tell Laravel to return JSON
             },
             success: function (data) {
+                console.log(data);
                 let actionsBtn = `<a href="#" class="btn btn-primary btn-sm">View</a> <a href="#" class="btn btn-success btn-sm">Edit</a><a href="#" class="btn btn-danger btn-sm">Delete</a>`;
                 var tableId = content === 'topic-content' ? '#topic-dataTable' : '#quiz-dataTable';
                 var table = $(tableId).DataTable();
@@ -99,17 +98,20 @@ $(document).ready(function () {
         });
     }
     // Handle nav link clicks
-    $('.nav-link #blog-detail-collapse.').on('click', function (e) {
+    $('.blog-link').on('click', function (e) {
         e.preventDefault();
         hideAllContent();
         var content = $(this).data('content');
         $("#" + content).removeClass('d-none');
-        let url = content == 'topic-content' ? '/get-topics' : '/get-quizzes';
+        let url = $(this).data('url');
+        console.log('clicked ' + url + ' ' + content);
         loadTopic(url, content); // we will edit this for the Quiz
     });
     function hideAllContent() {
-        topicContent.addClass('d-none');
-        quizContent.addClass('d-none');
+        $("#topic-content").addClass('d-none');
+        $("#quiz-content").addClass('d-none');
+        $("#learning-category").addClass('d-none');
+        $("#topic-list").addClass('d-none');
 
     }
     function resetTopicModal() {

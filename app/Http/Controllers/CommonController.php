@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ArticalDetails;
+use App\Models\BlogDetails;
 
 class CommonController extends Controller
 {
     //
     public function showView($routeName, $route2Name = null , $id = null){
         if($id){
-            $artical = ArticalDetails::find($id);
+            $artical = BlogDetails::find($id);
             return view('qa/' . $routeName.'/'.$route2Name, compact('artical'));
         }
         if($route2Name){

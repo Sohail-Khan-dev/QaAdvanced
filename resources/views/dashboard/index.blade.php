@@ -29,8 +29,8 @@
             <div id="topic-content" class="">
                 <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
                     <div class="d-flex align-items-center justify-content-between py-3">
-                        <h2 class="mb-0">Topic Dashboard</h2>
-                        <button class="btn btn-primary" id='new-topic-btn' data-bs-toggle="modal" data-bs-target="#new-topic-modal"> Create New Topic</button>
+                        <h2 class="mb-0">Blog Dashboard</h2>
+                        <button class="btn btn-primary" id='new-blog-btn' data-bs-toggle="modal" data-bs-target="#new-topic-modal"> Create New Blog</button>
                     </div>
                     <div class="table-responsive">
                         <table id="topic-dataTable" class="table table-striped table-bordered">
@@ -70,10 +70,55 @@
                     </div>
                 </main>
             </div>
+            <div id="learning-category" class="d-none">
+                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <h2 class="mb-0">Category Dashboard</h2>
+                        <button class="btn btn-primary" id='learning-category-btn' data-bs-toggle="modal" data-bs-target="#learning-category-modal"> Create New Category</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="learning-category-dataTable" class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th style="max-width: 10%">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+            <div id="topic-list" class="d-none">
+                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <h2 class="mb-0">Topic Dashboard</h2>
+                        <button class="btn btn-primary" id='topic-list-btn' data-bs-toggle="modal" data-bs-target="#topic-list-modal"> Create New Topic</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="topic-list-dataTable" class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category Name</th>
+                                    <th style="max-width: 10%">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
         </div>
     </div>
-    @include('dashboard.modals.new-topic')
+    @include('dashboard.modals.new-blog')
     @include('dashboard.modals.new-quiz')     
+    @include('dashboard.modals.learning-category')
+    @include('dashboard.modals.topic-list')   
 
    <!-- include summernote css/js-->
 <script src="{{ asset('js/dashboard.js')}}" > </script>

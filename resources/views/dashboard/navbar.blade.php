@@ -17,13 +17,13 @@
             </button>
             <div class="collapse show" id="blog-detail-collapse" style="margin-left: 1rem;">
               <ul class="list-unstyled fw-normal pb-1 small">
-                  <li><a href="" class="list-group-item">Add Category</a></li>
-                  <li><a href="" class="list-group-item">Add Topic</a></li>
-                  <li><a href="" data-content='topic-content' class="list-group-item">Add Details</a></li>
+                  <li><a href="#" class="list-group-item blog-link " data-content="learning-category" data-url="/get-category">Add Category</a></li>
+                  <li><a href="#" class="list-group-item blog-link " data-content="topic-list" data-url="/get-topic">Add Topic</a></li>
+                  <li><a href="#" data-content='topic-content' data-url="/get-blog" class="list-group-item blog-link">Add Details</a></li>
               </ul>
             </div>
-            <a  class="nav-item nav-link" data-content='quiz-content'>Add Quiz</a>
-            <a  class="nav-item nav-link">coming Soon</a>
+            <a  class="nav-item blog-link d-block" data-content='quiz-content' data-url="/get-quizzes">Add Quiz</a>
+            <a  class="nav-item blog-link d-block">coming Soon</a>
         </div>
     </div>
 </nav>
