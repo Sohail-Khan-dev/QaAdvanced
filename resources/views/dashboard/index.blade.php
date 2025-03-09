@@ -156,6 +156,8 @@
             </div>
         </div>
     </div>
+    <div id="topics-data" data-topics='{{ htmlspecialchars_decode(json_encode($topics, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) }}'></div>
+
     @include('dashboard.modals.new-blog')
     @include('dashboard.modals.new-quiz')     
     @include('dashboard.modals.learning-category')

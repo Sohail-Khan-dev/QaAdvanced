@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class DashboardController extends Controller
 {
     //
     function index(){
-        return view('dashboard.index');
+        $categories = \App\Models\LearningCategory::all();
+        $topics = \App\Models\TopicName::all();
+        return view('dashboard.index',compact('topics','categories'));
     }
     function showView($routeName){
         // dd($routeName);

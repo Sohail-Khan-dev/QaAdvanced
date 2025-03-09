@@ -48,20 +48,16 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+            // We have to store All the Topic in 2D Array and access through it. 
             getAllTopics();
-
             function getAllTopics() {
                 let categoryId = "{{ $category_id}}";
-                console.log(categoryId);
-                
                 let baseUrl = "{{ url('qa/qatopicdetail/showguide') }}";
                 $.ajax({
                     url: '/get-blog/'+categoryId,
                     type: 'GET',
                     success: function(response) {
-                        response.forEach(element => {
-                            console.log(element.slug);
-                            
+                        response.forEach(element => { 
                             $("#" + element.slug).append(
                                 `<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`
                                 );

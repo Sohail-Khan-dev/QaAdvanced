@@ -8,8 +8,7 @@ use App\Models\BlogDetails;
 class CommonController extends Controller
 {
     //
-    public function showView($routeName, $route2Name = null , $id = null){
-        // dd("ehre ", $routeName, $route2Name, $id);
+    public function showView($routeName, $route2Name = null , $id = null){        
         if($id){
             $artical = BlogDetails::find($id);
             return view('qa/' . $routeName.'/'.$route2Name, compact('artical'));

@@ -2,13 +2,9 @@ $(document).ready(function () {
     loadSummernote();
     $(document).on("submit", "#new-blog-form", function (e) {
         e.preventDefault();
-        // let title = $("#title").val();
         let markupStr = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
-        console.log("markupStr", formData);
-
         formData.append('content', markupStr);
-        // let slug = $("#topic-id").val();
         $.ajax({
             url: "/store-blog",
             method: 'POST',
@@ -62,10 +58,9 @@ $(document).ready(function () {
         $("#save-btn").prop('disabled', true);
 
         let slug = $(this).find('.topic-html').summernote('code');
-        console.log("slug", slug);
-
         let formData = new FormData(this);
         formData.append('slug', slug);
+        
         $.ajax({
             url: "/store-category",
             method: 'POST',
@@ -90,11 +85,9 @@ $(document).ready(function () {
         e.preventDefault();
         $("#save-btn").prop('disabled', true);
 
-        let description = $(this).find('.topic-html').summernote('code');
-        console.log("slug", description);
-
+        let slug = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
-        formData.append('slug', description);
+        formData.append('slug', slug);
         $.ajax({
             url: "/store-topic",
             method: 'POST',
@@ -129,11 +122,9 @@ $(document).ready(function () {
                 'Accept': 'application/json' // Tell Laravel to return JSON
             },
             success: function (data) {
-                console.log(data);
                 let actionsBtn = `<a href="#" class="btn btn-primary btn-sm">View</a> <a href="#" class="btn btn-success btn-sm">Edit</a><a href="#" class="btn btn-danger btn-sm">Delete</a>`;
                 // var tableId = content === 'blog-content' ? '#topic-dataTable' : '#quiz-dataTable';
                 var table = $("#" + tableId).DataTable();
-                console.log(content);
                 table.clear().draw();
                 data.forEach(function (item) {
                     // let mainText =  ? $(item.content) : $(item.name) ;
@@ -179,7 +170,6 @@ $(document).ready(function () {
         $("#" + content).removeClass('d-none');
         let url = $(this).data('url');
         let dataTable = $(this).data('table');
-        // console.log('clicked ' + url + ' ' + content);
         loadTopic(url, content, dataTable); // we will edit this for the Quiz
     });
     function hideAllContent() {
@@ -208,5 +198,19 @@ $(document).ready(function () {
             placeholder: 'Write your question here...',
         });
 
+    }
+   
+    $("#category-id").on("change", function(){
+        getTopicOfCategory($(this).val());
+    });
+    function getTopicOfCategory(category_id){
+        let topicsData = $('#topics-data').attr('data-topics'); // Get JSON string
+        try {
+            let topics = JSON.parse(topicsData); // Convert to JavaScript object       
+            let filteredTopics = topics.filter(topic => topic.learning_category_id == category_id);
+            populateTopics(filteredTopics) 
+        } catch (error) {
+            console.error("Error parsing JSON:", error);
+        }        
     }
 });

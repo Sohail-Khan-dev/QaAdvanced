@@ -9,10 +9,9 @@ use App\Models\LearningCategory;
 
 class BlogDetailsController extends Controller
 {
-    // this function is for the Dashboard only not used in any other area. 
     public function getBlogDetail($category_id = null)
     {
-        if ($category_id) {   // This is read from the software testing scripts and below for the Dashboard 
+        if ($category_id) {   // This is read from the software testing scripts and else is for the Dashboard 
             $blogs  = BlogDetails::select('id', 'title', 'slug')->where('learning_category_id', $category_id)->get();
         } else
             $blogs = BlogDetails::all();
@@ -20,7 +19,6 @@ class BlogDetailsController extends Controller
     }
     public function storeBlog(Request $request)
     {
-        // dd($request->all());
         // Call the model method statically if it is static; otherwise, instantiate the model
         $artical = BlogDetails::storeTopic([
             'title' => $request->title,
@@ -37,7 +35,7 @@ class BlogDetailsController extends Controller
         $cat->name = $request->name;
         $cat->slug = $request->slug;
         $cat->save();
-        // dd($request->all(), $cat);
+        return response()->json(['error'=>false, "Message" => "Sub category Saved successfully"]);
     }
     public function getCategories()
     {
@@ -56,7 +54,6 @@ class BlogDetailsController extends Controller
     }
     public function getTopic($id = null)
     {
-        // $topic = TopicName::where('learning_category_id', $id)->get();
         $topics = TopicName::all();
         return response()->json($topics);
     }
