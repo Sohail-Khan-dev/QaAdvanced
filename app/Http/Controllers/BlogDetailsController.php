@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TopicName;
 use App\Models\BlogDetails;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\LearningCategory;
 
@@ -35,7 +36,8 @@ class BlogDetailsController extends Controller
         $cat->name = $request->name;
         $cat->slug = $request->slug;
         $cat->save();
-        return response()->json(['error'=>false, "Message" => "Sub category Saved successfully"]);
+        $categories = LearningCategory::all();
+        return response()->json(['error'=>false, "Message" => "Sub category Saved successfully", 'categories'=>$categories]);
     }
     public function getCategories()
     {
@@ -48,9 +50,11 @@ class BlogDetailsController extends Controller
         $topic = new TopicName();
         $topic->name = $request->name;
         $topic->description = $request->slug;
-        $topic->topic_id = $request->topic_id;  // this is id used in the front of the topic syllabus .        
+        $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .        
         $topic->learning_category_id = $request->category_id;
-        $topic->save();
+        $topic->save(); 
+        $topics = TopicName::all();
+        return response()->json(['topics' => $topics]);
     }
     public function getTopic($id = null)
     {

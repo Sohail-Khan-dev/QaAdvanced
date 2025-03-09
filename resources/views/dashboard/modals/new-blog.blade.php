@@ -12,7 +12,7 @@
                
                 <div class="mb-3">
                     <label for="category" class="form-label">Learning Category</label>
-                    <select class="form-select" id="category-id" name="category_id" required>
+                    <select class="form-select category-id" id="category-id" name="category_id" required>
                         <option value="">Select Topic</option>
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -20,20 +20,17 @@
                     </select>
                 </div>
                 {{-- we will add a select picker here and add topic names recently we have add ids to it  --}}
-               
                 <div class="mb-3">
                     <label for="topic" class="form-label">Topic</label>
                     <select class="form-select" id="topic-id" name="topic_id" required>
                         <option value="">Select Topic</option>
-                        {{-- @foreach ($topics as $topic)
-                            <option value="{{$topic['topic_id']}}">{{$topic['name']}}</option>
-                        @endforeach --}}
+                        {{-- These options are created on run time by JQuery  --}}
                     </select>
                 </div>
                
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <input type="text" class="form-control name" id="title" name="title" required>
                 </div>
                 <div class="mb-3">
                     <label for="editor" class="form-label">Content</label>
@@ -59,5 +56,5 @@
             $select.append(option);
         });
     }
-
+   
   </script>

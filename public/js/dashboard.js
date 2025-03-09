@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    let actionsBtn = `<a href="#" class="btn btn-primary btn-sm">View</a> <a href="#" class="btn btn-success btn-sm">Edit</a><a href="#" class="btn btn-danger btn-sm">Delete</a>`;
     loadSummernote();
     $(document).on("submit", "#new-blog-form", function (e) {
         e.preventDefault();
@@ -16,7 +17,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('#new-topic-modal').modal('hide');
-                resetTopicModal();
+                resetHtmlContent();
                 loadTopic('/get-blog', 'blog-content', 'blog-dataTable');
             },
             error: function (xhr, status, error) {
@@ -44,7 +45,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('#new-quiz-modal').modal('hide');
-                resetTopicModal();
+                resetHtmlContent();
                 loadTopic('/get-quizzes', 'quiz-content', 'quiz-dataTable');
             },
             error: function (xhr, status, error) {
@@ -72,8 +73,18 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('#learning-category-modal').modal('hide');
-                resetTopicModal();
-                loadTopic('/get-category', 'learning-category', 'learning-category-dataTable');
+                resetHtmlContent();
+                // loadTopic('/get-category', 'learning-category', 'learning-category-dataTable');
+                populateCategory(response.categories); // this function is written down in new-blog.blade.php file there it is handled 
+                var table = $("#learning-category-dataTable").DataTable();
+                table.clear().draw();
+                response.categories.forEach(function (item) {
+                    table.row.add([
+                        item.id,
+                        item.name,
+                        actionsBtn
+                    ]).draw(false);
+                });
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -99,8 +110,18 @@ $(document).ready(function () {
             },
             success: function (response) {
                 $('#topic-list-modal').modal('hide');
-                resetTopicModal();
-                loadTopic('/get-topic', 'topic-list', 'topic-list-dataTable');
+                resetHtmlContent();
+                topics = response.topics;
+                var table = $("#topic-list-dataTable").DataTable();
+                table.clear().draw();
+                topics.forEach(function (item) {
+                    table.row.add([
+                        item.id,
+                        item.name,
+                        item.learning_category_id,
+                        actionsBtn
+                    ]).draw(false);
+                });
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -122,12 +143,9 @@ $(document).ready(function () {
                 'Accept': 'application/json' // Tell Laravel to return JSON
             },
             success: function (data) {
-                let actionsBtn = `<a href="#" class="btn btn-primary btn-sm">View</a> <a href="#" class="btn btn-success btn-sm">Edit</a><a href="#" class="btn btn-danger btn-sm">Delete</a>`;
-                // var tableId = content === 'blog-content' ? '#topic-dataTable' : '#quiz-dataTable';
                 var table = $("#" + tableId).DataTable();
                 table.clear().draw();
                 data.forEach(function (item) {
-                    // let mainText =  ? $(item.content) : $(item.name) ;
                     if (content === "blog-content") {
                         var textContent = $(item.content).text(); // Extract text content only
                         var words = textContent.split(/\s+/).slice(0, 25).join(' '); // Get first 25 words
@@ -179,11 +197,15 @@ $(document).ready(function () {
         $("#topic-list").addClass('d-none');
 
     }
-    function resetTopicModal() {
-        $(".title").val("");
-        $('.topic-html').summernote('code', '');
-        $('.note-placeholder').show();
+    function resetHtmlContent() {
         $("#topic-id").val("");
+        $(".name").val("");
+        $(".category-id").val("");
+        $('.topic-html').summernote('code', '');
+        $('.topic-html').trigger('summernote.change'); // Force event trigger
+
+        // $('.note-placeholder').show();
+        // $("#topic-id").val("");
     }
     function loadSummernote() {
         $('.topic-html').summernote({
@@ -199,18 +221,23 @@ $(document).ready(function () {
         });
 
     }
-   
+    let topicsData = $('#topics-data').attr('data-topics');
+    let topics = JSON.parse(topicsData); // Convert to JavaScript object   
     $("#category-id").on("change", function(){
         getTopicOfCategory($(this).val());
     });
     function getTopicOfCategory(category_id){
-        let topicsData = $('#topics-data').attr('data-topics'); // Get JSON string
-        try {
-            let topics = JSON.parse(topicsData); // Convert to JavaScript object       
-            let filteredTopics = topics.filter(topic => topic.learning_category_id == category_id);
-            populateTopics(filteredTopics) 
-        } catch (error) {
-            console.error("Error parsing JSON:", error);
-        }        
+        let filteredTopics = topics.filter(topic => topic.learning_category_id == category_id);
+        populateTopics(filteredTopics); 
+    }
+    function populateCategory(categories){
+        let select = $(".category-id");
+        console.log(select.length);
+        
+        select.find('option:not(:first)').remove();
+        $.each(categories,function(index,category){
+           let option = `<option value="${category.id}">${category.name}</option>`;
+           select.append(option);
+        });
     }
 });
