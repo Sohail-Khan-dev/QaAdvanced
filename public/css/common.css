@@ -1,3 +1,6 @@
+html {
+    scroll-padding-top: 80px; /* Adjust this based on your header height */
+  }  
 .align-text-left{
     text-align: left;
 }
