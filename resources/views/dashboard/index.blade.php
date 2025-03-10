@@ -22,7 +22,7 @@
 </head>
 <body class="bg-light">
     @include('dashboard.navbar')    
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-left: 9rem">
         <div class="row" id="main">
             <div id="dashboard-content">
                 <div class="container mt-5">
