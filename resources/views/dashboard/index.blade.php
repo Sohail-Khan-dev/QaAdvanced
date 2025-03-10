@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,7 +30,7 @@
                             <h3 class="text-center mb-4 mt-n5">Dashboard</h3>
                         </div>
                     </div>
-                    <div class="row d-flex justify-content-center align-items-center">
+                    <div class="row d-flex justify-content-center align-items-center g-3">
                         <div class="col-md-3 cursor-pointer blog-link" data-content="learning-category" data-url="/get-category" data-table="learning-category-dataTable">
                             <div class="card text-center shadow-sm border-0">
                                 <div class="card-body">
