@@ -27,7 +27,7 @@ class BlogDetailsController extends Controller
             'slug' => $request->topic_id,
             'learning_category_id' => $request->category_id,
         ]);
-        return response()->json($artical);
+        return response()->json(['blog'=>$artical]);
     }
 
     public function storeCategory(Request $request)
@@ -37,7 +37,7 @@ class BlogDetailsController extends Controller
         $cat->slug = $request->slug;
         $cat->save();
         $categories = LearningCategory::all();
-        return response()->json(['error'=>false, "Message" => "Sub category Saved successfully", 'categories'=>$categories]);
+        return response()->json(['categories'=>$categories, "Message" => "Sub category Saved successfully", 'category'=>$cat]);
     }
     public function getCategories()
     {
@@ -54,7 +54,7 @@ class BlogDetailsController extends Controller
         $topic->learning_category_id = $request->category_id;
         $topic->save(); 
         $topics = TopicName::all();
-        return response()->json(['topics' => $topics]);
+        return response()->json(['topics' => $topics, 'topic'=>$topic]);
     }
     public function getTopic($id = null)
     {
