@@ -24,7 +24,7 @@
     <div class="container-fluid" style="margin-left: 9rem">
         <div class="row" id="main">
             <div id="dashboard-content">
-                <div class="container mt-5">
+                <div class="container mt-5 ms-5">
                     <div class="row">
                         <div class="col-md-12">
                             <h3 class="text-center mb-4 mt-n5">Dashboard</h3>
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div id="blog-content" class="d-none">
-                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Blogs </h2>
                         <button class="btn btn-primary" id='new-blog-btn' data-bs-toggle="modal" data-bs-target="#new-topic-modal"> Create New Blog</button>
@@ -89,7 +89,7 @@
                 </main>
             </div>
             <div id="quiz-content" class="d-none">
-                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Quizzes </h2>
                         <button class="btn btn-primary" id='new-quiz-btn' data-bs-toggle="modal" data-bs-target="#new-quiz-modal"> Create New Quiz</button>
@@ -111,7 +111,7 @@
                 </main>
             </div>
             <div id="learning-category" class="d-none">
-                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Categories </h2>
                         <button class="btn btn-primary" id='learning-category-btn' data-bs-toggle="modal" data-bs-target="#learning-category-modal"> Create New Category</button>
@@ -132,7 +132,7 @@
                 </main>
             </div>
             <div id="topic-list" class="d-none">
-                <main role="main" class="col-md-9 ms-auto col-lg-10 px-4" style="margin-left: 10rem;">
+                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Topics </h2>
                         <button class="btn btn-primary" id='topic-list-btn' data-bs-toggle="modal" data-bs-target="#topic-list-modal"> Create New Topic</button>
