@@ -10,7 +10,7 @@
     }
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-end vh-100 d-flex flex-column align-items-start h-100" 
-     style="position: fixed; left: 0; top: 0; width: 10rem; padding: 1rem;">
+     style="position: fixed; left: 0; top: 0; width: 10rem; padding: 1rem; z-index:1021">
     <div class="mt-5" id="navbarCollapse">
             <button class="btn dashboard-nav-btn" data-bs-toggle="collapse" data-bs-target="#blog-detail-collapse" aria-expanded="true">
               Blog Details

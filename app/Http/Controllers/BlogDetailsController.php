@@ -27,7 +27,8 @@ class BlogDetailsController extends Controller
             'slug' => $request->topic_id,
             'learning_category_id' => $request->category_id,
         ]);
-        return response()->json(['blog'=>$artical]);
+        $blogs = BlogDetails::all();
+        return response()->json(['blog'=>$artical, 'blogs'=>$blogs]);
     }
 
     public function storeCategory(Request $request)
@@ -60,5 +61,35 @@ class BlogDetailsController extends Controller
     {
         $topics = TopicName::all();
         return response()->json($topics);
+    }
+    public function deleteCategory($id)
+    {
+        $category = LearningCategory::find($id);
+        if (!$category) {
+            return response()->json(['error' => 'Category not found'], 404);
+        }
+        $category->delete();
+        $categories = LearningCategory::all();
+        return response()->json(['categories'=>$categories, "Message" => "category Deleted successfully"],200);
+    }
+    public function deleteTopic($id)
+    {
+        $topic = TopicName::find($id);
+        if (!$topic) {
+            return response()->json(['error' => 'Topic not found'], 404);
+        }
+        $topic->delete();
+        $topics = TopicName::all();
+        return response()->json(['topics'=>$topics, "Message" => "Topic Deleted successfully"],200);
+    }
+    public function deleteBlog($id)
+    {
+        $blog = BlogDetails::find($id);
+        if (!$blog) {
+            return response()->json(['error' => 'Blog not found'], 404);
+        }
+        $blog->delete();
+        $blogs = BlogDetails::all();
+        return response()->json(['blogs'=>$blogs, "Message" => "Blog Deleted successfully"],200);
     }
 }
