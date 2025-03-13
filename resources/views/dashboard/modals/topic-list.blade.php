@@ -11,6 +11,7 @@
         <div class="modal-body">
             <form id="topic-list-form" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="id" class="form-id">
                 @php $categories = \App\Models\LearningCategory::all(); @endphp
                 <div class="mb-3">
                     <label for="category" class="form-label">Learning Category</label>

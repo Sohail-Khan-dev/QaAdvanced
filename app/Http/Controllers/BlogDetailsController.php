@@ -30,6 +30,46 @@ class BlogDetailsController extends Controller
         $blogs = BlogDetails::all();
         return response()->json(['blog'=>$artical, 'blogs'=>$blogs]);
     }
+    // Now we will update the blog
+    public function updateBlog(Request $request)
+    {
+        $blog = BlogDetails::find($request->id);
+        if (!$blog) {
+            return response()->json(['error' => 'Blog not found'], 404);
+        }
+        $blog->title = $request->title;
+        $blog->content = $request->content;
+        $blog->slug = $request->slug;
+        $blog->save();
+        $blogs = BlogDetails::all();
+        return response()->json(['blogs'=>$blogs, "Message" => "Blog Updated successfully", 'blog'=>$blog]);
+    }
+    public function updateCategory(Request $request)
+    {
+        $category = LearningCategory::find($request->id);
+        if (!$category) {
+            return response()->json(['error' => 'Category not found'], 404);
+        }
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+        $category->save();
+        $categories = LearningCategory::all();
+        return response()->json(['categories'=>$categories, "Message" => "Category Updated successfully", 'category'=>$category]);
+    }
+    public function updateTopic(Request $request)
+    {
+        $topic = TopicName::find($request->id);
+        if (!$topic) {
+            return response()->json(['error' => 'Topic not found'], 404);
+        }
+        $topic->name = $request->name;
+        $topic->description = $request->slug;
+        $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .        
+        $topic->learning_category_id = $request->category_id;
+        $topic->save();
+        $topics = TopicName::all();
+        return response()->json(['topics'=>$topics, "Message" => "Topic Updated successfully", 'topic'=>$topic]);
+    }
 
     public function storeCategory(Request $request)
     {

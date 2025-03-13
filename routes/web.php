@@ -21,8 +21,11 @@ Route::get('dashboard',[DashboardController::class,"index"]);
 
 Route::get('get-blog/{category_id?}',[BlogDetailsController::class,'getBlogDetail'])->name('get-blog');
 Route::post('store-blog', [BlogDetailsController::class, 'storeBlog'])->name('store-blog');
+Route::post('update-blog', [BlogDetailsController::class, 'updateBlog'])->name('update-blog');
 Route::post('store-category', [BlogDetailsController::class, 'storeCategory'])->name('store-category');
+Route::post('update-category', [BlogDetailsController::class, 'updateCategory'])->name('update-category');
 Route::post('store-topic', [BlogDetailsController::class, 'storeTopic'])->name('store-topic');
+Route::post('update-topic', [BlogDetailsController::class, 'updateTopic'])->name('update-topic');
 Route::get('get-topic', [BlogDetailsController::class, 'getTopic'])->name('get-topic');
 Route::get('get-category',[BlogDetailsController::class,'getCategories'])->name('get-category');
 

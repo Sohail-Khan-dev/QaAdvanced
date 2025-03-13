@@ -9,7 +9,7 @@
         <div class="modal-body">
             <form id="new-blog-form" method="POST" enctype="multipart/form-data">
                 @csrf
-               
+               <input type="hidden" name="id" class="form-id">
                 <div class="mb-3">
                     <label for="category" class="form-label">Learning Category</label>
                     <select class="form-select category-id" id="category-id" name="category_id" required>

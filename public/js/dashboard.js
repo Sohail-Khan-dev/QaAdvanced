@@ -7,10 +7,12 @@ $(document).ready(function () {
     $(document).on("submit", "#new-blog-form", function (e) {
         e.preventDefault();
         let markupStr = $(this).find('.topic-html').summernote('code');
+        const recordId = $(this).find('.form-id').val();
+        const url = recordId ? `/update-blog` : '/store-blog';
         let formData = new FormData(this);
         formData.append('content', markupStr);
         $.ajax({
-            url: "/store-blog",
+            url: url,
             method: 'POST',
             data: formData,
             contentType: false,
@@ -22,15 +24,7 @@ $(document).ready(function () {
                 $('#new-blog-modal').modal('hide');
                 resetHtmlContent();
                 blogs = response.blogs;
-                var table = $("#blog-dataTable").DataTable();
-                var textContent = $(response.blog.content).text(); // Extract text content only
-                var words = textContent.split(/\s+/).slice(0, 25).join(' '); // Get first 25 words
-                table.row.add([
-                    response.blog.title,
-                    words,
-                    response.blog.slug,
-                    getActionbuttons(response.blog.id)
-                ]).draw(false);
+                refreshDataTable('blog-dataTable', response.blogs, 'blog-content');
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -69,13 +63,14 @@ $(document).ready(function () {
     $(document).on("submit", "#learning-category-form", function (e) {
         e.preventDefault();
         $(this).find("#save-btn").prop('disabled', true);
-
+        const recordId = $(this).find('.form-id').val();
+        const url = recordId ? `/update-category` : '/store-category';
         let slug = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
         formData.append('slug', slug);
         
         $.ajax({
-            url: "/store-category",
+            url: url,
             method: 'POST',
             data: formData,
             contentType: false,
@@ -88,13 +83,7 @@ $(document).ready(function () {
                 resetHtmlContent();
                 categories = response.categories;
                 populateCategory(categories); // this function is written down in new-blog.blade.php file there it is handled 
-                var table = $("#learning-category-dataTable").DataTable();
-                // table.clear().draw();
-                    table.row.add([
-                        response.category.id,
-                        response.category.name,
-                        getActionbuttons(response.category.id)
-                    ]).draw(false);
+                refreshDataTable('learning-category-dataTable', response.categories, 'learning-category');
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -105,12 +94,13 @@ $(document).ready(function () {
     $(document).on("submit", "#topic-list-form", function (e) {
         e.preventDefault();
         $(this).find("#save-btn").prop('disabled', true);
-
+        const recordId = $(this).find('.form-id').val();        
+        const url = recordId ? `/update-topic` : '/store-topic';
         let slug = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
         formData.append('slug', slug);
         $.ajax({
-            url: "/store-topic",
+            url: url,
             method: 'POST',
             data: formData,
             contentType: false,
@@ -122,17 +112,7 @@ $(document).ready(function () {
                 $('#topic-list-modal').modal('hide');
                 resetHtmlContent();
                 topics = response.topics; //  this is for the dropdown in the dashboard 
-                var table = $("#topic-list-dataTable").DataTable();
-                // table.clear().draw();
-                // topics.forEach(function (item) {
-                    console.log(response);
-                    table.row.add([
-                        response.topic.id,
-                        response.topic.name,
-                        response.topic.learning_category_id,
-                        getActionbuttons(response.topic.id)
-                    ]).draw(false);
-                // });
+                refreshDataTable('topic-list-dataTable', response.topics, 'topic-list');
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -142,8 +122,7 @@ $(document).ready(function () {
     });
     $(document).on("click", "#new-blog-btn, #new-quiz-btn, #topic-list-btn, #learning-category-btn", function () {
         // Enable Save button click 
-        console.log("button is clicked : ");
-        console.log($(".save-btn"));
+        resetHtmlContent();
         $(".save-btn").prop('disabled', false);
     });
     function getData(url, content = null, tableId = null) {
@@ -172,7 +151,9 @@ $(document).ready(function () {
         return actionsBtn;
     }
     $(document).on("click", ".edit-btn", function () {
+        $(".save-btn").prop('disabled', false);
         let id = $(this).data('id');
+        $(".form-id").val(id);
         console.log("edit button clicked", id);
         if($(this).closest("#learning-category").length){
             let category = categories.find(category => category.id == id);
@@ -322,7 +303,7 @@ $(document).ready(function () {
         $(".category-id").val("");
         $('.topic-html').summernote('code', '');
         $('.topic-html').trigger('summernote.change'); // Force event trigger
-
+        $(".form-id").val("");
         // $('.note-placeholder').show();
         // $("#topic-id").val("");
     }

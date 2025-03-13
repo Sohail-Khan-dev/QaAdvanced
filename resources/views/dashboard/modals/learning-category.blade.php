@@ -11,6 +11,7 @@
         <div class="modal-body">
             <form id="learning-category-form" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="id" class="form-id">
                 <div class="mb-3">
                     <label for="Name" class="form-label">Name</label>
                     <input type="text" class="form-control name" id="name" name="name" required>
