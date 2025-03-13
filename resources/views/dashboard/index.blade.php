@@ -70,7 +70,7 @@
                 <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Blogs </h2>
-                        <button class="btn btn-primary" id='new-blog-btn' data-bs-toggle="modal" data-bs-target="#new-topic-modal"> Create New Blog</button>
+                        <button class="btn btn-primary" id='new-blog-btn' data-bs-toggle="modal" data-bs-target="#new-blog-modal"> Create New Blog</button>
                     </div>
                     <div class="table-responsive">
                         <table id="blog-dataTable" class="table table-striped table-bordered">
@@ -156,7 +156,9 @@
         </div>
     </div>
     <div id="topics-data" data-topics='{{ htmlspecialchars_decode(json_encode($topics, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) }}'></div>
-
+<script>
+    window.topics = @json($topics); // Pass topics to a global variable
+</script>
     @include('dashboard.modals.new-blog')
     @include('dashboard.modals.new-quiz')     
     @include('dashboard.modals.learning-category')

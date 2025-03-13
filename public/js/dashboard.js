@@ -1,7 +1,7 @@
 $(document).ready(function () {
     loadSummernote();
     // These topics, Categories and Blogs are used to store the data from the server and then use for dropdown and edit and delete.
-    let topics = null; //JSON.parse(topicsData); 
+    let topics = window.topics; 
     let categories = null;
     let blogs = null;
     $(document).on("submit", "#new-blog-form", function (e) {
@@ -19,7 +19,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                $('#new-topic-modal').modal('hide');
+                $('#new-blog-modal').modal('hide');
                 resetHtmlContent();
                 blogs = response.blogs;
                 var table = $("#blog-dataTable").DataTable();
@@ -156,6 +156,13 @@ $(document).ready(function () {
                 'Accept': 'application/json' // Tell Laravel to return JSON
             },
             success: function (data) {
+                if (content === "blog-content") {
+                    blogs = data;
+                }else if(content === "learning-category"){
+                    categories = data;
+                }else if(content === "topic-list"){
+                    topics = data;
+                }
                 refreshDataTable(tableId, data,content);
             }
         });
@@ -166,7 +173,16 @@ $(document).ready(function () {
     }
     $(document).on("click", ".edit-btn", function () {
         let id = $(this).data('id');
-        if($(this).closest("#topic-list").length){
+        console.log("edit button clicked", id);
+        if($(this).closest("#learning-category").length){
+            let category = categories.find(category => category.id == id);
+            $("#category-id").val(category.id);
+            $(".name").val(category.name);
+            $('.topic-html').summernote('code', category.slug);
+            $('.topic-html').trigger('summernote.change'); // Force event trigger
+            $('#learning-category-modal').modal('show');
+        }
+        else if($(this).closest("#topic-list").length){
             let topic = topics.find(topic => topic.id == id);
             $("#topic-id").val(topic.id);
             $(".name").val(topic.name);
@@ -175,18 +191,12 @@ $(document).ready(function () {
             $('.topic-html').trigger('summernote.change'); // Force event trigger
             $('#topic-list-modal').modal('show');
         }
-        else if($(this).closest("#learning-category").length){
-            let category = categories.find(category => category.id == id);
-            $("#category-id").val(category.id);
-            $(".name").val(category.name);
-            $('.topic-html').summernote('code', category.slug);
-            $('.topic-html').trigger('summernote.change'); // Force event trigger
-            $('#learning-category-modal').modal('show');
-        }
         else if($(this).closest("#blog-content").length){
             let blog = blogs.find(blog => blog.id == id);
+            console.log("Blog is : " , blog);
             $("#blog-id").val(blog.id);
             $("#title").val(blog.title);
+            $("#topic-id").val(blog.topic_id);
             $('.topic-html').summernote('code', blog.content);
             $('.topic-html').trigger('summernote.change'); // Force event trigger
             $('#new-blog-modal').modal('show');
