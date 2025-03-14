@@ -11,7 +11,6 @@ class DashboardController extends Controller
         return view('dashboard.index',compact('topics','categories'));
     }
     function showView($routeName){
-        // dd($routeName);
         return view("dashboard.$routeName");
     }
    

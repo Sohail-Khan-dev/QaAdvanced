@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('quiz_attempts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
-            $table->string('question');
-            $table->integer('time_limit')->default(30); // seconds
-            $table->string('explanation')->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('quiz_id')->constrained('quizzes');
+            $table->integer('score');
+            $table->timestamp('completed_at');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('quiz_attempts');
     }
 };
