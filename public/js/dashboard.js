@@ -32,16 +32,14 @@ $(document).ready(function () {
         });
 
     });
-    $(document).on("submit", "#new-quiz-form", function (e) {
+    $(document).on("submit", "#new-question-form", function (e) {
         e.preventDefault();
         $(this).find("#save-btn").prop('disabled', true);
-
         let question = $('#question').summernote('code');
-
         let formData = new FormData(this);
         formData.append('question', question);
         $.ajax({
-            url: "/store-quizzes",
+            url: "/store-question",
             method: 'POST',
             data: formData,
             contentType: false,
@@ -50,9 +48,9 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                $('#new-quiz-modal').modal('hide');
+                $('#new-question-modal').modal('hide');
                 resetHtmlContent();
-                getData('/get-quizzes', 'quiz-content', 'quiz-dataTable');
+                getData('/get-questions', 'question-content', 'question-dataTable');
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -120,7 +118,7 @@ $(document).ready(function () {
         });
 
     });
-    $(document).on("click", "#new-blog-btn, #new-quiz-btn, #topic-list-btn, #learning-category-btn", function () {
+    $(document).on("click", "#new-blog-btn, #new-question-btn, #topic-list-btn, #learning-category-btn", function () {
         // Enable Save button click 
         resetHtmlContent();
         $(".save-btn").prop('disabled', false);
@@ -257,7 +255,7 @@ $(document).ready(function () {
                     item.slug,
                     getActionbuttons(item.id)
                 ]).draw(false);
-            } else if (content === "quiz-content") {
+            } else if (content === "question-content") {
                 table.row.add([
                     item.questions[0].question,
                     item.questions[0].options[0].option + ' | ' + item.questions[0].options[1].option + ' | ' + item.questions[0].options[2].option + ' | ' + item.questions[0].options[3].option,
@@ -292,7 +290,7 @@ $(document).ready(function () {
     });
     function hideAllContent() {
         $("#blog-content").addClass('d-none');
-        $("#quiz-content").addClass('d-none');
+        $("#question-content").addClass('d-none');
         $("#learning-category").addClass('d-none');
         $("#topic-list").addClass('d-none');
 

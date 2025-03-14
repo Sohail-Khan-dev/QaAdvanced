@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -13,7 +14,6 @@ class QuizController extends Controller
     }
     public function getQuiz()
     {
-        
         $quiz = Quiz::with(['questions.options'])->get();
         return response()->json($quiz);
     }
@@ -46,5 +46,13 @@ class QuizController extends Controller
         $question->options()->createMany($options);
 
         return response()->json(['message' => 'Quiz, question, and options saved successfully!']);
+    }
+    public function storeQuestion(Request $request){
+        dd($request->all());
+    }
+    public function getQuestions()
+    {
+        $questions = Question::with(['options'])->get();
+        return response()->json($questions);
     }
 }

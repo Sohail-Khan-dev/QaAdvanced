@@ -16,22 +16,34 @@
     <script src="summernote-bs5.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
-       
+        @media (max-width: 768px) {
+            .top-buttons{
+                margin-left: 10rem;
+            }
+        }
+        @media (max-width: 991px) {
+            .top-buttons{
+                margin-left: 4rem;
+            }
+        }
+        .pl-8{
+            padding-left: 10rem;
+        }
     </style>
 </head>
 <body class="bg-light">
     @include('dashboard.navbar')    
-    <div class="container-fluid" style="margin-left: 9rem">
+    <div class="container-fluid top-buttons">
         <div class="row" id="main">
             <div id="dashboard-content">
-                <div class="container mt-5 ms-5">
+                <div class="ps-5 mt-5 ms-5">
                     <div class="row">
                         <div class="col-md-12">
                             <h3 class="text-center mb-4 mt-n5">Dashboard</h3>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center align-items-center g-3">
-                        <div class="col-md-3 cursor-pointer blog-link" data-content="learning-category" data-url="/get-category" data-table="learning-category-dataTable">
+                        <div class="col-md-3 col-sm-4 col-lg-2 cursor-pointer blog-link" data-content="learning-category" data-url="/get-category" data-table="learning-category-dataTable">
                             <div class="card text-center shadow-sm border-0">
                                 <div class="card-body">
                                     <h5 class="card-title"><i class="bi bi-journal-text"></i>Learning Category </h5>
@@ -39,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 cursor-pointer blog-link" data-content="topic-list" data-url="/get-topic" data-table="topic-list-dataTable">
+                        <div class="col-md-3 col-sm-4 col-lg-2 cursor-pointer blog-link" data-content="topic-list" data-url="/get-topic" data-table="topic-list-dataTable">
                             <div class="card text-center shadow-sm border-0">
                                 <div class="card-body">
                                     <h5 class="card-title"><i class="bi bi-journal-text"></i> Topics</h5>
@@ -47,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 cursor-pointer blog-link" data-content='blog-content' data-url="/get-blog" data-table="blog-dataTable">
+                        <div class="col-md-3 col-sm-4 col-lg-2 cursor-pointer blog-link" data-content='blog-content' data-url="/get-blog" data-table="blog-dataTable">
                             <div class="card text-center shadow-sm border-0">
                                 <div class="card-body">
                                     <h5 class="card-title"><i class="bi bi-journal-text"></i> Blog Detail</h5>
@@ -55,7 +67,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 cursor-pointer blog-link" data-content='quiz-content' data-url="/get-quizzes" data-table="quiz-dataTable">
+                        <div class="col-md-3 col-sm-4 col-lg-2 cursor-pointer blog-link" data-content='quiz-content' data-url="/get-quizzes" data-table="quiz-dataTable">
                             <div class="card text-center shadow-sm border-0">
                                 <div class="card-body">
                                     <h5 class="card-title"><i class="bi bi-puzzle"></i> Quiz</h5>
@@ -63,11 +75,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3 col-sm-4 col-lg-2 cursor-pointer blog-link" data-content='question-content' data-url="/get-questions" data-table="question-dataTable">
+                            <div class="card text-center shadow-sm border-0">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-puzzle"></i> Question</h5>
+                                    <p class="card-text text-muted">Here you can create and manage Questions easily.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id="blog-content" class="d-none">
-                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
+            <div id="blog-content" class="d-none pl-8">
+                <main role="main" class="col-11 ms-5">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Blogs </h2>
                         <button class="btn btn-primary" id='new-blog-btn' data-bs-toggle="modal" data-bs-target="#new-blog-modal"> Create New Blog</button>
@@ -88,14 +108,14 @@
                     </div>
                 </main>
             </div>
-            <div id="quiz-content" class="d-none">
-                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
+            <div id="question-content" class="d-none pl-8">
+                <main role="main" class="col-11 ms-5">
                     <div class="d-flex align-items-center justify-content-between py-3">
-                        <h2 class="mb-0">Quizzes </h2>
-                        <button class="btn btn-primary" id='new-quiz-btn' data-bs-toggle="modal" data-bs-target="#new-quiz-modal"> Create New Quiz</button>
+                        <h2 class="mb-0">Questions </h2>
+                        <button class="btn btn-primary" id='new-question-btn' data-bs-toggle="modal" data-bs-target="#new-question-modal"> Create New Question</button>
                     </div>
                     <div class="table-responsive">
-                        <table id="quiz-dataTable" class="table table-striped table-bordered">
+                        <table id="question-dataTable" class="table table-striped table-bordered">
                             <thead class="table-dark">
                                 <tr>
                                     <th>Question</th>
@@ -110,8 +130,8 @@
                     </div>
                 </main>
             </div>
-            <div id="learning-category" class="d-none">
-                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
+            <div id="learning-category" class="d-none pl-8">
+                <main role="main" class="col-11 ms-5">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Categories </h2>
                         <button class="btn btn-primary" id='learning-category-btn' data-bs-toggle="modal" data-bs-target="#learning-category-modal"> Create New Category</button>
@@ -131,8 +151,8 @@
                     </div>
                 </main>
             </div>
-            <div id="topic-list" class="d-none">
-                <main role="main" class="col-md-9 ms-5 col-lg-10 px-4">
+            <div id="topic-list" class="d-none pl-8">
+                <main role="main" class="col-11 ms-5">
                     <div class="d-flex align-items-center justify-content-between py-3">
                         <h2 class="mb-0">Topics </h2>
                         <button class="btn btn-primary" id='topic-list-btn' data-bs-toggle="modal" data-bs-target="#topic-list-modal"> Create New Topic</button>
@@ -155,7 +175,6 @@
             </div>
         </div>
     </div>
-    <div id="topics-data" data-topics='{{ htmlspecialchars_decode(json_encode($topics, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) }}'></div>
 <script>
     window.topics = @json($topics); // Pass topics to a global variable
 </script>
@@ -163,6 +182,7 @@
     @include('dashboard.modals.new-quiz')     
     @include('dashboard.modals.learning-category')
     @include('dashboard.modals.topic-list')   
+    @include('dashboard.modals.new-questions')
 
    <!-- include summernote css/js-->
 <script src="{{ asset('js/dashboard.js')}}" > </script>
