@@ -15,7 +15,7 @@ class BlogDetailsController extends Controller
         if ($category_id) {   // This is read from the software testing scripts and else is for the Dashboard 
             $blogs  = BlogDetails::select('id', 'title', 'slug')->where('learning_category_id', $category_id)->get();
         } else
-            $blogs = BlogDetails::all();
+        $blogs = BlogDetails::latest()->get();
         return response()->json($blogs);
     }
     public function storeBlog(Request $request)
@@ -27,7 +27,7 @@ class BlogDetailsController extends Controller
             'slug' => $request->topic_id,
             'learning_category_id' => $request->category_id,
         ]);
-        $blogs = BlogDetails::all();
+        $blogs = BlogDetails::latest()->get();
         return response()->json(['blog'=>$artical, 'blogs'=>$blogs]);
     }
     // Now we will update the blog
@@ -53,7 +53,7 @@ class BlogDetailsController extends Controller
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();
-        $categories = LearningCategory::all();
+        $categories = LearningCategory::latest()->get();
         return response()->json(['categories'=>$categories, "Message" => "Category Updated successfully", 'category'=>$category]);
     }
     public function updateTopic(Request $request)
@@ -67,7 +67,7 @@ class BlogDetailsController extends Controller
         $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .        
         $topic->learning_category_id = $request->category_id;
         $topic->save();
-        $topics = TopicName::all();
+        $topics = TopicName::latest()->get();
         return response()->json(['topics'=>$topics, "Message" => "Topic Updated successfully", 'topic'=>$topic]);
     }
 
