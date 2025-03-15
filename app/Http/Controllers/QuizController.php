@@ -26,13 +26,11 @@ class QuizController extends Controller
                 'description' => 'This is Quiz ' . $request->quiz,
             ]
         );
-
         // Create the question for this quiz
         $question = $quiz->questions()->create([
             'question' => $request->question,
             'explanation' => $request->explanation ?? " ",
         ]);
-
         // Prepare options data
         $options = [];
         foreach ($request->options as $option) {
@@ -47,8 +45,7 @@ class QuizController extends Controller
 
         return response()->json(['message' => 'Quiz, question, and options saved successfully!']);
     }
-    public function storeQuestion(Request $request){
-        // dd($request->quiz);
+    public function storeQuestion(Request $request){       
         $request->validate([
             'quiz' => 'required|exists:quizzes,id',
             'question' => 'required|string',
@@ -56,23 +53,20 @@ class QuizController extends Controller
             'options' => 'nullable|array',
             'options.*.is_correct' => 'nullable|boolean',
         ]);
-
         $quiz = Quiz::find($request->quiz);
         // dd($quiz);
         $question = $quiz->questions()->create([
             'question' => $request->question,
             'explanation' => $request->explanation ?? " ",
         ]);
-
         $options = [];
         if ($request->has('options')) {
             foreach ($request->options as $option) {
-            $options[] = [
-                'option' => $option['text'],
-                'is_correct' => isset($option['is_correct']) ? 1 : 0,
-            ];
+                $options[] = [
+                    'option' => $option['text'],
+                    'is_correct' => isset($option['is_correct']) ? 1 : 0,
+                ];
             }
-            // dd($options);
             $question->options()->createMany($options);
 
         }

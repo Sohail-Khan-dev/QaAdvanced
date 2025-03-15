@@ -131,6 +131,28 @@
                     </div>
                 </main>
             </div>
+            <div id="quiz-content" class="d-none pl-8">
+                <main role="main" class="col-11 ms-5">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <h2 class="mb-0">Quizzes </h2>
+                        <button class="btn btn-primary" id='new-quiz-btn' data-bs-toggle="modal" data-bs-target="#new-quiz-modal"> Create New Quiz</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="quiz-dataTable" class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Quiz</th>
+                                    <th>Total Questions</th>
+                                    <th style="max-width: 10%">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
             <div id="learning-category" class="d-none pl-8">
                 <main role="main" class="col-11 ms-5">
                     <div class="d-flex align-items-center justify-content-between py-3">

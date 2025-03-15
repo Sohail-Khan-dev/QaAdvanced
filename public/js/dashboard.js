@@ -124,6 +124,8 @@ $(document).ready(function () {
         $(".save-btn").prop('disabled', false);
     });
     function getData(url, content = null, tableId = null) {
+        console.log(url,content,tableId);
+        
         if (content === null) return;
         $.ajax({
             url: url,
@@ -245,6 +247,8 @@ $(document).ready(function () {
     });
     function refreshDataTable(tableId, data, content){
         var table = $("#" + tableId).DataTable().clear().draw();
+        console.log(table);
+        
         data.forEach(function (item) {
             if (content === "blog-content") {
                 var textContent =item.content; // Extract text content only
@@ -280,6 +284,14 @@ $(document).ready(function () {
                     item.name,
                     item.learning_category_id,
                     getActionbuttons(item.id)
+                ]).draw(false);
+            } else if (content === 'quiz-content'){
+                console.log("total Question is : ", item.id, item.title)                
+                table.row.add([
+                    item.id,
+                    item.title,
+                    item.questions.length,
+                    getActionbuttons()
                 ]).draw(false);
             }
         });

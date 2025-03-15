@@ -15,7 +15,7 @@ class BlogDetailsController extends Controller
         if ($category_id) {   // This is read from the software testing scripts and else is for the Dashboard 
             $blogs  = BlogDetails::select('id', 'title', 'slug')->where('learning_category_id', $category_id)->get();
         } else
-        $blogs = BlogDetails::latest()->get();
+        $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json($blogs);
     }
     public function storeBlog(Request $request)
@@ -27,7 +27,7 @@ class BlogDetailsController extends Controller
             'slug' => $request->topic_id,
             'learning_category_id' => $request->category_id,
         ]);
-        $blogs = BlogDetails::latest()->get();
+        $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blog'=>$artical, 'blogs'=>$blogs]);
     }
     // Now we will update the blog
@@ -41,7 +41,7 @@ class BlogDetailsController extends Controller
         $blog->content = $request->content;
         $blog->slug = $request->topic_id;
         $blog->save();
-        $blogs = BlogDetails::all();
+        $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blogs'=>$blogs, "Message" => "Blog Updated successfully", 'blog'=>$blog]);
     }
     public function updateCategory(Request $request)
@@ -53,7 +53,7 @@ class BlogDetailsController extends Controller
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->save();
-        $categories = LearningCategory::latest()->get();
+        $categories = LearningCategory::orderBy('created_at', 'desc')->get();
         return response()->json(['categories'=>$categories, "Message" => "Category Updated successfully", 'category'=>$category]);
     }
     public function updateTopic(Request $request)
@@ -67,7 +67,7 @@ class BlogDetailsController extends Controller
         $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .        
         $topic->learning_category_id = $request->category_id;
         $topic->save();
-        $topics = TopicName::latest()->get();
+        $topics = TopicName::orderBy('created_at', 'desc')->get();
         return response()->json(['topics'=>$topics, "Message" => "Topic Updated successfully", 'topic'=>$topic]);
     }
 
@@ -77,12 +77,12 @@ class BlogDetailsController extends Controller
         $cat->name = $request->name;
         $cat->slug = $request->slug;
         $cat->save();
-        $categories = LearningCategory::all();
+        $categories = LearningCategory::orderBy('created_at', 'desc')->get();
         return response()->json(['categories'=>$categories, "Message" => "Sub category Saved successfully", 'category'=>$cat]);
     }
     public function getCategories()
     {
-        $categories = LearningCategory::all();
+        $categories = LearningCategory::orderBy('created_at', 'desc')->get();
         return response()->json($categories);
     }
     public function storeTopic(Request $request)
@@ -94,12 +94,12 @@ class BlogDetailsController extends Controller
         $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .        
         $topic->learning_category_id = $request->category_id;
         $topic->save(); 
-        $topics = TopicName::all();
+        $topics = TopicName::orderBy('created_at', 'desc')->get();
         return response()->json(['topics' => $topics, 'topic'=>$topic]);
     }
     public function getTopic($id = null)
     {
-        $topics = TopicName::all();
+        $topics = TopicName::orderBy('created_at', 'desc')->get();
         return response()->json($topics);
     }
     public function deleteCategory($id)
@@ -109,7 +109,7 @@ class BlogDetailsController extends Controller
             return response()->json(['error' => 'Category not found'], 404);
         }
         $category->delete();
-        $categories = LearningCategory::all();
+        $categories = LearningCategory::orderBy('created_at', 'desc')->get();
         return response()->json(['categories'=>$categories, "Message" => "category Deleted successfully"],200);
     }
     public function deleteTopic($id)
@@ -119,7 +119,7 @@ class BlogDetailsController extends Controller
             return response()->json(['error' => 'Topic not found'], 404);
         }
         $topic->delete();
-        $topics = TopicName::all();
+        $topics = TopicName::orderBy('created_at', 'desc')->get();
         return response()->json(['topics'=>$topics, "Message" => "Topic Deleted successfully"],200);
     }
     public function deleteBlog($id)
@@ -129,7 +129,7 @@ class BlogDetailsController extends Controller
             return response()->json(['error' => 'Blog not found'], 404);
         }
         $blog->delete();
-        $blogs = BlogDetails::all();
+        $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blogs'=>$blogs, "Message" => "Blog Deleted successfully"],200);
     }
 }
