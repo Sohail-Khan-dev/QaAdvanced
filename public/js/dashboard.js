@@ -35,7 +35,7 @@ $(document).ready(function () {
     $(document).on("submit", "#new-question-form", function (e) {
         e.preventDefault();
         $(this).find("#save-btn").prop('disabled', true);
-        let question = $('#question').summernote('code');
+        let question = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
         formData.append('question', question);
         $.ajax({
@@ -256,10 +256,16 @@ $(document).ready(function () {
                     getActionbuttons(item.id)
                 ]).draw(false);
             } else if (content === "question-content") {
+                var optionsText = item.options.map(option => option.option ? option.option : "N/A").join(" | ");
+                 // Extract correct answer text(s)
+                var correctAnswers = item.options.filter(option => option.is_correct == 1) // Filter correct answers
+                .map(option => option.option) // Get only the text
+                .join(", "); // Join if multiple correct answers
                 table.row.add([
-                    item.questions[0].question,
-                    item.questions[0].options[0].option + ' | ' + item.questions[0].options[1].option + ' | ' + item.questions[0].options[2].option + ' | ' + item.questions[0].options[3].option,
-                    'falhal none set it later',
+                    item.id,
+                    item.question,
+                    optionsText,
+                    correctAnswers,
                     getActionbuttons(item.id)
                 ]).draw(false);
             } else if (content === "learning-category") {

@@ -39,7 +39,7 @@ class BlogDetailsController extends Controller
         }
         $blog->title = $request->title;
         $blog->content = $request->content;
-        $blog->slug = $request->slug;
+        $blog->slug = $request->topic_id;
         $blog->save();
         $blogs = BlogDetails::all();
         return response()->json(['blogs'=>$blogs, "Message" => "Blog Updated successfully", 'blog'=>$blog]);

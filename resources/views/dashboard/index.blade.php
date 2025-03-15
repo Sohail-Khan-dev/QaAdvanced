@@ -118,6 +118,7 @@
                         <table id="question-dataTable" class="table table-striped table-bordered">
                             <thead class="table-dark">
                                 <tr>
+                                    <th>Id</th>
                                     <th>Question</th>
                                     <th>Answers</th>
                                     <th>Correct Answer</th>

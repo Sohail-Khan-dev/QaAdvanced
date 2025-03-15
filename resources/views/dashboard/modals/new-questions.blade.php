@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="question" class="form-label">Question</label>
-                  <div id="question"></div>
+                  <div class="topic-html"></div>
                 </div>
                 <div class="mb-3">
                   <label for="mcqs" class="form-label">Option for above question</label>

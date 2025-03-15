@@ -48,7 +48,36 @@ class QuizController extends Controller
         return response()->json(['message' => 'Quiz, question, and options saved successfully!']);
     }
     public function storeQuestion(Request $request){
-        dd($request->all());
+        // dd($request->quiz);
+        $request->validate([
+            'quiz' => 'required|exists:quizzes,id',
+            'question' => 'required|string',
+            'explanation' => 'nullable|string',
+            'options' => 'nullable|array',
+            'options.*.is_correct' => 'nullable|boolean',
+        ]);
+
+        $quiz = Quiz::find($request->quiz);
+        // dd($quiz);
+        $question = $quiz->questions()->create([
+            'question' => $request->question,
+            'explanation' => $request->explanation ?? " ",
+        ]);
+
+        $options = [];
+        if ($request->has('options')) {
+            foreach ($request->options as $option) {
+            $options[] = [
+                'option' => $option['text'],
+                'is_correct' => isset($option['is_correct']) ? 1 : 0,
+            ];
+            }
+            // dd($options);
+            $question->options()->createMany($options);
+
+        }
+
+        return response()->json(['message' => 'Question and options saved successfully!', $options,$question]);
     }
     public function getQuestions()
     {
