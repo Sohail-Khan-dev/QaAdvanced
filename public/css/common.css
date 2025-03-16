@@ -36,6 +36,6 @@ html {
     width: 100%; 
     max-width: 300px;
 }
-.istqb-guide .card-topic{
-
+.guide h1{   
+    font-size: 1.3rem !important;
 }

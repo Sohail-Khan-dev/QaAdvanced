@@ -12,9 +12,6 @@
         min-width: 30%;
         height: fit-content;
     }
-    h1{
-        font-size: 1.3rem;
-    }
 </style>
 @section('content')
     <div class="container mt-5 pt-5" id="topic-main-content">
