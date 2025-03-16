@@ -58,7 +58,7 @@
                     type: 'GET',
                     success: function(response) {
                         response.forEach(element => { 
-                            $("#" + element.slug).prepend(
+                            $("#" + element.slug).append(
                                 `<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`
                                 );
                         });

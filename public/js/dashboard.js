@@ -213,7 +213,6 @@ $(document).ready(function () {
         }
         else if($(this).closest("#blog-content").length){
             let blog = blogs.find(blog => blog.id == id);
-            console.log(blog);
             
             $("#blog-id").val(blog.id);
             $("#category-id").val(blog.learning_category_id).change();
