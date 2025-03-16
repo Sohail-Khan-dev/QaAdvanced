@@ -9,7 +9,7 @@
             <div class="pb-5">
                 <div class="row g-4 align-items-end">
                     <div class="col-xl-12 col-12">
-                        <h5 class="text-secondary sub-title fw-bold wow fadeInUp mt-4" data-wow-delay="0.1s">Quality Assurance</h5>
+                        {{-- <h5 class="text-secondary sub-title fw-bold wow fadeInUp mt-4" data-wow-delay="0.1s">Quality Assurance</h5> --}}
                         <h2 class="display-2 mb-0 wow fadeInUp title" data-wow-delay="0.3s"> {{ $artical->title}} </h2>
                     </div>
                 </div>
