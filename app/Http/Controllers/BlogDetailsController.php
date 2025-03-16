@@ -14,7 +14,8 @@ class BlogDetailsController extends Controller
     {
         if ($category_id) {   // This is read from the software testing scripts and else is for the Dashboard 
             $blogs  = BlogDetails::select('id', 'title', 'slug')->where('learning_category_id', $category_id)->get();
-        } else
+            return response()->json($blogs);
+        }
         $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json($blogs);
     }
@@ -133,4 +134,5 @@ class BlogDetailsController extends Controller
         $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blogs'=>$blogs, "Message" => "Blog Deleted successfully"],200);
     }
+    
 }

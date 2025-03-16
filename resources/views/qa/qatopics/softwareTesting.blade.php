@@ -57,6 +57,7 @@
                     url: '/get-blog/'+categoryId,
                     type: 'GET',
                     success: function(response) {
+                        console.log(response);
                         response.forEach(element => { 
                             $("#" + element.slug).append(
                                 `<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`
