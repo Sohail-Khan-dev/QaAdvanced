@@ -39,6 +39,7 @@ html {
 }
 .guide h1{   
     font-size: 1.3rem !important;
+    
 }
 .guide h2:not(.title), .guide h3:not(.title), .guide h4:not(.title){   
     font-size: 1.2rem !important;
