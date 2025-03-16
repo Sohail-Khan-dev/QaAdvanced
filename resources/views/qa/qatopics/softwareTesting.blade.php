@@ -58,6 +58,8 @@
                     type: 'GET',
                     success: function(response) {
                         console.log(response);
+                         // i want to arrange the data in ascending order by id
+                        response.sort((a, b) => a.id - b.id);
                         response.forEach(element => { 
                             $("#" + element.slug).append(
                                 `<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`
