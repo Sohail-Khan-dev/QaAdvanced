@@ -12,6 +12,9 @@
         min-width: 30%;
         height: fit-content;
     }
+    h1{
+        font-size: 1.3rem;
+    }
 </style>
 @section('content')
     <div class="container mt-5 pt-5" id="topic-main-content">
@@ -58,7 +61,7 @@
                     type: 'GET',
                     success: function(response) {
                         response.forEach(element => { 
-                            $("#" + element.slug).append(
+                            $("#" + element.slug).prepend(
                                 `<li><a href="${baseUrl}/${element.id}">${element.title}</a></li>`
                                 );
                         });
