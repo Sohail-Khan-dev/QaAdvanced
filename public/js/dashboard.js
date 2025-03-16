@@ -341,6 +341,7 @@ $(document).ready(function () {
                 var textContent =item.content; // Extract text content only
                 var words = textContent.split(/\s+/).slice(0, 25).join(' '); // Get first 25 words
                 table.row.add([
+                    item.id,
                     item.title,
                     words,
                     item.slug,

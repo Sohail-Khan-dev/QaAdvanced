@@ -104,6 +104,7 @@
                         <table id="blog-dataTable" class="table table-striped table-bordered">
                             <thead class="table-dark">
                                 <tr>
+                                    <th>Id</th>
                                     <th>Title</th>
                                     <th>Content</th>
                                     <th>Topic</th>
