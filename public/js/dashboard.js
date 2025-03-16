@@ -213,9 +213,12 @@ $(document).ready(function () {
         }
         else if($(this).closest("#blog-content").length){
             let blog = blogs.find(blog => blog.id == id);
+            console.log(blog);
+            
             $("#blog-id").val(blog.id);
+            $("#category-id").val(blog.learning_category_id).change();
             $("#title").val(blog.title);
-            $("#topic-id").val(blog.topic_id);
+            $("#topic-id").val(blog.slug);
             $('.topic-html').summernote('code', blog.content);
             $('.topic-html').trigger('summernote.change'); // Force event trigger
             $('#new-blog-modal').modal('show');

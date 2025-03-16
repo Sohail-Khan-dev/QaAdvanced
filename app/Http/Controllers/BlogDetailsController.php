@@ -40,6 +40,7 @@ class BlogDetailsController extends Controller
         $blog->title = $request->title;
         $blog->content = $request->content;
         $blog->slug = $request->topic_id;
+        $blog->learning_category_id = $request->category_id;
         $blog->save();
         $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blogs'=>$blogs, "Message" => "Blog Updated successfully", 'blog'=>$blog]);
