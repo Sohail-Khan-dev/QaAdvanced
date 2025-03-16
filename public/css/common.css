@@ -16,6 +16,7 @@ html {
 }
 .guide .display-2{
     font-size: 3rem;
+    margin-top: 1rem;
 }
 .guide .guide-list>li{
     list-style: none;
