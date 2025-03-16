@@ -32,6 +32,3 @@
 .guide h2:not(.title), .guide h3:not(.title), .guide h4:not(.title){   
     font-size: 1.2rem !important;
 }
-.guide .display-2{
-    font-size: 3rem;
-}

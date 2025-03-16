@@ -14,7 +14,9 @@ html {
 .quiz-parent-div{
     min-height: 86%;   
 }
-
+.guide .display-2{
+    font-size: 3rem;
+}
 .guide .guide-list>li{
     list-style: none;
     padding-top: .5rem;
