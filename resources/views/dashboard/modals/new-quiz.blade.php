@@ -19,12 +19,21 @@
             <form id="new-quiz-form" method="POST">
                 @csrf
                 <div class="mb-3">
+                  <label for="category" class="form-label">Quiz Category</label>
+                  <select class="form-select category-id" id="category-id" name="category_id" required>
+                      <option value="">Select Quiz Category</option>
+                      @foreach ($quiz_categories as $category)
+                          <option value="{{$category->id}}">{{$category->name}}</option>
+                      @endforeach
+                  </select>
+              </div>
+                <div class="mb-3">
                   <label for="quiz" class="form-label">Quiz Title</label>
-                  <div class="topic-html"></div>
+                  <input type="text" class="form-control name" id="title" name="title">
                 </div>
                 <div class="mb-3">
-                    <label for="explanation" class="form-label">Explanation</label>
-                    <input type="textarea" class="form-control" id="explanation" name="explanation">
+                    <label for="description" class="form-label">Explanation</label>
+                    <input type="textarea" class="form-control" id="description" name="description">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

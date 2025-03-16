@@ -36,9 +36,14 @@ Route::delete('delete-blog/{id}',[BlogDetailsController::class,'deleteBlog'])->n
 ////////////////////////// Here we have all routes related to Quiz 
 Route::get('get-quizzes',[QuizController::class,'getQuiz'])->name('get-quizzes');
 Route::get('get-questions',[QuizController::class,'getQuestions'])->name('get-questions');
-Route::post('store-quizzes',[QuizController::class,'store'])->name('store-quizzes');
+Route::post('store-quiz',[QuizController::class,'storeQuiz'])->name('store-quiz');
 Route::post('store-question',[QuizController::class,'storeQuestion'])->name('store-question');
+Route::post('store-quiz-category', [QuizController::class,'storeQuizCategory']);
+Route::get('get-quiz-category', [QuizController::class,'getQuizCategories']);
 
+Route::delete('delete-quiz/{id}', [QuizController::class,'deleteQuiz']);
+Route::delete('delete-question/{id}', [QuizController::class,'deleteQuestion']);
+Route::delete('delete-quiz-category/{id}', [QuizController::class,'deleteQuizCategory']);
 
 
 

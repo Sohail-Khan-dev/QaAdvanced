@@ -67,6 +67,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3 col-sm-4 col-lg-2 cursor-pointer blog-link" data-content='quiz-category' data-url="/get-quiz-category" data-table="quiz-category-dataTable">
+                            <div class="card text-center shadow-sm border-0">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-puzzle"></i> Quiz Category</h5>
+                                    <p class="card-text text-muted">Here you can create and manage quizzes Category.</p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-3 col-sm-4 col-lg-2 cursor-pointer blog-link" data-content='quiz-content' data-url="/get-quizzes" data-table="quiz-dataTable">
                             <div class="card text-center shadow-sm border-0">
                                 <div class="card-body">
@@ -122,6 +130,27 @@
                                     <th>Question</th>
                                     <th>Answers</th>
                                     <th>Correct Answer</th>
+                                    <th style="max-width: 10%">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
+            <div id="quiz-category" class="d-none pl-8">
+                <main role="main" class="col-11 ms-5">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <h2 class="mb-0">Quizzes </h2>
+                        <button class="btn btn-primary" id='new-quiz-category-btn' data-bs-toggle="modal" data-bs-target="#quiz-category-modal"> Create New Quiz Category</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="quiz-category-dataTable" class="table table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
                                     <th style="max-width: 10%">action</th>
                                 </tr>
                             </thead>
@@ -206,6 +235,7 @@
     @include('dashboard.modals.learning-category')
     @include('dashboard.modals.topic-list')   
     @include('dashboard.modals.new-questions')
+    @include('dashboard.modals.new-quiz-category')
 
    <!-- include summernote css/js-->
 <script src="{{ asset('js/dashboard.js')}}" > </script>

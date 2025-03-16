@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\Question;
+use App\Models\QuizCategory;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -12,38 +13,29 @@ class QuizController extends Controller
     {
         return "this is Quiz Controller";
     }
+    public function storeQuiz(Request $request)
+    {
+        $quiz = Quiz::firstOrCreate([
+                'title' => $request->title,
+                'description' =>  $request->description,
+            ]);
+        $quizzes = Quiz::all();
+        return response()->json(['message' => 'Quiz saved successfully!', 'quiz'=> $quiz , "quizzes"=>$quizzes]);
+    }
     public function getQuiz()
     {
         $quiz = Quiz::with(['questions.options'])->get();
         return response()->json($quiz);
     }
-    public function store(Request $request)
+    public function deleteQuiz($id)
     {
-        $quiz = Quiz::firstOrCreate(
-            ['id' => $request->quiz],  // Check if quiz exists by ID
-            [
-                'title' => 'Quiz ' . $request->quiz,
-                'description' => 'This is Quiz ' . $request->quiz,
-            ]
-        );
-        // Create the question for this quiz
-        $question = $quiz->questions()->create([
-            'question' => $request->question,
-            'explanation' => $request->explanation ?? " ",
-        ]);
-        // Prepare options data
-        $options = [];
-        foreach ($request->options as $option) {
-            $options[] = [
-                'option_text' => $option['text'],
-                'is_correct' => isset($option['is_correct']) ? 1 : 0, // Ensure checkbox values are handled
-            ];
+        $quiz = Quiz::find($id);
+        if (!$quiz) {
+            return response()->json(['error' => 'Quiz not found'], 404);
         }
-
-        // Insert options for the created question
-        $question->options()->createMany($options);
-
-        return response()->json(['message' => 'Quiz, question, and options saved successfully!']);
+        $quiz->delete();
+        return $this->getQuiz();
+        // return response()->json(['message' => 'Quiz deleted successfully!'], 200);
     }
     public function storeQuestion(Request $request){       
         $request->validate([
@@ -78,4 +70,40 @@ class QuizController extends Controller
         $questions = Question::with(['options'])->get();
         return response()->json($questions);
     }
+    public function deleteQuestion($id)
+    {
+        $question = Question::find($id);
+        if (!$question) {
+            return response()->json(['error' => 'Question not found'], 404);
+        }
+        $question->delete();
+        return $this->getQuestions();
+        // return response()->json(['message' => 'Question deleted successfully!'], 200);
+    }
+    public function storeQuizCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        $quiz_Category = new QuizCategory();
+        $quiz_Category->name = $request->name;
+        $quiz_Category->description = $request->description;
+        $quiz_Category->save();
+        $quiz_Categories = QuizCategory::all();
+        return response()->json(['message' => 'Quiz category saved successfully!', "quizCategory"=>$quiz_Category , "quizCategories"=>$quiz_Categories]);
+    }
+    public function getQuizCategories()  {
+        $quiz_Categories = QuizCategory::all();
+        return response()->json($quiz_Categories);
+    }
+    public function deleteQuizCategory($id)
+    {
+        $quiz_Category = QuizCategory::find($id);
+        if (!$quiz_Category) {
+            return response()->json(['error' => 'Quiz Category not found'], 404);
+        }
+        $quiz_Category->delete();
+        return $this->getQuizCategories();
+    }
+
 }

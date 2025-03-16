@@ -15,11 +15,11 @@
         width: 8rem;
         z-index: 1021;
     }
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
         .dashboard-nav {
             width: 10rem;            
         }
-    }
+    } */
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-end vh-100 d-flex flex-column align-items-start h-100 dashboard-nav">
     <div class="mt-5" id="navbarCollapse">

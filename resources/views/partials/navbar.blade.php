@@ -11,8 +11,12 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quiz</a>
                 <div class="dropdown-menu m-0">
-                    <a href={{ url("qa/quiz") }} class="dropdown-item">ISTQB 40 MCQS</a>
-                    <a href={{ url("qa/training") }} class="dropdown-item">Topic wise MCQS</a>
+                    @php $quiz_categories = \App\Models\QuizCategory::all(); @endphp
+                    @foreach ($quiz_categories as $category)
+                    <a href="{{ url("qa/quiz/{$category->slug}") }}" class="dropdown-item">{{ $category->name }}</a>
+                    @endforeach
+                    {{-- <a href={{ url("qa/quiz") }} class="dropdown-item">ISTQB 40 MCQS</a>
+                    <a href={{ url("qa/training") }} class="dropdown-item">Topic wise MCQS</a> --}}
                 </div>
             </div>
 

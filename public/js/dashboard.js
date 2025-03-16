@@ -6,6 +6,7 @@ $(document).ready(function () {
     let blogs = null;
     $(document).on("submit", "#new-blog-form", function (e) {
         e.preventDefault();
+        $(this).find("#save-btn").prop('disabled',true)
         let markupStr = $(this).find('.topic-html').summernote('code');
         const recordId = $(this).find('.form-id').val();
         const url = recordId ? `/update-blog` : '/store-blog';
@@ -116,16 +117,55 @@ $(document).ready(function () {
                 console.error("Error:", xhr.responseText, status, error);
             }
         });
-
     });
-    $(document).on("click", "#new-blog-btn, #new-question-btn, #topic-list-btn, #learning-category-btn", function () {
+
+    $(document).on("submit","#quiz-category-form",function(e){
+        e.preventDefault();
+        $(this).find("#save-btn").prop('disabled',true);
+        let formData = new FormData(this);
+        $.ajax({
+            url:'store-quiz-category',
+            method : "post",
+            data : formData,
+            contentType: false,
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success : function(params) {
+               $("#quiz-category-modal").modal('hide');
+               resetHtmlContent();               
+               refreshDataTable('quiz-category-dataTable',params.quizCategories,'quiz-category');    
+            },
+
+        });
+    });
+    $(document).on("submit","#new-quiz-form", function(e){
+        e.preventDefault();
+        $(this).find("#save-btn").prop("disabled",true);
+        let formData = new FormData(this);
+        $.ajax({
+            url : "/store-quiz",
+            method : "post",
+            data : formData,
+            contentType : false,
+            processData : false,
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response){
+                $("#new-quiz-modal").modal('hide');
+                resetHtmlContent();
+                refreshDataTable('quiz-dataTable', response.quizzes, 'quiz-content');
+            }
+        });
+    });
+    $(document).on("click", "#new-blog-btn, #new-question-btn, #topic-list-btn, #learning-category-btn, #new-quiz-btn, #new-quiz-category-btn", function () {
         // Enable Save button click 
         resetHtmlContent();
         $(".save-btn").prop('disabled', false);
     });
     function getData(url, content = null, tableId = null) {
-        console.log(url,content,tableId);
-        
         if (content === null) return;
         $.ajax({
             url: url,
@@ -154,7 +194,6 @@ $(document).ready(function () {
         $(".save-btn").prop('disabled', false);
         let id = $(this).data('id');
         $(".form-id").val(id);
-        console.log("edit button clicked", id);
         if($(this).closest("#learning-category").length){
             let category = categories.find(category => category.id == id);
             $("#category-id").val(category.id);
@@ -174,7 +213,6 @@ $(document).ready(function () {
         }
         else if($(this).closest("#blog-content").length){
             let blog = blogs.find(blog => blog.id == id);
-            console.log("Blog is : " , blog);
             $("#blog-id").val(blog.id);
             $("#title").val(blog.title);
             $("#topic-id").val(blog.topic_id);
@@ -194,7 +232,6 @@ $(document).ready(function () {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response){
-                    console.log(response, " Topic deleted successfully");
                     topics = response.topics;
                     refreshDataTable('topic-list-dataTable', response.topics, 'topic-list');
                 },
@@ -213,7 +250,6 @@ $(document).ready(function () {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response){
-                    console.log(response, " Category deleted successfully");
                     categories = response.categories;
                     populateCategory(categories);
                     refreshDataTable('learning-category-dataTable', response.categories, 'learning-category');
@@ -233,7 +269,6 @@ $(document).ready(function () {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function (response) {
-                    console.log(response, " Blog deleted successfully");
                     blogs = response.blogs;
                     refreshDataTable('blog-dataTable', response.blogs, 'blog-content');
                 },
@@ -243,11 +278,61 @@ $(document).ready(function () {
                 }
             });
         }
+        else if ($(this).closest("#quiz-content").length) {
+            let url = "/delete-quiz/" + id;
+            $.ajax({
+                url: url,
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    refreshDataTable('quiz-dataTable', response, 'quiz-content');
+                },
+                error: function (xhr) {
+                    console.error("Error deleting quiz:", xhr.responseText);
+                    alert("Error deleting quiz: " + xhr.responseText); // Alert error message
+                }
+            });
+        }
+        else if($(this).closest("#quiz-category").length){
+            let url = "/delete-quiz-category/" + id;
+            $.ajax({
+                url:url,
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response){
+                    refreshDataTable('quiz-category-dataTable', response, 'quiz-category');
+                },
+                error: function(xhr) {
+                    console.error("Error deleting quiz category:", xhr.responseText);
+                    alert("Error deleting quiz category: " + xhr.responseText); // Alert error message
+                }
+            });
+        }
+        else if($(this).closest("#question-content").length){
+            let url = "/delete-question/" + id;
+            $.ajax({
+                url:url,
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response){
+                    refreshDataTable('question-dataTable', response, 'question-content');
+                },
+                error: function(xhr) {
+                    console.error("Error deleting question:", xhr.responseText);
+                    alert("Error deleting question: " + xhr.responseText); // Alert error message
+                }
+            });
+        }
 
     });
     function refreshDataTable(tableId, data, content){
         var table = $("#" + tableId).DataTable().clear().draw();
-        console.log(table);
         
         data.forEach(function (item) {
             if (content === "blog-content") {
@@ -286,13 +371,18 @@ $(document).ready(function () {
                     getActionbuttons(item.id)
                 ]).draw(false);
             } else if (content === 'quiz-content'){
-                console.log("total Question is : ", item.id, item.title)                
                 table.row.add([
                     item.id,
                     item.title,
-                    item.questions.length,
-                    getActionbuttons()
+                    item.questions == undefined ? "No Question" : item.questions.length,
+                    getActionbuttons(item.id)
                 ]).draw(false);
+            } else if (content == 'quiz-category'){
+                table.row.add([
+                    item.id,
+                    item.name,
+                    getActionbuttons(item.id),
+                ]).draw(false);   
             }
         });
     }
@@ -311,7 +401,8 @@ $(document).ready(function () {
         $("#question-content").addClass('d-none');
         $("#learning-category").addClass('d-none');
         $("#topic-list").addClass('d-none');
-
+        $("#quiz-content").addClass('d-none');
+        $("#quiz-category").addClass("d-none");
     }
     function resetHtmlContent() {
         $("#topic-id").val("");

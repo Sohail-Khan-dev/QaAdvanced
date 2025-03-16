@@ -9,6 +9,9 @@ class Quiz extends Model
 {
     protected $fillable = ['title','description'];
     
+    public function quizCategory()  {
+        return $this->belongsTo(QuizCategory::class);
+    }
     public function questions()
     {
         return $this->hasMany(Question::class);

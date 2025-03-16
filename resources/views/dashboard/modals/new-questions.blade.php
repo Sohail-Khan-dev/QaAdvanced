@@ -21,10 +21,18 @@
                 <div class="mb-3">
                     <label for="quiz" class="form-label">Selecct Quiz</label>
                     <select class="form-select" id="quiz" name="quiz" required>
-                        <option value="1">Quiz 1</option>
-                        <option value="2">Quiz 2</option>
-                        <option value="3">Quiz 3</option>
-                        <option value="4">Quiz 4</option>
+                      <option value="">Select Quiz Category</option>
+                      @foreach ($quiz_categories as $category)
+                          <option value="{{$category->id}}">{{$category->name}}</option>
+                      @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="quiz" class="form-label">Selecct Quiz</label>
+                    <select class="form-select" id="quiz" name="quiz" required>
+                       @foreach ($quizzes as $quiz)
+                         <option value="{{$quiz->id}}"> {{ $quiz->title}} </option>
+                       @endforeach
                     </select>
                 </div>
                 <div class="mb-3">

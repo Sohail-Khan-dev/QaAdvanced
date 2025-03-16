@@ -25,7 +25,7 @@
                     @endforeach
                 </ul>
             </div>
-            {{-- @dd($topics) --}}
+
             <div class="accordion" id="qaTopics">
                 @foreach ($topics as $topic)
                     <div class="card">
