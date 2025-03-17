@@ -46,5 +46,8 @@ Route::delete('delete-question/{id}', [QuizController::class,'deleteQuestion']);
 Route::delete('delete-quiz-category/{id}', [QuizController::class,'deleteQuizCategory']);
 
 
-
+Route::get('quiz-detail',[QuizController::class,'showQuizDetail']);
+// function(){    
+//     return view('qa.quiz.quiz-detail');
+// });
 Route::get('qa/{routename}/{route2name?}/{id?}', [CommonController::class,"showView"]);

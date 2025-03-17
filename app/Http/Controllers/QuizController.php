@@ -105,5 +105,24 @@ class QuizController extends Controller
         $quiz_Category->delete();
         return $this->getQuizCategories();
     }
+    public function showQuizDetail($id = 1)
+    {
+        $quizDetail = Quiz::where('id', $id)
+            ->with(['questions' => function ($query) {
+                $query->select('id', 'quiz_id', 'question') // Only fetch the question text
+                    ->with(['options' => function ($optionQuery) {
+                        $optionQuery->select('id', 'question_id', 'option','is_correct'); // Only fetch option text
+                    }]);
+            }])
+            ->first();
+            // Apply strip_tags() on each question
+        if ($quizDetail) {
+            foreach ($quizDetail->questions as $question) {
+                $question->question = strip_tags($question->question);
+            }
+        }
+        return view('qa.quiz.quiz-detail', compact('quizDetail'));
+    }
+
 
 }
