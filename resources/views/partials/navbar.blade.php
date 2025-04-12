@@ -13,7 +13,7 @@
                 <div class="dropdown-menu m-0">
                     @php $quiz_categories = \App\Models\QuizCategory::all(); @endphp
                     @foreach ($quiz_categories as $category)
-                    <a href="{{ url("qa/quiz/{$category->slug}") }}" class="dropdown-item">{{ $category->name }}</a>
+                    <a href="{{ url("qa/quiz/{$category->name}") }}" class="dropdown-item">{{ $category->name }}</a>
                     @endforeach
                     {{-- <a href={{ url("qa/quiz") }} class="dropdown-item">ISTQB 40 MCQS</a>
                     <a href={{ url("qa/training") }} class="dropdown-item">Topic wise MCQS</a> --}}

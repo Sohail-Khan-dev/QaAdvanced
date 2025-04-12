@@ -105,7 +105,7 @@ class QuizController extends Controller
         $quiz_Category->delete();
         return $this->getQuizCategories();
     }
-    public function showQuizDetail($id = 1)
+    public function showQuizDetail($id = 5)
     {
         $quizDetail = Quiz::where('id', $id)
             ->with(['questions' => function ($query) {

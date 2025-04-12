@@ -1,13 +1,14 @@
 @extends('layout')
 @section('title', 'Quiz-details')
 @section('content')
+@php $questions = $quizDetail->questions ?? []; dd($quizDetail) @endphp
         {{-- @dd($quizDetail->questions) --}}
     <div class="container bg-light p-5" style="margin-top : 7rem;">
     <div class="d-flex justify-content-between align-items-center">
         <div class="flex-grow-1 text-center">
-            <h3 class="mb-4">{{ $quizDetail->title }}</h3>
+            <h3 class="mb-4">{{ $quizDetail->title ?? " No Title" }}</h3>
         </div>
-        <h6 class="mb-2">1 of 20</h6>
+        <h6 class="mb-2"> <span id="question-attempt">1</span> of <span class="total-questions">{{ count($questions) }}</span></h6>
     </div>
     <h4 class="mb-4" id='question-text'>Question text goes here</h4>
     <div class="mb-4">
@@ -58,6 +59,7 @@
             loadQuestion(questionIndex);
             function loadQuestion(index) {
                 // reset the selected options
+                $("#question-attempt").text(index+1);
                 $("input[name='option']").prop('checked', false);
                 let question = questions[index];
                 console.log("Answer is : " , question.correctOption);

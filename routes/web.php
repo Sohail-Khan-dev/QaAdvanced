@@ -33,7 +33,7 @@ Route::delete('delete-category/{id}',[BlogDetailsController::class,'deleteCatego
 Route::delete('delete-topic/{id}',[BlogDetailsController::class,'deleteTopic'])->name('delete-topic');
 Route::delete('delete-blog/{id}',[BlogDetailsController::class,'deleteBlog'])->name('delete-blog');
 
-////////////////////////// Here we have all routes related to Quiz 
+////////////////////////// Here we have all routes related to Quiz
 Route::get('get-quizzes',[QuizController::class,'getQuiz'])->name('get-quizzes');
 Route::get('get-questions',[QuizController::class,'getQuestions'])->name('get-questions');
 Route::post('store-quiz',[QuizController::class,'storeQuiz'])->name('store-quiz');
@@ -47,7 +47,7 @@ Route::delete('delete-quiz-category/{id}', [QuizController::class,'deleteQuizCat
 
 
 Route::get('quiz-detail',[QuizController::class,'showQuizDetail']);
-// function(){    
+// function(){
 //     return view('qa.quiz.quiz-detail');
 // });
 Route::get('qa/{routename}/{route2name?}/{id?}', [CommonController::class,"showView"]);
