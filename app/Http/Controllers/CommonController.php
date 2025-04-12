@@ -4,11 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\TopicName;
 use App\Models\BlogDetails;
+use App\Models\QuizCategory;
 
 class CommonController extends Controller
 {
     //
-    public function showView($routeName, $route2Name = null , $id = null){        
+    public function showView($routeName, $route2Name = null , $id = null){
+        if($routeName === 'quiz' && $route2Name){
+            // The $route2Name is a slug, we need to find the category by converting the slug back to a name
+            // Since we don't have a slug column, we need to find all categories and filter by slug
+            $categories = QuizCategory::all();
+            $category = null;
+
+            foreach($categories as $cat) {
+                if($cat->slug === $route2Name) {
+                    $category = $cat;
+                    break;
+                }
+            }
+
+            if($category) {
+                return view('qa/' . $routeName, compact('category'));
+            }
+        }
         if($id){
             $artical = BlogDetails::find($id);
             return view('qa/' . $routeName.'/'.$route2Name, compact('artical'));

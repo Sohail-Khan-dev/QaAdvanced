@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class QuizCategory extends Model
@@ -11,5 +12,9 @@ class QuizCategory extends Model
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);
+    }
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->name);
     }
 }
