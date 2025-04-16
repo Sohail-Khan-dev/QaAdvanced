@@ -62,16 +62,22 @@
                     </p>
                     <div class="pt-5 w-100 bg-white mt-5 rounded-bottom quiz-parent-div">
                         <div class="class-item bg-white rounded row m-0 gap-4">
-                            <div class="rounded  w-50 border col">
+                            @if($quizzes->count() == 0)
+                                <p class="text-center">No Quizzes Found</p>
+                            @endif
+                            @foreach ($quizzes as $quiz)
+                            <div class="rounded w-auto border col-4">
                                 <div class="question-content p-4">
-                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
-                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
+                                    <a href="#" class="h4 mb-3 d-block">{{ $quiz->title }}</a>
+                                    <p class="mb-3"> {{ $quiz->description }} </p>
                                     <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
                                         Quiz</a>
                                     <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
                                         Questions</a>
                                 </div>
                             </div>
+                            @endforeach
+{{--                           
                             <div class="rounded  w-50 border col col-4">
                                 <div class="question-content p-4">
                                     <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
@@ -101,7 +107,7 @@
                                     <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
                                         Questions</a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>

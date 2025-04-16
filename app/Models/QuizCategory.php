@@ -13,6 +13,10 @@ class QuizCategory extends Model
     {
         return $this->hasMany(Quiz::class);
     }
+    public function getQuizes($category_id){
+        $quizes =   Quiz::where('quiz_category_id', $category_id)->get();
+        return $quizes;
+    }
     public function getSlugAttribute()
     {
         return Str::slug($this->name);

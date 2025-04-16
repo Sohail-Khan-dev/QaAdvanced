@@ -24,7 +24,8 @@ class CommonController extends Controller
             }
 
             if($category) {
-                return view('qa/' . $routeName, compact('category'));
+                $quizzes = collect($category->getQuizes($category->id));
+                return view('qa/' . $routeName, compact('category', 'quizzes'));
             }
         }
         if($id){
