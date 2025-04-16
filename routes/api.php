@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\QuizApiController;
+use App\Http\Controllers\Api\BlogApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,11 @@ Route::prefix('quiz')->group(function () {
 
 // Test API endpoint
 Route::get('/test', [QuizApiController::class, 'test']);
+
+// Blog API Routes
+Route::prefix('blogs')->group(function () {
+    Route::get('/', [BlogApiController::class, 'index']);
+    Route::post('/', [BlogApiController::class, 'store']);
+    Route::get('/{id}', [BlogApiController::class, 'show']);
+});
+

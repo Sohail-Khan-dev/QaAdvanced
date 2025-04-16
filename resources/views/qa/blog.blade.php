@@ -9,55 +9,43 @@
         <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Blog posts will be loaded here -->
         </div>
-    </div>
-
-    <script>
-        async function fetchMediumBlogs() {
-            const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@zubairkhansh');
-            /// "https://medium2.p.rapidapi.com/user/5142451174a3/publications"  //  "https://medium2.p.rapidapi.com/user/id_for/nishu-jain"
-            const data = await response.json();
-            const blogContainer = document.getElementById('blog-container');
-            blogContainer.innerHTML = '';
+        <div class="row mt-5 pt-5">
+            <!-- Blog post item -->
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Author Avatar">
+                            <div>
+                                <h6 class="mb-0">John Doe</h6>
+                                <small class="text-muted">May 15, 2023</small>
+                            </div>
+                        </div>
+                        <h2 class="h4 mb-2"><a href="#" class="text-decoration-none text-dark">The Future of Quality Assurance in Software Development</a></h2>
+                        <p class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge bg-light text-dark me-1">QA</span>
+                                <span class="badge bg-light text-dark">Software</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat for more blog posts -->
             
-            if (data && data.items) {
-                data.items.forEach(post => {
-                    const blogCard = document.createElement('div');
-                    blogCard.className = 'bg-white rounded-lg shadow-md p-4';
-
-                    blogCard.innerHTML = `
-                        <img src="${post.thumbnail}" alt="${post.title}" class="w-full h-48 object-cover rounded-t-lg">
-                        <h2 class="text-xl font-semibold mt-4">${post.title}</h2>
-                        <p class="text-gray-700 mt-2">${post.description.slice(0, 100)}...</p>
-                        <a href="${post.link}" target="_blank" class="text-blue-500 hover:underline mt-4 inline-block">Read More</a>
-                    `;
-
-                    blogContainer.appendChild(blogCard);
-                });
-            } else {
-                blogContainer.innerHTML = '<p class="text-center text-gray-500">No blogs found.</p>';
-            }
-        }
-        function getBlogs(){
-            const data = null;
-
-            const xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-
-            xhr.addEventListener('readystatechange', function () {
-                if (this.readyState === this.DONE) {
-                    console.log(this.responseText);
-                }
-            });
-
-            xhr.open('GET', 'https://medium2.p.rapidapi.com/');
-            xhr.setRequestHeader('x-rapidapi-key', 'tuHpQNGEa5mshM5bZwkh2SXA22wmp1NLRL7jsn2W6JO7CeVADu');
-            xhr.setRequestHeader('x-rapidapi-host', 'medium2.p.rapidapi.com');
-
-            xhr.send(data);
-        }
-        // getBlogs();
-         fetchMediumBlogs();
-    </script>
+        </div>
+        <nav aria-label="Blog navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
 @endsection
 

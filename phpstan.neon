@@ -12,6 +12,7 @@ parameters:
 
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'
+        - '#Relation [a-zA-Z0-9\\_]+ is not found in [a-zA-Z0-9\\_]+ model#'
 #
 #    excludePaths:
 #        - ./*/*/FileToBeExcluded.php
