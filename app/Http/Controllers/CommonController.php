@@ -38,7 +38,8 @@ class CommonController extends Controller
             return view('qa/' . $routeName.'/'.$route2Name, compact('topics'));
         }
         if($routeName === 'blog'){
-            $blogs = BlogDetails::all();
+            // Get 5 latest blogs per page, ordered by creation date (newest first)
+            $blogs = BlogDetails::with('user')->orderBy('created_at', 'desc')->paginate(6);
             return view('qa/' . $routeName , compact('blogs'));
         }
         return view('qa/'. $routeName);

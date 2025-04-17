@@ -8,8 +8,9 @@
             <h1 class="text-4xl font-bold mb-6 text-center">Quality Assurance Advance Blogs </h1>
             <div id="blog-container" class="row">
                 <!-- Blog posts will be loaded here -->
-                @foreach ($blogs as $blog)
-                    <div class="col-12 mb-4">
+                @if($blogs->count() > 0)
+                    @foreach ($blogs as $blog)
+                    <div class="col-6 mb-4">
                         <div class="card border-0 shadow h-100">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
@@ -21,17 +22,17 @@
                                     </svg>
                                     <div>
                                         <h6 class="mb-0">{{ $blog->author_name }}</h6>
-                                        <small class="text-muted">{{ $blog->updated_at->format('F d, Y') }}</small>
+                                        <small class="text-muted">{{ $blog->created_at->diffForHumans() }} • {{ $blog->created_at->format('M d, Y') }}</small>
                                     </div>
                                 </div>
                                 <h2 class="h4 mb-2"><a href="{{url('qa/qatopicdetail/showguide/'.$blog->id)}}"
                                         class="text-decoration-none text-dark">{{ $blog->title }}</a></h2>
-                                <p class="card-text mb-3">{{ Str::limit($blog->content, 150) }}</p>
+                                <p class="card-text mb-3">{{ Str::limit(strip_tags($blog->content), 150) }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         @if ($blog->tags)
                                             @foreach ($blog->tags as $tag)
-                                                <span class="badge bg-light text-dark me-1">{{ $tag }}</span>
+                                                <span class="badge bg-light text-dark me-1">{{ trim($tag) }}</span>
                                             @endforeach
                                         @endif
                                     </div>
@@ -40,17 +41,21 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
+                @else
+                    <div class="col-12 text-center py-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-journal-text text-muted mb-4" viewBox="0 0 16 16">
+                            <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3z"/>
+                        </svg>
+                        <h3 class="text-muted">No blogs found</h3>
+                        <p class="text-muted">Check back later for new content</p>
+                    </div>
+                @endif
             </div>
-            <nav aria-label="Blog navigation" class="mt-4">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+            <div class="mt-4 d-flex justify-content-center">
+                {{ $blogs->links() }}
+            </div>
         </div>
     </div>
 @endsection

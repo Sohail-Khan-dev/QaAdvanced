@@ -27,5 +27,45 @@ class BlogDetails extends Model
     {
         return self::create($data); // Use create() instead of manually instantiating and saving
     }
+
+    /**
+     * Get the tags attribute.
+     *
+     * @param  string|null  $value
+     * @return array|null
+     */
+    public function getTagsAttribute($value)
+    {
+        if (empty($value)) {
+            return null;
+        }
+
+        return is_string($value) ? explode(',', $value) : $value;
+    }
+
+    /**
+     * Set the tags attribute.
+     *
+     * @param  array|string  $value
+     * @return void
+     */
+    public function setTagsAttribute($value)
+    {
+        if (is_array($value)) {
+            $this->attributes['tags'] = implode(',', $value);
+        } else {
+            $this->attributes['tags'] = $value;
+        }
+    }
+
+    /**
+     * Get the author name attribute.
+     *
+     * @return string
+     */
+    public function getAuthorNameAttribute()
+    {
+        return $this->user ? $this->user->name : 'Unknown Author';
+    }
 }
 
