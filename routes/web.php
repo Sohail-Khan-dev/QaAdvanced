@@ -51,3 +51,4 @@ Route::get('quiz-detail/{id}',[QuizController::class,'showQuizDetail']);
 //     return view('qa.quiz.quiz-detail');
 // });
 Route::get('qa/{routename}/{route2name?}/{id?}', [CommonController::class,"showView"]);
+Route::get('blog/{id}', [BlogDetailsController::class, 'show'])->name('blog.show');

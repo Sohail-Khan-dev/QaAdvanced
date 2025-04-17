@@ -12,7 +12,7 @@ class BlogDetailsController extends Controller
 {
     public function getBlogDetail($category_id = null)
     {
-        if ($category_id) {   // This is read from the software testing scripts and else is for the Dashboard 
+        if ($category_id) {   // This is read from the software testing scripts and else is for the Dashboard
             $blogs  = BlogDetails::select('id', 'title', 'slug')->where('learning_category_id', $category_id)->get();
             return response()->json($blogs);
         }
@@ -27,6 +27,8 @@ class BlogDetailsController extends Controller
             'content' => $request->content,
             'slug' => $request->topic_id,
             'learning_category_id' => $request->category_id,
+            'user_id' => $request->user_id ?? 1, // Default to 1 if not provided
+            'tags' => $request->tags,
         ]);
         $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blog'=>$artical, 'blogs'=>$blogs]);
@@ -42,6 +44,8 @@ class BlogDetailsController extends Controller
         $blog->content = $request->content;
         $blog->slug = $request->topic_id;
         $blog->learning_category_id = $request->category_id;
+        $blog->user_id = $request->user_id ?? $blog->user_id ?? 1; // Keep existing user_id if not provided
+        $blog->tags = $request->tags ?? $blog->tags; // Keep existing tags if not provided
         $blog->save();
         $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blogs'=>$blogs, "Message" => "Blog Updated successfully", 'blog'=>$blog]);
@@ -66,7 +70,7 @@ class BlogDetailsController extends Controller
         }
         $topic->name = $request->name;
         $topic->description = $request->slug;
-        $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .        
+        $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .
         $topic->learning_category_id = $request->category_id;
         $topic->save();
         $topics = TopicName::orderBy('created_at', 'desc')->get();
@@ -89,13 +93,13 @@ class BlogDetailsController extends Controller
     }
     public function storeTopic(Request $request)
     {
-        // Here we will store the Category id along with topic 
+        // Here we will store the Category id along with topic
         $topic = new TopicName();
         $topic->name = $request->name;
         $topic->description = $request->slug;
-        $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .        
+        $topic->topic_id = Str::slug($request->name);  // this is id used in the front of the topic syllabus .
         $topic->learning_category_id = $request->category_id;
-        $topic->save(); 
+        $topic->save();
         $topics = TopicName::orderBy('created_at', 'desc')->get();
         return response()->json(['topics' => $topics, 'topic'=>$topic]);
     }
@@ -134,5 +138,5 @@ class BlogDetailsController extends Controller
         $blogs = BlogDetails::orderBy('created_at', 'desc')->get();
         return response()->json(['blogs'=>$blogs, "Message" => "Blog Deleted successfully"],200);
     }
-    
+
 }

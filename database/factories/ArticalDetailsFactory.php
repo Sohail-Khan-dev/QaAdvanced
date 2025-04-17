@@ -20,7 +20,9 @@ class ArticalDetailsFactory extends Factory
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
             'slug' => $this->faker->slug,
-            'image' => $this->faker->imageUrl(),
+            'learning_category_id' => 1, // Default to Software Testing category
+            'user_id' => 1, // Default to Admin User
+            'tags' => $this->faker->words(3, true), // Generate 3 random words as tags
         ];
     }
 }

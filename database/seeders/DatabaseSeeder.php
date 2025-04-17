@@ -14,11 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        // ArticalDetails::factory(10)->create();
-        $this->call([
-            LearningCategorySeeder::class,
-            TopicNameSeeder::class,
-        ]);
+        // // Create a default user with ID 1 if it doesn't exist
+        // if (!User::find(1)) {
+        //     User::create([
+        //         'name' => 'Admin User',
+        //         'email' => 'admin@example.com',
+        //         'password' => bcrypt('password'),
+        //     ]);
+        // }
+
+        // $this->call([
+        //     LearningCategorySeeder::class,
+        //     TopicNameSeeder::class,
+        // ]);
     }
 }

@@ -17,6 +17,8 @@ class BlogApiController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'category_name' => 'nullable|string|max:255',
+            'tags' => 'nullable|string',
+            'user_id' => 'nullable|integer|exists:users,id',
         ]);
 
         // Find or create the default category if no category is specified
@@ -42,7 +44,9 @@ class BlogApiController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'slug' => Str::slug($request->title),
-            'learning_category_id' => $category->id
+            'learning_category_id' => $category->id,
+            'user_id' => $request->user_id ?? 1, // Default to 1 if not provided
+            'tags' => $request->tags ?? ""
         ]);
 
         return response()->json([
@@ -57,7 +61,7 @@ class BlogApiController extends Controller
 
     public function index()
     {
-        $blogs = BlogDetails::with('learningCategory')->get()->select('id','title','slug', 'learning_category_id');
+        $blogs = BlogDetails::with(['learningCategory', 'user'])->get();
         return response()->json([
             'status' => 'success',
             'data' => $blogs
@@ -66,8 +70,8 @@ class BlogApiController extends Controller
 
     public function show($id)
     {
-        $blog = BlogDetails::with('learningCategory')->find($id);
-        
+        $blog = BlogDetails::with(['learningCategory', 'user'])->find($id);
+
         if (!$blog) {
             return response()->json([
                 'status' => 'error',

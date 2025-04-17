@@ -5,7 +5,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Blog</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-       
+
         <div class="modal-body">
             <form id="new-blog-form" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -27,7 +27,7 @@
                         {{-- These options are created on run time by JQuery  --}}
                     </select>
                 </div>
-               
+
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control name" id="title" name="title" required>
@@ -36,7 +36,12 @@
                     <label for="editor" class="form-label">Content</label>
                     <div class="topic-html"></div>
                 </div>
-              
+                <div class="mb-3">
+                    <label for="tags" class="form-label">Tags</label>
+                    <input type="text" class="form-control" id="tags" name="tags" placeholder="Enter tags separated by commas">
+                    <small class="form-text text-muted">Example: testing, qa, automation</small>
+                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary save-btn" id="save-btn">Save</button>

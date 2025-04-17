@@ -37,6 +37,10 @@ class CommonController extends Controller
             // Here we will pass the Learning Category Along with the Topic Name
             return view('qa/' . $routeName.'/'.$route2Name, compact('topics'));
         }
+        if($routeName === 'blog'){
+            $blogs = BlogDetails::all();
+            return view('qa/' . $routeName , compact('blogs'));
+        }
         return view('qa/'. $routeName);
     }
 
