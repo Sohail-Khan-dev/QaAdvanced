@@ -77,38 +77,6 @@
                                 </div>
                             </div>
                             @endforeach
-{{--                           
-                            <div class="rounded  w-50 border col col-4">
-                                <div class="question-content p-4">
-                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
-                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
-                                        Quiz</a>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
-                                        Questions</a>
-                                </div>
-                            </div>
-                            <div class="rounded  w-50 border col ">
-                                <div class="question-content p-4">
-                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
-                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
-                                        Quiz</a>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
-                                        Questions</a>
-                                </div>
-                            </div>
-                            <div class="rounded  w-50 border col col-4">
-                                <div class="question-content p-4">
-                                    <a href="#" class="h4 mb-3 d-block">Fundamentals of testing</a>
-                                    <p class="mb-3"> ISTQB foundation level test 1 </p>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
-                                        Quiz</a>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
-                                        Questions</a>
-                                </div>
-                            </div> --}}
-
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Agent 🤖</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .log-container {
+            height: 400px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .log-entry {
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .status-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .status-running {
+            background-color: #28a745;
+            animation: pulse 1.5s infinite;
+        }
+        .status-stopped {
+            background-color: #dc3545;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .url-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .url-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .url-item:hover {
+            background-color: #f8f9fa;
+        }
+        .rate-limit-container {
+            display: flex;
+            align-items: center;
+        }
+        .rate-limit-value {
+            width: 40px;
+            text-align: center;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <h1 class="display-5 fw-bold">
+                    <i class="bi bi-robot"></i> AI Blog Agent
+                </h1>
+                <p class="text-muted">Automatically fetch and post blog content to your API</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="d-flex align-items-center justify-content-end h-100">
+                    <div class="me-2">
+                        <span class="status-indicator {{ 'status-running' if agent_running else 'status-stopped' }}"></span>
+                        <span id="status-text" class="fw-bold">{{ 'Running' if agent_running else 'Stopped' }}</span>
+                    </div>
+                    <div>
+                        <span class="badge bg-primary rounded-pill" id="posts-count">
+                            <i class="bi bi-check-circle-fill"></i> {{ posts_count }}
+                        </span>
+                        <span class="badge bg-danger rounded-pill" id="errors-count">
+                            <i class="bi bi-x-circle-fill"></i> {{ errors_count }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Settings Column -->
+            <div class="col-md-4">
+                <!-- Settings Card -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="bi bi-gear-fill"></i> Settings</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ url_for('start_agent') }}" method="post" id="settings-form">
+                            <!-- API Endpoint -->
+                            <div class="mb-3">
+                                <label for="api_endpoint" class="form-label">API Endpoint:</label>
+                                <input type="url" class="form-control" id="api_endpoint" name="api_endpoint" 
+                                       value="{{ api_endpoint }}" required>
+                            </div>
+                            
+                            <!-- Category Selection -->
+                            <div class="mb-3">
+                                <label class="form-label">Category:</label>
+                                <div class="d-flex flex-wrap">
+                                    {% for code, name in categories.items() %}
+                                    <div class="form-check me-3 mb-2">
+                                        <input class="form-check-input" type="radio" name="category" 
+                                               id="category-{{ code }}" value="{{ code }}"
+                                               {{ 'checked' if selected_category == code else '' }}>
+                                        <label class="form-check-label" for="category-{{ code }}">
+                                            {{ name }}
+                                        </label>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                            <!-- Rate Limit -->
+                            <div class="mb-3">
+                                <label for="rate_limit" class="form-label">API Rate Limit (seconds):</label>
+                                <div class="rate-limit-container">
+                                    <input type="range" class="form-range flex-grow-1" id="rate_limit" name="rate_limit"
+                                           min="1" max="10" step="1" value="{{ rate_limit }}">
+                                    <span class="rate-limit-value" id="rate-limit-display">{{ rate_limit }}s</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Control Buttons -->
+                            <div class="d-grid gap-2">
+                                {% if agent_running %}
+                                <button type="button" class="btn btn-danger" id="stop-button" 
+                                        onclick="document.getElementById('stop-form').submit();">
+                                    <i class="bi bi-stop-circle"></i> Stop Agent
+                                </button>
+                                {% else %}
+                                <button type="submit" class="btn btn-success" id="start-button">
+                                    <i class="bi bi-play-circle"></i> Start Agent
+                                </button>
+                                {% endif %}
+                            </div>
+                        </form>
+                        
+                        <!-- Hidden forms for actions -->
+                        <form action="{{ url_for('stop_agent') }}" method="post" id="stop-form" class="d-none"></form>
+                        <form action="{{ url_for('clear_log') }}" method="post" id="clear-log-form" class="d-none"></form>
+                    </div>
+                </div>
+                
+                <!-- Blog Sources Card -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="bi bi-link-45deg"></i> Blog Sources</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- URL List -->
+                        <div class="url-list mb-3">
+                            {% if search_urls %}
+                                {% for url in search_urls %}
+                                <div class="url-item">
+                                    <div class="text-truncate" style="max-width: 80%;" title="{{ url }}">
+                                        {{ url }}
+                                    </div>
+                                    <form action="{{ url_for('remove_url') }}" method="post" class="d-inline">
+                                        <input type="hidden" name="url" value="{{ url }}">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="text-center text-muted py-3">
+                                    No blog sources added yet.
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Add URL Form -->
+                        <form action="{{ url_for('add_url') }}" method="post">
+                            <div class="input-group">
+                                <input type="url" class="form-control" name="url" placeholder="Enter blog URL" required>
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="bi bi-plus-circle"></i> Add
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Log Column -->
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-journal-text"></i> Agent Log</h5>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" 
+                                onclick="document.getElementById('clear-log-form').submit();">
+                            <i class="bi bi-trash"></i> Clear Log
+                        </button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="log-container" id="log-container">
+                            {% if log_messages %}
+                                {% for message in log_messages %}
+                                <div class="log-entry">{{ message }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="text-center text-muted py-3">
+                                    No log messages yet.
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white py-2 text-muted small">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <i class="bi bi-info-circle"></i> 
+                                Last updated: <span id="last-updated">{{ now }}</span>
+                            </div>
+                            <div>
+                                <i class="bi bi-clock"></i>
+                                Auto-refresh: <span id="refresh-countdown">10</span>s
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    {% for category, message in messages %}
+                        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-{{ category if category != 'message' else 'light' }}">
+                                <strong class="me-auto">
+                                    {% if category == 'success' %}
+                                        <i class="bi bi-check-circle-fill text-success"></i> Success
+                                    {% elif category == 'danger' %}
+                                        <i class="bi bi-exclamation-triangle-fill text-danger"></i> Error
+                                    {% elif category == 'warning' %}
+                                        <i class="bi bi-exclamation-circle-fill text-warning"></i> Warning
+                                    {% else %}
+                                        <i class="bi bi-info-circle-fill"></i> Info
+                                    {% endif %}
+                                </strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Update rate limit display
+        document.getElementById('rate_limit').addEventListener('input', function() {
+            document.getElementById('rate-limit-display').textContent = this.value + 's';
+        });
+        
+        // Auto-refresh log and status
+        let refreshCountdown = 10;
+        const refreshInterval = setInterval(updateStatus, 10000);
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        
+        function updateCountdown() {
+            refreshCountdown--;
+            document.getElementById('refresh-countdown').textContent = refreshCountdown;
+            if (refreshCountdown <= 0) {
+                refreshCountdown = 10;
+            }
+        }
+        
+        function updateStatus() {
+            fetch('/get_status')
+                .then(response => response.json())
+                .then(data => {
+                    // Update status indicator
+                    const statusIndicator = document.querySelector('.status-indicator');
+                    const statusText = document.getElementById('status-text');
+                    
+                    if (data.agent_running) {
+                        statusIndicator.classList.add('status-running');
+                        statusIndicator.classList.remove('status-stopped');
+                        statusText.textContent = 'Running';
+                    } else {
+                        statusIndicator.classList.remove('status-running');
+                        statusIndicator.classList.add('status-stopped');
+                        statusText.textContent = 'Stopped';
+                    }
+                    
+                    // Update counters
+                    document.getElementById('posts-count').textContent = ' ' + data.posts_count;
+                    document.getElementById('errors-count').textContent = ' ' + data.errors_count;
+                    
+                    // Update log
+                    const logContainer = document.getElementById('log-container');
+                    if (data.log_messages && data.log_messages.length > 0) {
+                        // Only update if there are new messages
+                        if (logContainer.children.length === 0 || 
+                            logContainer.lastChild.textContent !== data.log_messages[data.log_messages.length - 1]) {
+                            
+                            // Clear "no messages" text if present
+                            if (logContainer.children.length === 1 && 
+                                logContainer.children[0].classList.contains('text-center')) {
+                                logContainer.innerHTML = '';
+                            }
+                            
+                            // Add new messages
+                            data.log_messages.forEach(message => {
+                                // Check if message already exists
+                                let exists = false;
+                                for (let i = 0; i < logContainer.children.length; i++) {
+                                    if (logContainer.children[i].textContent === message) {
+                                        exists = true;
+                                        break;
+                                    }
+                                }
+                                
+                                if (!exists) {
+                                    const logEntry = document.createElement('div');
+                                    logEntry.className = 'log-entry';
+                                    logEntry.textContent = message;
+                                    logContainer.appendChild(logEntry);
+                                }
+                            });
+                            
+                            // Scroll to bottom
+                            logContainer.scrollTop = logContainer.scrollHeight;
+                        }
+                    }
+                    
+                    // Update last updated time
+                    document.getElementById('last-updated').textContent = new Date().toLocaleTimeString();
+                    
+                    // Reset countdown
+                    refreshCountdown = 10;
+                })
+                .catch(error => console.error('Error updating status:', error));
+        }
+        
+        // Initial scroll to bottom of log
+        const logContainer = document.getElementById('log-container');
+        logContainer.scrollTop = logContainer.scrollHeight;
+        
+        // Auto-dismiss toasts after 5 seconds
+        const toastElList = document.querySelectorAll('.toast');
+        toastElList.forEach(toastEl => {
+            setTimeout(() => {
+                const toast = new bootstrap.Toast(toastEl);
+                toast.hide();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

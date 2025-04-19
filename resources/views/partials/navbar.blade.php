@@ -41,6 +41,14 @@
                 </div>
             </div>
             <a href={{ url("qa/blog") }} class="nav-item nav-link">Blogs</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tools</a>
+                <div class="dropdown-menu m-0">
+                    <a href={{ url("table") }} class="dropdown-item">Data Table</a>
+                    <a href={{ url("blog-agent") }} class="dropdown-item">Blog Agent</a>
+                    <a href={{ url("medium-blog-agent") }} class="dropdown-item">Medium Blog Agent</a>
+                </div>
+            </div>
             <a href={{ url("qa/about") }} class="nav-item nav-link">About</a>
             <a href={{ url("qa/contact") }} class="nav-item nav-link">Contact Us</a>
         </div>

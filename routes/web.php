@@ -52,3 +52,11 @@ Route::get('quiz-detail/{id}',[QuizController::class,'showQuizDetail']);
 // });
 Route::get('qa/{routename}/{route2name?}/{id?}', [CommonController::class,"showView"]);
 Route::get('blog/{id}', [BlogDetailsController::class, 'show'])->name('blog.show');
+// Blog Agent routes
+Route::get('/blog-agent', function() {
+    return redirect()->away('http://localhost:5000');
+})->name('blog-agent');
+
+Route::get('/medium-blog-agent', function() {
+    return redirect()->away('http://localhost:5000');
+})->name('medium-blog-agent');
