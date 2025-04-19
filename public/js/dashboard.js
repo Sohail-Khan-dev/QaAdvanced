@@ -349,13 +349,15 @@ $(document).ready(function () {
                 ]).draw(false);
             } else if (content === "question-content") {
                 var optionsText = item.options.map(option => option.option ? option.option : "N/A").join(" | ");
+                // Read only text from this no html tags etc 
+                var questionText = item.question.replace(/<[^>]*>/g, "");
                  // Extract correct answer text(s)
                 var correctAnswers = item.options.filter(option => option.is_correct == 1) // Filter correct answers
                 .map(option => option.option) // Get only the text
                 .join(", "); // Join if multiple correct answers
                 table.row.add([
                     item.id,
-                    item.question,
+                    questionText,
                     optionsText,
                     correctAnswers,
                     getActionbuttons(item.id)

@@ -70,10 +70,8 @@
                                 <div class="question-content p-4">
                                     <a href="#" class="h4 mb-3 d-block">{{ $quiz->title }}</a>
                                     <p class="mb-3"> {{ $quiz->description }} </p>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Solve
-                                        Quiz</a>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">View
-                                        Questions</a>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">Solve Quiz</a>
+                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">View Questions</a>
                                 </div>
                             </div>
                             @endforeach

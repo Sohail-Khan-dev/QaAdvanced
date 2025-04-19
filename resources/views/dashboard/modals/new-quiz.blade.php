@@ -20,7 +20,7 @@
                 @csrf
                 <div class="mb-3">
                   <label for="category" class="form-label">Quiz Category</label>
-                  <select class="form-select category-id" id="category-id" name="category_id" required>
+                  <select class="form-select category-id" id="quiz-category-id" name="quiz_category_id" required>
                       <option value="">Select Quiz Category</option>
                       @foreach ($quiz_categories as $category)
                           <option value="{{$category->id}}">{{$category->name}}</option>

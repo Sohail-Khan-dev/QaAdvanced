@@ -1,8 +1,7 @@
 @extends('layout')
 @section('title', 'Quiz-details')
 @section('content')
-@php $questions = $quizDetail->questions ?? []; dd($quizDetail) @endphp
-        {{-- @dd($quizDetail->questions) --}}
+@php $questions = $quizDetail->questions ?? [];  @endphp
     <div class="container bg-light p-5" style="margin-top : 7rem;">
     <div class="d-flex justify-content-between align-items-center">
         <div class="flex-grow-1 text-center">

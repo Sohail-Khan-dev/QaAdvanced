@@ -18,6 +18,7 @@ class QuizController extends Controller
         $quiz = Quiz::firstOrCreate([
                 'title' => $request->title,
                 'description' =>  $request->description,
+                'quiz_category_id' => $request->quiz_category_id,
             ]);
         $quizzes = Quiz::all();
         return response()->json(['message' => 'Quiz saved successfully!', 'quiz'=> $quiz , "quizzes"=>$quizzes]);
@@ -45,6 +46,7 @@ class QuizController extends Controller
             'options' => 'nullable|array',
             'options.*.is_correct' => 'nullable|boolean',
         ]);
+        // dd($request->question);
         $quiz = Quiz::find($request->quiz);
         // dd($quiz);
         $question = $quiz->questions()->create([

@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
-            $table->string('question');
+            $table->text('question');
             $table->integer('time_limit')->default(30); // seconds
             $table->string('explanation')->nullable();
-            $table->timestamps();
+            $table->string('difficulty_level')->default('easy'); // new column for difficulty level
+            $table->timestamps(); // existing timestamps method
         });
     }
 
