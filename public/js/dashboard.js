@@ -416,6 +416,7 @@ $(document).ready(function () {
         $('.topic-html').summernote('code', '');
         $('.topic-html').trigger('summernote.change'); // Force event trigger
         $(".form-id").val("");
+        $("div>input.option").val("");
         // $('.note-placeholder').show();
         // $("#topic-id").val("");
     }
