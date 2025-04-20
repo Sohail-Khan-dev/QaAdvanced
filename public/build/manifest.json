@@ -1,13 +1,20 @@
 {
+  "_vendor-CHnKZQaP.js": {
+    "file": "assets/vendor-CHnKZQaP.js",
+    "name": "vendor"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-Cvhdi-BX.css",
+    "file": "assets/app-Djfxt-kV.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BYjrlqjl.js",
+    "file": "assets/app-DILnsqc8.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_vendor-CHnKZQaP.js"
+    ]
   }
 }

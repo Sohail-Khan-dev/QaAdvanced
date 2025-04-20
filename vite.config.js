@@ -9,9 +9,13 @@ export default defineConfig({
         }),
     ],
     build: {
-        // Enable minification
         minify: 'terser',
-        // Enable chunk splitting
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+            },
+        },
         rollupOptions: {
             output: {
                 manualChunks: {
@@ -19,8 +23,8 @@ export default defineConfig({
                 }
             }
         },
-        // Enable source maps for production
         sourcemap: false
     }
 });
+
 
