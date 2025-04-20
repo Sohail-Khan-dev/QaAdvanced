@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
             $table->text('question');
             $table->integer('time_limit')->default(30); // seconds
-            $table->string('explanation')->nullable();
+            $table->text('explanation')->nullable();
             $table->string('difficulty_level')->default('easy'); // new column for difficulty level
             $table->timestamps(); // existing timestamps method
         });

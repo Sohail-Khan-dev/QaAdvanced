@@ -14,15 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // // Create a default user with ID 1 if it doesn't exist
-        // if (!User::find(1)) {
-        //     User::create([
-        //         'name' => 'Admin User',
-        //         'email' => 'admin@example.com',
-        //         'password' => bcrypt('password'),
-        //     ]);
-        // }
+        // Run the role seeder first
+        $this->call(RoleSeeder::class);
 
+        // Then create the admin user
+        $this->call(AdminSeeder::class);
+
+        // Uncomment these if needed
         // $this->call([
         //     LearningCategorySeeder::class,
         //     TopicNameSeeder::class,

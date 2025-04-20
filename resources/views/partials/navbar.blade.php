@@ -1,3 +1,8 @@
+@php
+    use Illuminate\Support\Facades\Route;
+    use Illuminate\Support\Facades\Auth;
+@endphp
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0 border-bottom" style="z-index: 1021">
     <a href="#" class="navbar-brand p-0">
         <h1 class="text-primary m-0"><i class="fas fa-biohazard me-3"></i>Just Quality</h1>
@@ -52,6 +57,25 @@
             <a href={{ url("qa/about") }} class="nav-item nav-link">About</a>
             <a href={{ url("qa/contact") }} class="nav-item nav-link">Contact Us</a>
         </div>
-        <a href="#" class="btn btn-primary rounded-pill text-white py-2 px-4">Register Now</a>
+        @if (Route::has('login'))
+            <div class="ms-3 d-flex">
+                @auth
+                    @if(Auth::user()->hasDashboardAccess())
+                        <a href="{{ url('/dashboard') }}" class="btn btn-outline-primary rounded-pill py-2 px-4 me-2">Dashboard</a>
+                    @endif
+                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-primary rounded-pill text-white py-2 px-4">
+                            {{ __('Log Out') }}
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary rounded-pill py-2 px-4 me-2">Log in</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="btn btn-primary rounded-pill text-white py-2 px-4">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
     </div>
 </nav>
