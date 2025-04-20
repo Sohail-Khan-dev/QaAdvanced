@@ -20,8 +20,6 @@
                     @foreach ($quiz_categories as $category)
                     <a href="{{ url("qa/quiz/{$category->slug}") }}" class="dropdown-item">{{ $category->name }}</a>
                     @endforeach
-                    {{-- <a href={{ url("qa/quiz") }} class="dropdown-item">ISTQB 40 MCQS</a>
-                    <a href={{ url("qa/training") }} class="dropdown-item">Topic wise MCQS</a> --}}
                 </div>
             </div>
 
@@ -40,20 +38,11 @@
                 <div class="dropdown-menu m-0">
                     @php $categories = \App\Models\LearningCategory::all(); @endphp
                     @foreach ($categories as $category)
-                    <a href="{{ url("show-syllabus/{$category->id}") }}" class="dropdown-item">{{ $category->name }}</a>
+                    <a href="{{ route('show.syllabus', ['category_id' => $category->id]) }}" class="dropdown-item">{{ $category->name }}</a>
                     @endforeach
-
                 </div>
             </div>
             <a href={{ url("qa/blog") }} class="nav-item nav-link">Blogs</a>
-            {{-- <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tools</a>
-                <div class="dropdown-menu m-0">
-                    <a href={{ url("table") }} class="dropdown-item">Data Table</a>
-                    <a href={{ url("blog-agent") }} class="dropdown-item">Blog Agent</a>
-                    <a href={{ url("medium-blog-agent") }} class="dropdown-item">Medium Blog Agent</a>
-                </div>
-            </div> --}}
             <a href={{ url("qa/about") }} class="nav-item nav-link">About</a>
             <a href={{ url("qa/contact") }} class="nav-item nav-link">Contact Us</a>
         </div>

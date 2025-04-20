@@ -39,7 +39,7 @@ Route::middleware(['auth', 'verified', 'role:admin,manager'])->group(function ()
 });
 
 // Blog Routes
-Route::get('/get-blog', [BlogDetailsController::class, 'getBlogDetail']);
+Route::get('/get-blog/{category_id?}', [BlogDetailsController::class, 'getBlogDetail']);
 Route::post('/store-blog', [BlogDetailsController::class, 'storeBlog']);
 Route::post('/update-blog', [BlogDetailsController::class, 'updateBlog']);
 Route::delete('/delete-blog/{id}', [BlogDetailsController::class, 'deleteBlog']);
@@ -74,7 +74,7 @@ Route::delete('/delete-question/{id}', [QuizController::class, 'deleteQuestion']
 // QA Routes
 Route::get('/qa/quiz-detail/{id}', [QuizController::class, 'showQuizDetail'])->name('quiz-detail');
 Route::get('/qa/{routeName}/{route2Name?}/{id?}', [CommonController::class, 'showView']);
-Route::get('/qa/syllabus/{category_id}', [CommonController::class, 'showSyllabus']);
+Route::get('/show-syllabus/{category_id}', [CommonController::class, 'showSyllabus'])->name('show.syllabus');
 
 // Blog Agent Route
 Route::get('/blog-agent', function() {
@@ -85,3 +85,4 @@ Route::get('/blog-agent', function() {
 Route::get('/medium-blog-agent', function() {
     return Redirect::away('http://localhost:5000');
 })->name('medium-blog-agent');
+
