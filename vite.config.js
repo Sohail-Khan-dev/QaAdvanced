@@ -8,4 +8,19 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        // Enable minification
+        minify: 'terser',
+        // Enable chunk splitting
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vendor: ['alpinejs', 'axios']
+                }
+            }
+        },
+        // Enable source maps for production
+        sourcemap: false
+    }
 });
+
