@@ -29,11 +29,11 @@ trait QuizOperationsTrait
     public function getQuizById($id)
     {
         $quiz = Quiz::with(['questions.options'])->find($id);
-        
+
         if (!$quiz) {
             return response()->json(['error' => 'Quiz not found'], 404);
         }
-        
+
         return response()->json($quiz);
     }
 
@@ -58,10 +58,10 @@ trait QuizOperationsTrait
         ]);
 
         $quizzes = Quiz::all();
-        
+
         return response()->json([
-            'message' => 'Quiz saved successfully!', 
-            'quiz' => $quiz, 
+            'message' => 'Quiz saved successfully!',
+            'quiz' => $quiz,
             'quizzes' => $quizzes
         ]);
     }
@@ -83,7 +83,7 @@ trait QuizOperationsTrait
         ]);
 
         $quiz = Quiz::find($request->quiz);
-        
+
         $question = $quiz->questions()->create([
             'question' => $request->question,
             'explanation' => $request->explanation ?? " ",
@@ -93,17 +93,19 @@ trait QuizOperationsTrait
 
         $options = [];
         if ($request->has('options')) {
-            foreach ($request->options as $option) {
+            $correctOption = $request->input('correct_option');
+
+            foreach ($request->options as $key => $option) {
                 $options[] = [
                     'option' => $option['text'],
-                    'is_correct' => isset($option['is_correct']) ? 1 : 0,
+                    'is_correct' => ($key == $correctOption) ? 1 : 0,
                 ];
             }
             $question->options()->createMany($options);
         }
 
         return response()->json([
-            'message' => 'Question and options saved successfully!', 
+            'message' => 'Question and options saved successfully!',
             'options' => $options,
             'question' => $question
         ]);
@@ -129,13 +131,13 @@ trait QuizOperationsTrait
     public function removeQuestion($id)
     {
         $question = Question::find($id);
-        
+
         if (!$question) {
             return response()->json(['error' => 'Question not found'], 404);
         }
-        
+
         $question->delete();
-        
+
         return $this->getAllQuestions();
     }
 
@@ -155,13 +157,13 @@ trait QuizOperationsTrait
                     }]);
             }])
             ->first();
-            
+
         if ($quizDetail) {
             foreach ($quizDetail->questions as $question) {
                 $question->question = strip_tags($question->question);
             }
         }
-        
+
         return view('qa.quiz.quiz-detail', compact('quizDetail'));
     }
 }
