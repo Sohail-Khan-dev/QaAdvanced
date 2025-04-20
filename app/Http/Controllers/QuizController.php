@@ -14,10 +14,10 @@ class QuizController extends Controller
 {
     use CrudOperations, ApiResponseTrait, QuizOperationsTrait;
 
-    public function index(Request $request)
-    {
-        return "this is Quiz Controller";
-    }
+    // public function index(Request $request)
+    // {
+    //     return view('qa.quiz');
+    // }
 
     public function storeQuiz(Request $request)
     {
@@ -71,7 +71,7 @@ class QuizController extends Controller
         return $this->deleteRecord(QuizCategory::class, $id, 'quizCategory');
     }
 
-    public function showQuizDetail($id = 5)
+    public function showQuizDetail($id)
     {
         return $this->getQuizDetails($id);
     }

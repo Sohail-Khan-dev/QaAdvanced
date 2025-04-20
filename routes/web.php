@@ -72,9 +72,9 @@ Route::post('/store-question', [QuizController::class, 'storeQuestion']);
 Route::delete('/delete-question/{id}', [QuizController::class, 'deleteQuestion']);
 
 // QA Routes
+Route::get('/qa/quiz-detail/{id}', [QuizController::class, 'showQuizDetail'])->name('quiz-detail');
 Route::get('/qa/{routeName}/{route2Name?}/{id?}', [CommonController::class, 'showView']);
 Route::get('/qa/syllabus/{category_id}', [CommonController::class, 'showSyllabus']);
-Route::get('/qa/quiz-detail/{id}', [QuizController::class, 'showQuizDetail'])->name('quiz-detail');
 
 // Blog Agent Route
 Route::get('/blog-agent', function() {
