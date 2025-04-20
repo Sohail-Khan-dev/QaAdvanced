@@ -2,6 +2,11 @@
 
 @section('title', 'QA Advance ')
 
+<style>
+    .mt-index{
+        margin-top: 6rem;
+    }
+</style>
 @section('content')
     <!-- Carousel Start -->
     <div class="header-carousel owl-carousel">

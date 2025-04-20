@@ -58,7 +58,7 @@
             <a href={{ url("qa/contact") }} class="nav-item nav-link">Contact Us</a>
         </div>
         @if (Route::has('login'))
-            <div class="ms-3 d-flex">
+            <div class="ms-3">
                 @auth
                     @if(Auth::user()->hasDashboardAccess())
                         <a href="{{ url('/dashboard') }}" class="btn btn-outline-primary rounded-pill py-2 px-4 me-2">Dashboard</a>
