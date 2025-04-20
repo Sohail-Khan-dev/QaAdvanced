@@ -138,7 +138,7 @@
             // find the option that have is_correct = 1
             $.each(questions, function(index, question) {
                 let correctOption = question.options.find(option => option.is_correct == 1);
-                question.correctOption = correctOption;
+                question.correctOption = correctOption || { option: null }; // Provide default if no correct option
             });
 
             loadQuestion(questionIndex);
@@ -148,15 +148,32 @@
                 $("#question-attempt").text(index+1);
                 $("input[name='option']").prop('checked', false);
                 let question = questions[index];
+                // Loop through the options and update the labels and values
+                // i need the index the loop also how to access it . 
+                console.log(question.options);
+                for(let i = 1; i <= 4; i++) {
+                    let optionDiv = $('#option' + i);
+                    if (i <= question.options.length && question.options[i-1].option !== null) {
+                        // Show and populate the option if it exists
+                        optionDiv.show();
+                        let optionLabel = optionDiv.find('label');
+                        let optionInput = optionDiv.find('input');
+                        optionLabel.text(question.options[i-1].option);
+                        optionInput.val(question.options[i-1].option);
+                    } else {
+                        // Hide the option if it doesn't exist
+                        optionDiv.hide();
+                    }
+                }
                 $('#question-text').text(question.question);
-                $('#option1').find('label').text(question.options[0].option);
-                $('#option1').find('input').val(question.options[0].option);
-                $('#option2').find('label').text(question.options[1].option);
-                $('#option2').find('input').val(question.options[1].option);
-                $('#option3').find('label').text(question.options[2].option);
-                $('#option3').find('input').val(question.options[2].option);
-                $('#option4').find('label').text(question.options[3].option);
-                $('#option4').find('input').val(question.options[3].option);
+                // $('#option1').find('label').text(question.options[0].option);
+                // $('#option1').find('input').val(question.options[0].option);
+                // $('#option2').find('label').text(question.options[1].option);
+                // $('#option2').find('input').val(question.options[1].option);
+                // $('#option3').find('label').text(question.options[2].option);
+                // $('#option3').find('input').val(question.options[2].option);
+                // $('#option4').find('label').text(question.options[3].option);
+                // $('#option4').find('input').val(question.options[3].option);
                 incrimentProgressBar();
             }
 
@@ -170,13 +187,13 @@
                 }
                 // compare with correct option
                 let correctOption = questions[questionIndex].correctOption.option;
-                let isCorrect = selectedOption == correctOption;
+                let isCorrect = !correctOption || selectedOption == correctOption; // Consider it correct if no correct option exists
 
                 // Store user's answer
                 userAnswers.push({
                     question: questions[questionIndex].question,
                     userAnswer: selectedOption,
-                    correctAnswer: correctOption,
+                    correctAnswer: correctOption || 'No correct answer defined',
                     isCorrect: isCorrect
                 });
 
@@ -275,3 +292,4 @@
         });
     </script>
 @endpush
+
