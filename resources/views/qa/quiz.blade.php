@@ -61,20 +61,27 @@
                     <p class="heading-text d-flex justify-content-center mb-n5 p-4 h4">@if(isset($category)) {{ $category->name }} @endif topic based tests - foundation level
                     </p>
                     <div class="pt-5 w-100 bg-white mt-5 rounded-bottom quiz-parent-div">
-                        <div class="class-item bg-white rounded row m-0 gap-4">
+                        <div class="class-item bg-white rounded p-3">
                             @if($quizzes->count() == 0)
                                 <p class="text-center">No Quizzes Found</p>
-                            @endif
-                            @foreach ($quizzes as $quiz)
-                            <div class="rounded w-auto border col-4">
-                                <div class="question-content p-4">
-                                    <a href="#" class="h4 mb-3 d-block">{{ $quiz->title }}</a>
-                                    <p class="mb-3"> {{ $quiz->description }} </p>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">Solve Quiz</a>
-                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">View Questions</a>
+                            @else
+                                <div class="row row-cols-1 row-cols-md-2 g-4">
+                                    @foreach ($quizzes as $quiz)
+                                    <div class="col">
+                                        <div class="card h-100 border">
+                                            <div class="card-body question-content p-4">
+                                                <a href="#" class="h4 mb-3 d-block card-title">{{ $quiz->title }}</a>
+                                                <p class="card-text mb-3"> {{ $quiz->description }} </p>
+                                                <div class="d-flex flex-wrap gap-2 mt-auto">
+                                                    <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">Solve Quiz</a>
+                                                    <a class="btn btn-outline-primary rounded-pill py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">View Questions</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
                                 </div>
-                            </div>
-                            @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
