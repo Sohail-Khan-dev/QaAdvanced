@@ -417,8 +417,13 @@ $(document).ready(function () {
         $('.topic-html').trigger('summernote.change'); // Force event trigger
         $(".form-id").val("");
         $("div>input.option").val("");
-        // $('.note-placeholder').show();
-        // $("#topic-id").val("");
+        $("#explanation").val("");
+        // Reset radio buttons (uncheck all)
+        $('input[name="correct_option"]').prop('checked', false);
+
+        // Reset quiz dropdown selects
+        $("#quiz").val("");
+        $("#quiz_category").val("");
     }
     function loadSummernote() {
         $('.topic-html').summernote({
@@ -439,12 +444,12 @@ $(document).ready(function () {
     });
     function getTopicOfCategory(category_id){
         let filteredTopics = topics.filter(topic => topic.learning_category_id == category_id);
-        populateTopics(filteredTopics); 
+        populateTopics(filteredTopics);
     }
     function populateCategory(categories){
         let select = $(".category-id");
         select.find('option:not(:first)').remove();
-        $.each(categories,function(index,category){
+        $.each(categories,function(_,category){
            let option = `<option value="${category.id}">${category.name}</option>`;
            select.append(option);
         });

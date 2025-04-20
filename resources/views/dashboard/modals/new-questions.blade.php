@@ -19,8 +19,8 @@
             <form id="new-question-form" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="quiz" class="form-label">Selecct Quiz</label>
-                    <select class="form-select" id="quiz" name="quiz" required>
+                    <label for="quiz_category" class="form-label">Select Quiz Category</label>
+                    <select class="form-select" id="quiz_category" name="quiz_category" required>
                       <option value="">Select Quiz Category</option>
                       @foreach ($quiz_categories as $category)
                           <option value="{{$category->id}}">{{$category->name}}</option>
@@ -28,8 +28,9 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="quiz" class="form-label">Selecct Quiz</label>
+                    <label for="quiz" class="form-label">Select Quiz</label>
                     <select class="form-select" id="quiz" name="quiz" required>
+                      <option value="">Select Quiz</option>
                        @foreach ($quizzes as $quiz)
                          <option value="{{$quiz->id}}"> {{ $quiz->title}} </option>
                        @endforeach
@@ -50,19 +51,19 @@
 
                   <div class="d-flex align-items-center mt-1">
                       <label class="me-2 m-w-5rem">Option 2:</label>
-                      <input type="text" class="form-control me-2" name="options[2][text]">
+                      <input type="text" class="form-control me-2 option" name="options[2][text]">
                       <input type="radio" name="correct_option" value="2" class="form-check-input">
                   </div>
 
                   <div class="d-flex align-items-center mt-1">
                       <label class="me-2 m-w-5rem">Option 3:</label>
-                      <input type="text" class="form-control me-2" name="options[3][text]">
+                      <input type="text" class="form-control me-2 option" name="options[3][text]">
                       <input type="radio" name="correct_option" value="3" class="form-check-input">
                   </div>
 
                   <div class="d-flex align-items-center mt-1">
                       <label class="me-2 m-w-5rem">Option 4:</label>
-                      <input type="text" class="form-control me-2" name="options[4][text]">
+                      <input type="text" class="form-control me-2 option" name="options[4][text]">
                       <input type="radio" name="correct_option" value="4" class="form-check-input">
                   </div>
               </div>
