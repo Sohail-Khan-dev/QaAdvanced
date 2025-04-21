@@ -195,9 +195,59 @@ $(document).ready(function () {
     });
     $(document).on("click", "#new-blog-btn, #new-question-btn, #topic-list-btn, #learning-category-btn, #new-quiz-btn, #new-quiz-category-btn", function () {
         // Enable Save button click 
+        console.log("Button is Cliced : ");
+        
         resetHtmlContent();
         $(".save-btn").prop('disabled', false);
     });
+    $('.summernote').summernote({
+        height: 300,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture']],
+            ['view', ['fullscreen', 'codeview']]
+        ],
+        callbacks: {
+            onImageUpload: function(files) {
+                console.log("Here in the Image Upload ")
+                for(let i = 0; i < files.length; i++) {
+                    if(files[i].size > 5000000) { // 5MB limit
+                        alert('Image file is too large (max 5MB)');
+                        continue;
+                    }
+                    uploadImage(files[i], this);
+                }
+            }
+        }
+    });
+    function uploadImage(file, editor) {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        $.ajax({
+            url: '/upload-image',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                $(editor).summernote('insertImage', response.url, function($image) {
+                    $image.addClass('img-fluid'); // Make image responsive
+                });
+            },
+            error: function(xhr) {
+                const error = xhr.responseJSON?.error || 'Upload failed';
+                alert('Image upload failed: ' + error);
+            }
+        });
+    }
     function getData(url, content = null, tableId = null) {
         if (content === null) return;
         $.ajax({
@@ -381,9 +431,10 @@ $(document).ready(function () {
                     getActionbuttons(item.id)
                 ]).draw(false);
             } else if (content === "question-content") {
-                var optionsText = item.options.map(option => option.option ? option.option : "N/A").join(" | ");
-                // Read only text from this no html tags etc 
-                var questionText = item.question.replace(/<[^>]*>/g, "");
+                // get few words of the options
+                var optionsText = item.options.map(option => option.option ? option.option.split(/\s+/).slice(0, 10).join(' ') : "N/A").join(" | ");
+                // Read only few wrods of the question . 
+                var questionText = item.question.split(/\s+/).slice(0, 20).join(' ');
                  // Extract correct answer text(s)
                 var correctAnswers = item.options.filter(option => option.is_correct == 1) // Filter correct answers
                 .map(option => option.option) // Get only the text
@@ -488,3 +539,4 @@ $(document).ready(function () {
         });
     }
 });
+

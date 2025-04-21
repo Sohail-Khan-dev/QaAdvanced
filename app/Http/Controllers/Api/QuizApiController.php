@@ -111,11 +111,11 @@ class QuizApiController extends Controller
             ], 404);
         }
         
-        // Clean up question text (remove HTML tags)
-        foreach ($quiz->questions as $question) {
-            $question->question = strip_tags($question->question);
-            $question->select('question');
-        }
+        // // Clean up question text (remove HTML tags)
+        // foreach ($quiz->questions as $question) {
+        //     $question->question = strip_tags($question->question);
+        //     $question->select('question');
+        // }
         
         return response()->json([
             'status' => 'success',

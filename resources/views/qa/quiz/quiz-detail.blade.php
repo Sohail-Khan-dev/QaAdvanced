@@ -8,9 +8,12 @@
             <div class="flex-grow-1 text-center">
                 <h3 class="mb-4">{{ $quizDetail->title ?? " No Title" }}</h3>
             </div>
-            <h6 class="mb-2"> <span id="question-attempt">1</span> of <span class="total-questions">{{ count($questions) }}</span></h6>
+            <h6 class="mb-2"> 
+                <span id="question-attempt">1</span> of 
+                <span class="total-questions">{{ count($questions) }}</span>
+            </h6>
         </div>
-        <h4 class="mb-4" id='question-text'>Question text goes here</h4>
+        <div class="mb-4 question-content" id='question-text'>Question text goes here</div>
         <div class="mb-4">
             <div class="form-check mb-3" id='option1'>
                 <input class="form-check-input" type="radio" name="option" id="option_radio1" value="1">
@@ -145,9 +148,11 @@
             loadQuestion(questionIndex);
 
             function loadQuestion(index) {
-                $("#question-attempt").text(index+1);
+                $("#question-attempt").text(index + 1);
                 $("input[name='option']").prop('checked', false);
-                let question = questions[index];                for(let i = 1; i <= 4; i++) {
+                let question = questions[index];
+                $('#question-text').html(question.question);
+                for(let i = 1; i <= 4; i++) {
                     let optionDiv = $('#option' + i);
                     if (i <= question.options.length && question.options[i-1].option !== null) {
                         optionDiv.show();
@@ -276,4 +281,5 @@
         });
     </script>
 @endpush
+
 

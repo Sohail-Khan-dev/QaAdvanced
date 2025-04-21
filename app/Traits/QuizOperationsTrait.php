@@ -161,11 +161,11 @@ trait QuizOperationsTrait
             }])
             ->first();
 
-        if ($quizDetail) {
-            foreach ($quizDetail->questions as $question) {
-                $question->question = strip_tags($question->question);
-            }
-        }
+        // if ($quizDetail) {
+        //     foreach ($quizDetail->questions as $question) {
+        //         $question->question = strip_tags($question->question);
+        //     }
+        // }
 
         return view('qa.quiz.quiz-detail', compact('quizDetail'));
     }

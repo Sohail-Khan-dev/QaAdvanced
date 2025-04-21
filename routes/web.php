@@ -7,6 +7,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BlogDetailsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ImageUploadController;
 
 // Authentication Routes (from Laravel Breeze)
 require __DIR__.'/auth.php';
@@ -85,4 +86,7 @@ Route::get('/blog-agent', function() {
 Route::get('/medium-blog-agent', function() {
     return Redirect::away('http://localhost:5000');
 })->name('medium-blog-agent');
+
+Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('image.upload');
+
 

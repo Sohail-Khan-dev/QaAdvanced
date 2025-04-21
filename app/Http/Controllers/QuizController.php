@@ -9,6 +9,7 @@ use App\Traits\CrudOperations;
 use App\Traits\ApiResponseTrait;
 use App\Traits\QuizOperationsTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class QuizController extends Controller
 {
@@ -35,7 +36,19 @@ class QuizController extends Controller
 
     public function storeQuestion(Request $request)
     {
-        return $this->createQuestion($request);
+        // $validatedData = $request->validate([
+        //     'question' => 'required|string',
+        //     'quiz_id' => 'required|exists:quizzes,id',
+        //     'explanation' => 'nullable|string'
+        // ]);
+
+        // Create question - the HTML content will include image URLs
+        $question = Question::create($request);
+
+        return response()->json([
+            'message' => 'Question created successfully',
+            'question' => $question
+        ]);
     }
 
     public function getQuestions()
@@ -75,4 +88,40 @@ class QuizController extends Controller
     {
         return $this->getQuizDetails($id);
     }
+
+    public function updateQuestion(Request $request, Question $question)
+    {
+        $validatedData = $request->validate([
+            'question' => 'required|string',
+            'explanation' => 'nullable|string'
+        ]);
+
+        // Extract old image URLs
+        preg_match_all('/<img[^>]+src="([^">]+)"/', $question->question, $oldMatches);
+        $oldUrls = $oldMatches[1] ?? [];
+
+        // Extract new image URLs
+        preg_match_all('/<img[^>]+src="([^">]+)"/', $request->question, $newMatches);
+        $newUrls = $newMatches[1] ?? [];
+
+        // Delete images that are no longer used
+        foreach ($oldUrls as $oldUrl) {
+            if (!in_array($oldUrl, $newUrls)) {
+                $path = parse_url($oldUrl, PHP_URL_PATH);
+                $path = str_replace('/storage/', '', $path);
+                
+                if (Storage::disk('public')->exists($path)) {
+                    Storage::disk('public')->delete($path);
+                }
+            }
+        }
+
+        $question->update($validatedData);
+
+        return response()->json([
+            'message' => 'Question updated successfully',
+            'question' => $question
+        ]);
+    }
 }
+
