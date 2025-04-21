@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Quiz-details')
 @section('content')
-@php $questions = $quizDetail->questions ?? []; @endphp
+@php $questions = $quizDetail->questions ?? [];  @endphp
     <!-- Quiz Questions Container -->
     <div class="container bg-light p-5" style="margin-top : 7rem;" id="quiz-container">
         <div class="d-flex justify-content-between align-items-center">
@@ -147,13 +147,7 @@
             function loadQuestion(index) {
                 $("#question-attempt").text(index+1);
                 $("input[name='option']").prop('checked', false);
-                let question = questions[index];
-                
-                // Access the question from original property instead of attributes
-                $('#question-text').html(question.original.question);
-
-                // Handle options
-                for(let i = 1; i <= 4; i++) {
+                let question = questions[index];                for(let i = 1; i <= 4; i++) {
                     let optionDiv = $('#option' + i);
                     if (i <= question.options.length && question.options[i-1].option !== null) {
                         optionDiv.show();
@@ -282,5 +276,4 @@
         });
     </script>
 @endpush
-
 
