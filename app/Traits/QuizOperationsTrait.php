@@ -78,8 +78,11 @@ trait QuizOperationsTrait
             'quiz' => 'required|exists:quizzes,id',
             'question' => 'required|string',
             'explanation' => 'nullable|string',
-            'options' => 'nullable|array',
-            'options.*.is_correct' => 'nullable|boolean',
+            'options' => 'required|array',
+            'options.*.text' => 'nullable|string',
+            'correct_option' => 'required|numeric|min:1|max:4', // Validate correct option is selected
+        ], [
+            'correct_option.required' => 'Please select a correct answer option'
         ]);
 
         $quiz = Quiz::find($request->quiz);
@@ -167,3 +170,4 @@ trait QuizOperationsTrait
         return view('qa.quiz.quiz-detail', compact('quizDetail'));
     }
 }
+

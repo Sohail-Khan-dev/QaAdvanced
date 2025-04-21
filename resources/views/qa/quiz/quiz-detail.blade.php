@@ -120,7 +120,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(document).ready(function() {
-            let questions = {{$questions}};
+            let questions = @json($quizDetail->questions);
             console.log(questions);
             let questionIndex = 0;
             let totalQuestions = questions.length;

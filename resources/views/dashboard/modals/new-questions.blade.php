@@ -1,10 +1,15 @@
 <style>
- .m-w-5rem{
-    min-width: 5rem;
-  }
-  div:has(.m-w-5rem) {
-    margin-bottom : 8px;
-  }
+    #correct-option-error {
+        margin-top: 10px;
+        padding: 8px 15px;
+        border-radius: 4px;
+        animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 </style>
 <!-- Modal -->
 <div class="modal fade" id="new-question-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

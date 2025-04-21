@@ -35,10 +35,33 @@ $(document).ready(function () {
     });
     $(document).on("submit", "#new-question-form", function (e) {
         e.preventDefault();
+        
+        // Check if any radio button is selected
+        if (!$('input[name="correct_option"]:checked').val()) {
+            // Create error message if it doesn't exist
+            if (!$('#correct-option-error').length) {
+                $('<div id="correct-option-error" class="alert alert-danger mt-2">' +
+                  'Please select a correct answer option' +
+                  '</div>').insertAfter('.mb-3:has(input[name="correct_option"])');
+            }
+            
+            // Scroll to error
+            $('#correct-option-error')[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Enable the save button again
+            $(this).find("#save-btn").prop('disabled', false);
+            
+            return false;
+        }
+        
+        // Remove error message if exists
+        $('#correct-option-error').remove();
+        
         $(this).find("#save-btn").prop('disabled', true);
         let question = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
         formData.append('question', question);
+        
         $.ajax({
             url: "/store-question",
             method: 'POST',
@@ -54,10 +77,20 @@ $(document).ready(function () {
                 getData('/get-questions', 'question-content', 'question-dataTable');
             },
             error: function (xhr, status, error) {
+                // Handle backend validation errors
+                if (xhr.status === 422) {
+                    let errors = xhr.responseJSON.errors;
+                    if (errors.correct_option) {
+                        $('<div id="correct-option-error" class="alert alert-danger mt-2">' +
+                          errors.correct_option[0] +
+                          '</div>').insertAfter('.mb-3:has(input[name="correct_option"])');
+                    }
+                }
                 console.error("Error:", xhr.responseText, status, error);
+                // Re-enable the save button
+                $("#new-question-form").find("#save-btn").prop('disabled', false);
             }
         });
-
     });
     $(document).on("submit", "#learning-category-form", function (e) {
         e.preventDefault();
