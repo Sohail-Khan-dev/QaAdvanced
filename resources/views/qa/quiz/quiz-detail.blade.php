@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Quiz-details')
 @section('content')
-@php $questions = $quizDetail->questions ?? [];  @endphp
+@php $questions = $quizDetail->questions ?? []; @endphp
     <!-- Quiz Questions Container -->
     <div class="container bg-light p-5" style="margin-top : 7rem;" id="quiz-container">
         <div class="d-flex justify-content-between align-items-center">
@@ -120,7 +120,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(document).ready(function() {
-            let questions = {!! json_encode($quizDetail->questions) !!} ;
+            let questions = {{$questions}};
+            console.log(questions);
             let questionIndex = 0;
             let totalQuestions = questions.length;
             if(totalQuestions == 0) {
@@ -144,37 +145,26 @@
             loadQuestion(questionIndex);
 
             function loadQuestion(index) {
-                // reset the selected options
                 $("#question-attempt").text(index+1);
                 $("input[name='option']").prop('checked', false);
                 let question = questions[index];
-                // Loop through the options and update the labels and values
-                // i need the index the loop also how to access it . 
-                console.log(question.options);
+                
+                // Access the question from original property instead of attributes
+                $('#question-text').html(question.original.question);
+
+                // Handle options
                 for(let i = 1; i <= 4; i++) {
                     let optionDiv = $('#option' + i);
                     if (i <= question.options.length && question.options[i-1].option !== null) {
-                        // Show and populate the option if it exists
                         optionDiv.show();
                         let optionLabel = optionDiv.find('label');
                         let optionInput = optionDiv.find('input');
                         optionLabel.text(question.options[i-1].option);
                         optionInput.val(question.options[i-1].option);
                     } else {
-                        // Hide the option if it doesn't exist
                         optionDiv.hide();
                     }
                 }
-                $('#question-text').text(question.question);
-                // $('#option1').find('label').text(question.options[0].option);
-                // $('#option1').find('input').val(question.options[0].option);
-                // $('#option2').find('label').text(question.options[1].option);
-                // $('#option2').find('input').val(question.options[1].option);
-                // $('#option3').find('label').text(question.options[2].option);
-                // $('#option3').find('input').val(question.options[2].option);
-                // $('#option4').find('label').text(question.options[3].option);
-                // $('#option4').find('input').val(question.options[3].option);
-                incrimentProgressBar();
             }
 
             $(document).on("click", "#nex-quiz", function() {
@@ -292,4 +282,5 @@
         });
     </script>
 @endpush
+
 
