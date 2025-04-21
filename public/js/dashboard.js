@@ -166,9 +166,9 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success : function(params) {
-               $("#quiz-category-modal").modal('hide');
-               resetHtmlContent();               
-               refreshDataTable('quiz-category-dataTable',params.quizCategories,'quiz-category');    
+                $('#quiz-category-modal').modal('hide');
+                resetHtmlContent();
+                refreshDataTable('quiz-category-dataTable',params.quizCategories,'quiz-category');
             },
 
         });
@@ -187,16 +187,13 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(response){
-                $("#new-quiz-modal").modal('hide');
+                $('#new-quiz-modal').modal('hide');
                 resetHtmlContent();
                 refreshDataTable('quiz-dataTable', response.quizzes, 'quiz-content');
             }
         });
     });
     $(document).on("click", "#new-blog-btn, #new-question-btn, #topic-list-btn, #learning-category-btn, #new-quiz-btn, #new-quiz-category-btn", function () {
-        // Enable Save button click 
-        console.log("Button is Cliced : ");
-        
         resetHtmlContent();
         $(".save-btn").prop('disabled', false);
     });

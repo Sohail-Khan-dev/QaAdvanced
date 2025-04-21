@@ -8,13 +8,8 @@
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="css/dashboard.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-        <!-- Bootstrap Bundle (includes Popper.js) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- include summernote css/js-->
+        <!-- include summernote css -->
         <link href="summernote-bs5.css" rel="stylesheet">
-        <script src="summernote-bs5.js"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <style>
             @media (max-width: 768px) {
@@ -244,9 +239,7 @@
             </div>
         </div>
     </div>
-    <script>
-        window.topics = @json($topics); // Pass topics to a global variable
-    </script>
+     <!-- Include all modals first -->
     @include('dashboard.modals.new-blog')
     @include('dashboard.modals.new-quiz')
     @include('dashboard.modals.learning-category')
@@ -254,8 +247,17 @@
     @include('dashboard.modals.new-questions')
     @include('dashboard.modals.new-quiz-category')
 
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <!-- Load scripts in correct order -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        window.topics = @json($topics); // Pass topics to a global variable
+    </script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap Bundle (includes Popper.js) - must be after jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="summernote-bs5.js"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+
 </body>
 
 </html>
