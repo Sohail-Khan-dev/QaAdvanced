@@ -88,32 +88,3 @@ Route::get('/medium-blog-agent', function() {
 })->name('medium-blog-agent');
 
 Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('image.upload');
-
-////// below is for 
-Route:: get('/download', function () {
-    return "Click on Link to Download file. " .  downloadFile();
-})->name('download');
-Route::get('/download/{filename}', function ($filename) {
-    if (!request()->hasValidSignature()) {
-        abort(403, 'Link expired or invalid.');
-    }
-
-    $filePath = storage_path("app/shared_files/{$filename}");
-
-    if (!file_exists($filePath)) {
-        abort(404);
-    }
-
-    return response()->download($filePath);
-})->name('download.signed');
-use Illuminate\Support\Facades\URL;
-function downloadFile()
-{
-    $url = URL::temporarySignedRoute(
-        'download.signed',
-        now()->addDay(), // expires after 24 hours
-        ['filename' => 'gemnet.zip'] // file you uploaded manually
-    );
-    
-    return $url;
-}
