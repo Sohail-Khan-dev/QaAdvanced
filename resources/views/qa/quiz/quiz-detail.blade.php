@@ -41,10 +41,22 @@
                         Next
                     @endif
                 </button>
+                <button class="btn btn-secondary text-white ms-5" id="prev-quiz" style="display: none;">
+                    @if(isset($view_questions) && $view_questions == 1)
+                        View Previous
+                    @else
+                        Previous
+                    @endif
+                </button>
+            </div>
 
-                @if(isset($view_questions) && $view_questions == 1)
-                    <a href="{{ url('qa/quiz/'.$quizDetail->quizCategory->getSlugAttribute()) }}" class="btn btn-outline-primary ms-2">Back to Quizzes</a>
-                @endif
+            @if(!isset($view_questions) || $view_questions != 1)
+                <div>Timer</div>
+            @endif
+
+            @if(isset($view_questions) && $view_questions == 1)
+                <a href="{{ url('qa/quiz/'.$quizDetail->quizCategory->getSlugAttribute()) }}" class="btn btn-outline-primary ms-2">Back to Quizzes</a>
+            @endif
             </div>
 
             @if(!isset($view_questions) || $view_questions != 1)
@@ -162,13 +174,28 @@
 
             loadQuestion(questionIndex);
             // Initialize progress bar for first question
-            $('progress').val(progressValue);
+            updateProgressBar(questionIndex);
 
             function loadQuestion(index) {
                 $("#question-attempt").text(index + 1);
                 $("input[name='option']").prop('checked', false);
                 let question = questions[index];
                 $('#question-text').html(question.question);
+
+                // Show/hide Previous button based on current question index
+                if (index > 0) {
+                    $('#prev-quiz').show();
+                } else {
+                    $('#prev-quiz').hide();
+                }
+
+                // Show/hide Next button based on current question index
+                if (index >= totalQuestions - 1 && isviewQuestions != 1) {
+                    $('#nex-quiz').text('Finish Quiz');
+                } else {
+                    $('#nex-quiz').text(isviewQuestions == 1 ? 'View Next' : 'Next');
+                }
+
                 // Disable all radio buttons if in view mode
                 if(isviewQuestions == 1) {
                     $('input[name="option"]').prop('disabled', true);
@@ -206,43 +233,72 @@
                         optionDiv.hide();
                     }
                 }
+
+                // In quiz mode, if we have user answers for this question, pre-select the option
+                if (!isviewQuestions && userAnswers[index]) {
+                    const userAnswer = userAnswers[index].userAnswer;
+                    if (userAnswer) {
+                        $("input[name='option'][value='" + userAnswer + "']").prop('checked', true);
+                    }
+                }
             }
 
             $(document).on("click", "#nex-quiz", function() {
                 // find out the selected option
                 let selectedOption = $("input[name='option']:checked").val();
 
-                // If no option selected, alert the user
-                if (selectedOption) {
-                    attemptedQuestions++;
-                }
-                // compare with correct option
-                let correctOption = questions[questionIndex].correctOption.option;
-                let isCorrect = !correctOption || selectedOption == correctOption; // Consider it correct if no correct option exists
+                // In quiz mode, process the answer
+                if (!isviewQuestions) {
+                    // If this is a new question (not previously answered)
+                    if (!userAnswers[questionIndex]) {
+                        // If option selected, count as attempted
+                        if (selectedOption) {
+                            attemptedQuestions++;
+                        }
 
-                // Store user's answer
-                userAnswers.push({
-                    question: questions[questionIndex].question,
-                    userAnswer: selectedOption,
-                    correctAnswer: correctOption || 'No correct answer defined',
-                    isCorrect: isCorrect
-                });
+                        // Compare with correct option
+                        let correctOption = questions[questionIndex].correctOption.option;
+                        let isCorrect = !correctOption || selectedOption == correctOption; // Consider it correct if no correct option exists
 
-                if (isCorrect) {
-                    score++;
-                } else {
-                    wrongAnswers++;
+                        // Store user's answer
+                        userAnswers[questionIndex] = {
+                            question: questions[questionIndex].question,
+                            userAnswer: selectedOption,
+                            correctAnswer: correctOption || 'No correct answer defined',
+                            isCorrect: isCorrect
+                        };
+
+                        if (isCorrect) {
+                            score++;
+                        } else {
+                            wrongAnswers++;
+                        }
+                    }
                 }
 
                 questionIndex++;
 
-                if (questionIndex >= totalQuestions && isviewQuestions != 1) {
-                    showResults();
-                    return;
+                if (questionIndex >= totalQuestions) {
+                    if (isviewQuestions != 1) {
+                        showResults();
+                        return;
+                    } else {
+                        // In view mode, stay on the last question
+                        questionIndex = totalQuestions - 1;
+                    }
                 }
 
                 loadQuestion(questionIndex);
-                incrementProgressBar();
+                updateProgressBar(questionIndex);
+            });
+
+            // Handle Previous button click
+            $(document).on("click", "#prev-quiz", function() {
+                if (questionIndex > 0) {
+                    questionIndex--;
+                    loadQuestion(questionIndex);
+                    updateProgressBar(questionIndex);
+                }
             });
 
             function incrementProgressBar() {
@@ -253,6 +309,21 @@
                 if (currentValue < maxValue) {
                     progressBar.val(currentValue + progressValue);
                 }
+            }
+
+            function decrementProgressBar() {
+                let progressBar = $("progress");
+                let currentValue = progressBar.val();
+
+                if (currentValue > progressValue) {
+                    progressBar.val(currentValue - progressValue);
+                }
+            }
+
+            function updateProgressBar(index) {
+                // Set progress bar value based on current question index
+                let progressBar = $("progress");
+                progressBar.val((index + 1) * progressValue);
             }
 
             function showResults() {
