@@ -156,7 +156,7 @@ trait QuizOperationsTrait
     {
         $quizDetail = Quiz::where('id', $id)
             ->with(['questions' => function ($query) {
-                $query->select('id', 'quiz_id', 'question')
+                $query->select('id', 'quiz_id', 'question', 'explanation')
                     ->with(['options' => function ($optionQuery) {
                         $optionQuery->select('id', 'question_id', 'option', 'is_correct');
                     }]);

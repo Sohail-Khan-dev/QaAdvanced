@@ -32,6 +32,15 @@
                 <label class="form-check-label" for="option_radio4">Option 4</label>
             </div>
         </div>
+
+        <!-- Explanation section (hidden by default, shown in view mode) -->
+        <div id="explanation-section" class="mb-4 p-3 border-left border-success" style="display: none; border-left: 4px solid #28a745; background-color: rgba(40, 167, 69, 0.05);">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="text-success mb-0"><i class="fas fa-info-circle"></i> Explanation</h5>
+                <button id="toggle-explanation" class="btn btn-sm btn-outline-success" style="display: none;">Hide</button>
+            </div>
+            <div id="explanation-text">Explanation will appear here in view mode.</div>
+        </div>
         <div class="mb-4 d-flex justify-content-between align-items-center">
             <div>
                 <button class="btn btn-primary text-white" id="nex-quiz">
@@ -196,9 +205,24 @@
                     $('#nex-quiz').text(isviewQuestions == 1 ? 'View Next' : 'Next');
                 }
 
-                // Disable all radio buttons if in view mode
+                // Handle view mode specific behaviors
                 if(isviewQuestions == 1) {
+                    // Disable all radio buttons
                     $('input[name="option"]').prop('disabled', true);
+
+                    // Show and populate explanation
+                    if(question.explanation && question.explanation.trim() !== '') {
+                        $('#explanation-text').html(question.explanation);
+                        $('#explanation-section').show();
+                        $('#toggle-explanation').show().text('Hide');
+                    } else {
+                        $('#explanation-text').html('No explanation available for this question.');
+                        $('#explanation-section').show();
+                        $('#toggle-explanation').show().text('Hide');
+                    }
+                } else {
+                    // Hide explanation in quiz mode
+                    $('#explanation-section').hide();
                 }
 
                 for(let i = 1; i <= 4; i++) {
@@ -298,6 +322,20 @@
                     questionIndex--;
                     loadQuestion(questionIndex);
                     updateProgressBar(questionIndex);
+                }
+            });
+
+            // Handle toggle explanation button click
+            $(document).on("click", "#toggle-explanation", function() {
+                const $explanationText = $('#explanation-text');
+                const $button = $(this);
+
+                if ($explanationText.is(':visible')) {
+                    $explanationText.hide();
+                    $button.text('Show');
+                } else {
+                    $explanationText.show();
+                    $button.text('Hide');
                 }
             });
 
