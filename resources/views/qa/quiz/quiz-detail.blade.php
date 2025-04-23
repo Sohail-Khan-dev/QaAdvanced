@@ -8,8 +8,8 @@
             <div class="flex-grow-1 text-center">
                 <h3 class="mb-4">{{ $quizDetail->title ?? " No Title" }}</h3>
             </div>
-            <h6 class="mb-2"> 
-                <span id="question-attempt">1</span> of 
+            <h6 class="mb-2">
+                <span id="question-attempt">1</span> of
                 <span class="total-questions">{{ count($questions) }}</span>
             </h6>
         </div>
@@ -33,8 +33,23 @@
             </div>
         </div>
         <div class="mb-4 d-flex justify-content-between align-items-center">
-            <button class="btn btn-primary text-white" id="nex-quiz">Next</button>
-            <div>Timer</div>
+            <div>
+                <button class="btn btn-primary text-white" id="nex-quiz">
+                    @if(isset($view_questions) && $view_questions == 1)
+                        View Next
+                    @else
+                        Next
+                    @endif
+                </button>
+
+                @if(isset($view_questions) && $view_questions == 1)
+                    <a href="{{ url('qa/quiz/'.$quizDetail->quizCategory->getSlugAttribute()) }}" class="btn btn-outline-primary ms-2">Back to Quizzes</a>
+                @endif
+            </div>
+
+            @if(!isset($view_questions) || $view_questions != 1)
+                <div>Timer</div>
+            @endif
         </div>
         <div>
             <progress class="w-100" value="0" max="100"></progress>
@@ -123,8 +138,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(document).ready(function() {
+            var isviewQuestions = @json($view_questions);
             let questions = @json($quizDetail->questions);
-            console.log(questions);
             let questionIndex = 0;
             let totalQuestions = questions.length;
             if(totalQuestions == 0) {
@@ -154,14 +169,39 @@
                 $("input[name='option']").prop('checked', false);
                 let question = questions[index];
                 $('#question-text').html(question.question);
+                // Disable all radio buttons if in view mode
+                if(isviewQuestions == 1) {
+                    $('input[name="option"]').prop('disabled', true);
+                }
+
                 for(let i = 1; i <= 4; i++) {
                     let optionDiv = $('#option' + i);
                     if (i <= question.options.length && question.options[i-1].option !== null) {
                         optionDiv.show();
                         let optionLabel = optionDiv.find('label');
                         let optionInput = optionDiv.find('input');
-                        optionLabel.text(question.options[i-1].option);
-                        optionInput.val(question.options[i-1].option);
+
+                        // Store the original option text
+                        let optionText = question.options[i-1].option;
+
+                        // In view mode, add check/cross marks and apply styling
+                        if(isviewQuestions == 1) {
+                            // Add check mark for correct answers
+                            if(question.options[i-1].is_correct == 1) {
+                                optionLabel.html(`<span style="color: green; font-weight: bold;">✓ ${optionText}</span>`);
+                                optionInput.prop('checked', true);
+                                optionDiv.css('background-color', 'rgba(40, 167, 69, 0.1)');
+                            } else {
+                                // Add cross mark for incorrect answers
+                                optionLabel.html(`<span style="color: red;">✗ ${optionText}</span>`);
+                                optionDiv.css('background-color', 'rgba(220, 53, 69, 0.1)');
+                            }
+                        } else {
+                            // Normal mode - just show the option text
+                            optionLabel.text(optionText);
+                        }
+
+                        optionInput.val(optionText);
                     } else {
                         optionDiv.hide();
                     }
@@ -196,7 +236,7 @@
 
                 questionIndex++;
 
-                if (questionIndex >= totalQuestions) {
+                if (questionIndex >= totalQuestions && isviewQuestions != 1) {
                     showResults();
                     return;
                 }

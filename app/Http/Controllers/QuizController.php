@@ -42,12 +42,12 @@ class QuizController extends Controller
         // ]);
 
         // Create question - the HTML content will include image URLs
-        $question = Question::create($request->all());
-
-        return response()->json([
-            'message' => 'Question created successfully',
-            'question' => $question
-        ]);
+        // $question = Question::create($request->all());
+        return $this->createQuestion($request);
+        // return response()->json([
+        //     'message' => 'Question created successfully',
+        //     'question' => $question
+        // ]);
     }
 
     public function getQuestions()
@@ -83,9 +83,9 @@ class QuizController extends Controller
         return $this->deleteRecord(QuizCategory::class, $id, 'quizCategory');
     }
 
-    public function showQuizDetail($id)
+    public function showQuizDetail($id, $view_questions = null)
     {
-        return $this->getQuizDetails($id);
+        return $this->getQuizDetails($id, $view_questions);
     }
 
     public function updateQuestion(Request $request, Question $question)

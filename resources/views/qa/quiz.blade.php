@@ -74,7 +74,7 @@
                                                 <p class="card-text mb-3"> {{ $quiz->description }} </p>
                                                 <div class="d-flex flex-wrap gap-2 mt-auto">
                                                     <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">Solve Quiz</a>
-                                                    <a class="btn btn-outline-primary rounded-pill py-2 px-4" href="{{ route('quiz-detail', $quiz->id) }}">View Questions</a>
+                                                    <a class="btn btn-outline-primary rounded-pill py-2 px-4" href="{{ route('quiz-detail', [$quiz->id, true]) }}">View Questions</a>
                                                 </div>
                                             </div>
                                         </div>

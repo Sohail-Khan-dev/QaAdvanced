@@ -75,7 +75,7 @@ trait QuizOperationsTrait
     public function createQuestion(Request $request)
     {
         $request->validate([
-            'quiz' => 'required|exists:quizzes,id',
+            'quiz_id' => 'required|exists:quizzes,id',
             'question' => 'required|string',
             'explanation' => 'nullable|string',
             'options' => 'required|array',
@@ -85,7 +85,7 @@ trait QuizOperationsTrait
             'correct_option.required' => 'Please select a correct answer option'
         ]);
 
-        $quiz = Quiz::find($request->quiz);
+        $quiz = Quiz::find($request->quiz_id);
 
         $question = $quiz->questions()->create([
             'question' => $request->question,
@@ -105,6 +105,8 @@ trait QuizOperationsTrait
                 ];
             }
             $question->options()->createMany($options);
+        }else{
+            return response()->json(['error' => 'Options are required'], 422);
         }
 
         return response()->json([
@@ -150,7 +152,7 @@ trait QuizOperationsTrait
      * @param int $id
      * @return \Illuminate\View\View
      */
-    public function getQuizDetails($id)
+    public function getQuizDetails($id, $view_questions = null)
     {
         $quizDetail = Quiz::where('id', $id)
             ->with(['questions' => function ($query) {
@@ -160,14 +162,7 @@ trait QuizOperationsTrait
                     }]);
             }])
             ->first();
-
-        // if ($quizDetail) {
-        //     foreach ($quizDetail->questions as $question) {
-        //         $question->question = strip_tags($question->question);
-        //     }
-        // }
-
-        return view('qa.quiz.quiz-detail', compact('quizDetail'));
+        return view('qa.quiz.quiz-detail', compact('quizDetail', 'view_questions'));
     }
 }
 
