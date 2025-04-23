@@ -113,7 +113,7 @@
         </div>
 
         <div class="text-center">
-            <a href="{{ route('quiz-detail', $quizDetail->id) }}" class="btn btn-outline-primary me-2">Retry Quiz</a>
+            <a href="{{ route('quiz-detail', $quizDetail->id) }}" class="btn btn-outline-primary me-2" id="retry-quiz">Retry Quiz</a>
             <a href="{{ url('qa/quiz/'.$quizDetail->quizCategory->getSlugAttribute()) }}" class="btn btn-primary">Back to Quizzes</a>
         </div>
     </div>
@@ -146,6 +146,8 @@
             });
 
             loadQuestion(questionIndex);
+            // Initialize progress bar for first question
+            $('progress').val(progressValue);
 
             function loadQuestion(index) {
                 $("#question-attempt").text(index + 1);
@@ -200,9 +202,10 @@
                 }
 
                 loadQuestion(questionIndex);
+                incrementProgressBar();
             });
 
-            function incrimentProgressBar() {
+            function incrementProgressBar() {
                 let progressBar = $("progress");
                 let currentValue = progressBar.val();
                 let maxValue = progressBar.attr("max");
