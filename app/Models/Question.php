@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class Question extends Model
 {
@@ -17,15 +16,22 @@ class Question extends Model
         static::deleting(function($question) {
             // Extract image URLs from content
             preg_match_all('/<img[^>]+src="([^">]+)"/', $question->question, $matches);
-            
+
             if (!empty($matches[1])) {
                 foreach ($matches[1] as $imageUrl) {
-                    // Get path relative to storage
-                    $path = parse_url($imageUrl, PHP_URL_PATH);
-                    $path = str_replace('/storage/', '', $path);
-                    
-                    if (Storage::disk('public')->exists($path)) {
-                        Storage::disk('public')->delete($path);
+                    // Parse the URL to get the path
+                    $parsedUrl = parse_url($imageUrl);
+                    if (isset($parsedUrl['path'])) {
+                        $path = $parsedUrl['path'];
+
+                        // Convert URL path to filesystem path
+                        $relativePath = str_replace('/images/', 'images/', $path);
+                        $fullPath = public_path($relativePath);
+
+                        // Delete the file if it exists
+                        if (file_exists($fullPath)) {
+                            unlink($fullPath);
+                        }
                     }
                 }
             }

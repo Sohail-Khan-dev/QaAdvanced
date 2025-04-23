@@ -34,7 +34,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="quiz" class="form-label">Select Quiz</label>
-                    <select class="form-select" id="quiz" name="quiz" required>
+                    <select class="form-select" id="quiz" name="quiz_id" required>
                       <option value="">Select Quiz</option>
                        @foreach ($quizzes as $quiz)
                          <option value="{{$quiz->id}}"> {{ $quiz->title}} </option>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="question" class="form-label">Question</label>
-                  <div class="topic-html"></div>
+                  <div class="topic-html" id="question-html"></div>
                 </div>
                 <div class="mb-3">
                   <label for="mcqs" class="form-label">Option for above question</label>

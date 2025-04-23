@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class ImageUploadController extends Controller
 {
@@ -15,23 +15,31 @@ class ImageUploadController extends Controller
         }
 
         $file = $request->file('file');
-        $validatedData = $request->validate([
+        $request->validate([
             'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120' // 5MB max
         ]);
 
         try {
+            // Create questions directory if it doesn't exist
+            $directory = public_path('images/questions');
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+
             // Generate unique filename
-            $fileName = 'questions/' . Str::uuid() . '.' . $file->getClientOriginalExtension();
-            
-            // Store the file
-            $path = Storage::disk('public')->putFileAs('', $file, $fileName);
-            
+            $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $filePath = 'images/questions/' . $fileName;
+
+            // Move the file to the public directory
+            $file->move(public_path('images/questions'), $fileName);
+
+            // Return the URL that can be used in the frontend
             return response()->json([
-                'url' => Storage::disk('public')->url($fileName)
+                'url' => asset($filePath)
             ]);
         } catch (\Exception $e) {
-            \Log::error('Image upload failed: ' . $e->getMessage());
-            return response()->json(['error' => 'Upload failed'], 500);
+            Log::error('Image upload failed: ' . $e->getMessage());
+            return response()->json(['error' => 'Upload failed: ' . $e->getMessage()], 500);
         }
     }
 }

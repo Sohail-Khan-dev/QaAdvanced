@@ -9,7 +9,6 @@ use App\Traits\CrudOperations;
 use App\Traits\ApiResponseTrait;
 use App\Traits\QuizOperationsTrait;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class QuizController extends Controller
 {
@@ -43,7 +42,7 @@ class QuizController extends Controller
         // ]);
 
         // Create question - the HTML content will include image URLs
-        $question = Question::create($request);
+        $question = Question::create($request->all());
 
         return response()->json([
             'message' => 'Question created successfully',
@@ -107,11 +106,19 @@ class QuizController extends Controller
         // Delete images that are no longer used
         foreach ($oldUrls as $oldUrl) {
             if (!in_array($oldUrl, $newUrls)) {
-                $path = parse_url($oldUrl, PHP_URL_PATH);
-                $path = str_replace('/storage/', '', $path);
-                
-                if (Storage::disk('public')->exists($path)) {
-                    Storage::disk('public')->delete($path);
+                // Parse the URL to get the path
+                $parsedUrl = parse_url($oldUrl);
+                if (isset($parsedUrl['path'])) {
+                    $path = $parsedUrl['path'];
+
+                    // Convert URL path to filesystem path
+                    $relativePath = str_replace('/images/', 'images/', $path);
+                    $fullPath = public_path($relativePath);
+
+                    // Delete the file if it exists
+                    if (file_exists($fullPath)) {
+                        unlink($fullPath);
+                    }
                 }
             }
         }

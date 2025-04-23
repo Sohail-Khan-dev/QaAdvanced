@@ -197,54 +197,6 @@ $(document).ready(function () {
         resetHtmlContent();
         $(".save-btn").prop('disabled', false);
     });
-    $('.summernote').summernote({
-        height: 300,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture']],
-            ['view', ['fullscreen', 'codeview']]
-        ],
-        callbacks: {
-            onImageUpload: function(files) {
-                console.log("Here in the Image Upload ")
-                for(let i = 0; i < files.length; i++) {
-                    if(files[i].size > 5000000) { // 5MB limit
-                        alert('Image file is too large (max 5MB)');
-                        continue;
-                    }
-                    uploadImage(files[i], this);
-                }
-            }
-        }
-    });
-    function uploadImage(file, editor) {
-        const formData = new FormData();
-        formData.append('file', file);
-        
-        $.ajax({
-            url: '/upload-image',
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                $(editor).summernote('insertImage', response.url, function($image) {
-                    $image.addClass('img-fluid'); // Make image responsive
-                });
-            },
-            error: function(xhr) {
-                const error = xhr.responseJSON?.error || 'Upload failed';
-                alert('Image upload failed: ' + error);
-            }
-        });
-    }
     function getData(url, content = null, tableId = null) {
         if (content === null) return;
         $.ajax({
@@ -503,22 +455,70 @@ $(document).ready(function () {
         $('input[name="correct_option"]').prop('checked', false);
 
         // Reset quiz dropdown selects
-        $("#quiz").val("");
-        $("#quiz_category").val("");
+        $("#question-html").summernote('code', '');
+        $("#question-html").trigger('summernote.change'); // Force event trigger
+        // $("#quiz").val("");
+        // $("#quiz_category").val("");
     }
     function loadSummernote() {
         $('.topic-html').summernote({
             height: 300,
             minHeight: 200,
             placeholder: 'Write your detail here...',
+            callbacks: {
+                onImageUpload: function(files) {
+                    for(let i = 0; i < files.length; i++) {
+                        if(files[i].size > 5000000) { // 5MB limit
+                            alert('Image file is too large (max 5MB)');
+                            continue;
+                        }
+                        uploadImage(files[i], this);
+                    }
+                }
+            }
         });
         $('#question').summernote({
             height: 70,
             minHeight: 50,
             maxHeight: 300,
             placeholder: 'Write your question here...',
+            callbacks: {
+                onImageUpload: function(files) {
+                    console.log("Here in the Image Upload ");
+                    for(let i = 0; i < files.length; i++) {
+                        if(files[i].size > 5000000) { // 5MB limit
+                            alert('Image file is too large (max 5MB)');
+                            continue;
+                        }
+                        uploadImage(files[i], this);
+                    }
+                }
+            }
         });
-
+    }
+    function uploadImage(file, editor) {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        $.ajax({
+            url: '/upload-image',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                $(editor).summernote('insertImage', response.url, function($image) {
+                    $image.addClass('img-fluid'); // Make image responsive
+                });
+            },
+            error: function(xhr) {
+                const error = xhr.responseJSON?.error || 'Upload failed';
+                alert('Image upload failed: ' + error);
+            }
+        });
     }
     $("#category-id").on("change", function(){
         getTopicOfCategory($(this).val());

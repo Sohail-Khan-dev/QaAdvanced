@@ -14,6 +14,6 @@ yarn-error.log
 /.idea
 /.vscode
 # Remove or comment out these lines
-# /public/build
+/public/images
 # /public/hot
 
