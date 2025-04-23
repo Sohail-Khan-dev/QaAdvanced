@@ -114,7 +114,7 @@
 
         <div class="text-center">
             <a href="{{ route('quiz-detail', $quizDetail->id) }}" class="btn btn-outline-primary me-2">Retry Quiz</a>
-            <a href="{{ url('qa/quiz/'.$quizDetail->quizCategory->name) }}" class="btn btn-primary">Back to Quizzes</a>
+            <a href="{{ url('qa/quiz/'.$quizDetail->quizCategory->getSlugAttribute()) }}" class="btn btn-primary">Back to Quizzes</a>
         </div>
     </div>
 @endsection
