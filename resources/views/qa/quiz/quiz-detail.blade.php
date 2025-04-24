@@ -60,16 +60,13 @@
             </div>
 
             @if(!isset($view_questions) || $view_questions != 1)
-                <div>Timer</div>
-            @endif
-
-            @if(isset($view_questions) && $view_questions == 1)
-                <a href="{{ url('qa/quiz/'.$quizDetail->quizCategory->getSlugAttribute()) }}" class="btn btn-outline-primary ms-2">Back to Quizzes</a>
-            @endif
-            </div>
-
-            @if(!isset($view_questions) || $view_questions != 1)
-                <div>Timer</div>
+                <div class="text-end">
+                    <div class="d-flex flex-column align-items-end">
+                        <div>
+                            <span class="badge bg-primary">Quiz Time Remaining: <span id="quiz-timer">0:00</span></span>
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
         <div>
@@ -114,6 +111,14 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h6 class="mb-0">Score Percentage:</h6>
                             <span id="score-percentage" class="badge bg-primary">0%</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="mb-0">Time Spent:</h6>
+                            <span id="time-spent" class="badge bg-info">0:00</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">Total Quiz Time:</h6>
+                            <span id="quiz-total-time" class="badge bg-secondary">0:00</span>
                         </div>
                     </div>
                 </div>
@@ -175,15 +180,27 @@
             let wrongAnswers = 0;
             let userAnswers = [];
 
+            // Timer variables
+            const SECONDS_PER_QUESTION = 90; // 90 seconds (1.5 minutes) per question
+            const TOTAL_QUIZ_TIME = totalQuestions * SECONDS_PER_QUESTION; // Total quiz time in seconds
+            let quizTimeRemaining = TOTAL_QUIZ_TIME;
+            let totalSeconds = 0;
+            let timerInterval;
+
             // find the option that have is_correct = 1
             $.each(questions, function(index, question) {
                 let correctOption = question.options.find(option => option.is_correct == 1);
                 question.correctOption = correctOption || { option: null }; // Provide default if no correct option
             });
 
+            // Initialize the quiz
             loadQuestion(questionIndex);
-            // Initialize progress bar for first question
             updateProgressBar(questionIndex);
+
+            // Start timers if not in view mode
+            if (!isviewQuestions) {
+                startTimers();
+            }
 
             function loadQuestion(index) {
                 $("#question-attempt").text(index + 1);
@@ -304,6 +321,7 @@
 
                 if (questionIndex >= totalQuestions) {
                     if (isviewQuestions != 1) {
+                        stopTimers(); // Stop the timers when showing results
                         showResults();
                         return;
                     } else {
@@ -380,6 +398,8 @@
                 $("#correct-answers").text(score);
                 $("#wrong-answers").text(wrongAnswers);
                 $("#score-percentage").text(scorePercentage + "%");
+                $("#time-spent").text(formatTime(totalSeconds));
+                $("#quiz-total-time").text(formatTime(TOTAL_QUIZ_TIME));
 
                 // Update progress bars
                 let correctPercentage = (score / totalQuestions) * 100;
@@ -429,6 +449,55 @@
                         }
                     }
                 });
+            }
+
+            // Timer Functions
+            function startTimers() {
+                // Initialize quiz timer display
+                $('#quiz-timer').text(formatTime(quizTimeRemaining));
+
+                // Clear any existing interval
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                }
+
+                // Start the interval
+                timerInterval = setInterval(function() {
+                    // Update quiz timer
+                    quizTimeRemaining--;
+                    $('#quiz-timer').text(formatTime(quizTimeRemaining));
+
+                    // Keep track of total time for results
+                    totalSeconds++;
+
+                    // Check if quiz time is up
+                    if (quizTimeRemaining <= 0) {
+                        // Stop timer and show results
+                        stopTimers();
+                        showResults();
+                        return;
+                    }
+
+                    // Change color when time is running low (last 60 seconds)
+                    if (quizTimeRemaining <= 60) {
+                        $('#quiz-timer').parent().removeClass('bg-primary').addClass('bg-danger');
+                    } else {
+                        $('#quiz-timer').parent().removeClass('bg-danger').addClass('bg-primary');
+                    }
+                }, 1000);
+            }
+
+            function stopTimers() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }
+
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                return minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
             }
         });
     </script>

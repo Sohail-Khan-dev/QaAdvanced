@@ -14,10 +14,6 @@ class QuizController extends Controller
 {
     use CrudOperations, ApiResponseTrait, QuizOperationsTrait;
 
-    // public function index(Request $request)
-    // {
-    //     return view('qa.quiz');
-    // }
 
     public function storeQuiz(Request $request)
     {
@@ -35,19 +31,7 @@ class QuizController extends Controller
 
     public function storeQuestion(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'question' => 'required|string',
-        //     'quiz_id' => 'required|exists:quizzes,id',
-        //     'explanation' => 'nullable|string'
-        // ]);
-
-        // Create question - the HTML content will include image URLs
-        // $question = Question::create($request->all());
         return $this->createQuestion($request);
-        // return response()->json([
-        //     'message' => 'Question created successfully',
-        //     'question' => $question
-        // ]);
     }
 
     public function getQuestions()
