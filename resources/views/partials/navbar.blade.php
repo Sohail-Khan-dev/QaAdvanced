@@ -22,16 +22,6 @@
                     @endforeach
                 </div>
             </div>
-
-
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Automation</a>
-                <div class="dropdown-menu m-0">
-                    <a href={{ url("qa/automation") }} class="dropdown-item">Automation</a>
-                    <a href={{ url("qa/aitoollist") }} class="dropdown-item">AI Automation Tool list</a>
-                </div>
-            </div>
-
             <a href={{ url("qa/guide") }} class="nav-item nav-link">ISTQB Guide</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
@@ -42,6 +32,13 @@
                     @endforeach
                 </div>
             </div>
+            {{-- <div class="nav-item dropdown"> --}}
+                <a href={{ url("qa/automation") }}  class="nav-link nav-item">Automation</a>
+                {{-- <div class="dropdown-menu m-0">
+                    <a href={{ url("qa/automation") }} class="dropdown-item">Automation</a>
+                    <a href={{ url("qa/aitoollist") }} class="dropdown-item">AI Automation Tool list</a>
+                </div> --}}
+            {{-- </div> --}}
             <a href={{ url("qa/blog") }} class="nav-item nav-link">Blogs</a>
             <a href={{ url("qa/about") }} class="nav-item nav-link">About</a>
             <a href={{ url("qa/contact") }} class="nav-item nav-link">Contact Us</a>
