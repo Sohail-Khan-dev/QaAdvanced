@@ -16,4 +16,6 @@ yarn-error.log
 # Remove or comment out these lines
 /public/images
 # /public/hot
+*.md
+pythonAI/
 

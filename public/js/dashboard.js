@@ -59,8 +59,10 @@ $(document).ready(function () {
         
         $(this).find("#save-btn").prop('disabled', true);
         let question = $(this).find('.topic-html').summernote('code');
+        let explanation = $(this).find('#explanation').summernote('code');
         let formData = new FormData(this);
         formData.append('question', question);
+        formData.append('explanation', explanation);
         
         $.ajax({
             url: "/store-question",
@@ -450,7 +452,6 @@ $(document).ready(function () {
         $('.topic-html').trigger('summernote.change'); // Force event trigger
         $(".form-id").val("");
         $("div>input.option").val("");
-        $("#explanation").val("");
         // Reset radio buttons (uncheck all)
         $('input[name="correct_option"]').prop('checked', false);
 

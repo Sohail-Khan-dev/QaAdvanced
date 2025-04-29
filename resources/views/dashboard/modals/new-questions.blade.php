@@ -75,7 +75,8 @@
 
                 <div class="mb-3">
                     <label for="explanation" class="form-label">Explanation</label>
-                    <input type="textarea" class="form-control" id="explanation" name="explanation">
+                    <div class="topic-html" id="explanation" name="explanation"></div>
+                    {{-- <input type="textarea" class="form-control" id="explanation" name="explanation"> --}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
