@@ -11,6 +11,9 @@
         <!-- include summernote css -->
         <link href="summernote-bs5.css" rel="stylesheet">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <!-- Load jQuery first in the head to ensure it's available for all scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <style>
             @media (max-width: 768px) {
                 .top-buttons {
@@ -248,9 +251,10 @@
     @include('dashboard.modals.new-quiz-category')
 
     <!-- Load scripts in correct order -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- jQuery is already loaded in the head -->
     <script>
         window.topics = @json($topics); // Pass topics to a global variable
+        window.categories = @json($categories); // Pass categories to a global variable
     </script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <!-- Bootstrap Bundle (includes Popper.js) - must be after jQuery -->

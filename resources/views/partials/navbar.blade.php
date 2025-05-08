@@ -55,6 +55,9 @@
                             {{ __('Log Out') }}
                         </button>
                     </form>
+                    <div class="ms-3 d-flex gap-3" style="margin-top: 3px">
+                       <p style="margin-bottom:0rem;"> Welcome</p> <b> {{ Auth::user()->name }} </b>
+                    </div>
                 @else
                     <a href="{{ route('login') }}" class="btn btn-outline-primary rounded-pill py-2 px-4 me-2">Log in</a>
                     @if (Route::has('register'))

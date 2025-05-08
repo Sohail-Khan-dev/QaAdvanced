@@ -26,4 +26,23 @@ class QuizCategory extends Model
     {
         return Str::slug($this->name);
     }
+
+    /**
+     * Find a category by its slug
+     *
+     * @param string $slug
+     * @return QuizCategory|null
+     */
+    public static function findBySlug($slug)
+    {
+        $categories = self::all();
+
+        foreach ($categories as $category) {
+            if ($category->slug === $slug) {
+                return $category;
+            }
+        }
+
+        return null;
+    }
 }

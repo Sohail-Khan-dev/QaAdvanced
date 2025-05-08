@@ -1,7 +1,7 @@
 $(document).ready(function () {
     loadSummernote();
     // These topics, Categories and Blogs are used to store the data from the server and then use for dropdown and edit and delete.
-    let topics = window.topics; 
+    let topics = window.topics;
     let categories = null;
     let blogs = null;
     $(document).on("submit", "#new-blog-form", function (e) {
@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
     $(document).on("submit", "#new-question-form", function (e) {
         e.preventDefault();
-        
+
         // Check if any radio button is selected
         if (!$('input[name="correct_option"]:checked').val()) {
             // Create error message if it doesn't exist
@@ -44,26 +44,26 @@ $(document).ready(function () {
                   'Please select a correct answer option' +
                   '</div>').insertAfter('.mb-3:has(input[name="correct_option"])');
             }
-            
+
             // Scroll to error
             $('#correct-option-error')[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
+
             // Enable the save button again
             $(this).find("#save-btn").prop('disabled', false);
-            
+
             return false;
         }
-        
+
         // Remove error message if exists
         $('#correct-option-error').remove();
-        
+
         $(this).find("#save-btn").prop('disabled', true);
         let question = $(this).find('.topic-html').summernote('code');
         let explanation = $(this).find('#explanation').summernote('code');
         let formData = new FormData(this);
         formData.append('question', question);
         formData.append('explanation', explanation);
-        
+
         $.ajax({
             url: "/store-question",
             method: 'POST',
@@ -102,7 +102,7 @@ $(document).ready(function () {
         let slug = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
         formData.append('slug', slug);
-        
+
         $.ajax({
             url: url,
             method: 'POST',
@@ -115,9 +115,13 @@ $(document).ready(function () {
             success: function (response) {
                 $('#learning-category-modal').modal('hide');
                 resetHtmlContent();
-                categories = response.categories;
-                populateCategory(categories); // this function is written down in new-blog.blade.php file there it is handled 
-                refreshDataTable('learning-category-dataTable', response.categories, 'learning-category');
+                // Handle both possible response formats
+                categories = response.categories || response.categorys;
+                populateCategory(categories); // this function is written down in new-blog.blade.php file there it is handled
+
+                // Use the same categories variable for the data table
+                refreshDataTable('learning-category-dataTable', categories, 'learning-category');
+
             },
             error: function (xhr, status, error) {
                 console.error("Error:", xhr.responseText, status, error);
@@ -128,7 +132,7 @@ $(document).ready(function () {
     $(document).on("submit", "#topic-list-form", function (e) {
         e.preventDefault();
         $(this).find("#save-btn").prop('disabled', true);
-        const recordId = $(this).find('.form-id').val();        
+        const recordId = $(this).find('.form-id').val();
         const url = recordId ? `/update-topic` : '/store-topic';
         let slug = $(this).find('.topic-html').summernote('code');
         let formData = new FormData(this);
@@ -145,7 +149,7 @@ $(document).ready(function () {
             success: function (response) {
                 $('#topic-list-modal').modal('hide');
                 resetHtmlContent();
-                topics = response.topics; //  this is for the dropdown in the dashboard 
+                topics = response.topics; //  this is for the dropdown in the dashboard
                 refreshDataTable('topic-list-dataTable', response.topics, 'topic-list');
             },
             error: function (xhr, status, error) {
@@ -170,9 +174,14 @@ $(document).ready(function () {
             success : function(params) {
                 $('#quiz-category-modal').modal('hide');
                 resetHtmlContent();
-                refreshDataTable('quiz-category-dataTable',params.quizCategories,'quiz-category');
+                const categories = params.quizCategories || params.quizCategorys;
+                updateQuizCategoriesDropdown(categories);
+                refreshDataTable('quiz-category-dataTable', categories, 'quiz-category');
             },
-
+            error: function(xhr) {
+                console.error("Error:", xhr.responseText);
+                $("#quiz-category-form").find("#save-btn").prop('disabled', false);
+            }
         });
     });
     $(document).on("submit","#new-quiz-form", function(e){
@@ -192,13 +201,41 @@ $(document).ready(function () {
                 $('#new-quiz-modal').modal('hide');
                 resetHtmlContent();
                 refreshDataTable('quiz-dataTable', response.quizzes, 'quiz-content');
+            },
+            error: function(xhr) {
+                console.error("Error creating quiz:", xhr.responseText);
+                alert("Error creating quiz: " + xhr.responseText);
+                // Re-enable the save button
+                $("#new-quiz-form").find("#save-btn").prop('disabled', false);
             }
         });
     });
-    $(document).on("click", "#new-blog-btn, #new-question-btn, #topic-list-btn, #learning-category-btn, #new-quiz-btn, #new-quiz-category-btn", function () {
+    $(document).on("click", "#new-blog-btn, #new-question-btn, #topic-list-btn, #learning-category-btn, #new-quiz-category-btn", function () {
         resetHtmlContent();
         $(".save-btn").prop('disabled', false);
     });
+
+    // // Separate handler for new quiz button to fetch latest quiz categories
+    // $(document).on("click", "#new-quiz-btn", function () {
+    //     resetHtmlContent();
+    //     $(".save-btn").prop('disabled', false);
+
+    //     // Fetch the latest quiz categories before showing the modal
+    //     $.ajax({
+    //         url: '/get-quiz-categories',
+    //         method: 'GET',
+    //         dataType: 'json',
+    //         headers: {
+    //             'Accept': 'application/json'
+    //         },
+    //         success: function (data) {
+    //             updateQuizCategoriesDropdown(data);
+    //         },
+    //         error: function (xhr) {
+    //             console.error("Error fetching quiz categories:", xhr.responseText);
+    //         }
+    //     });
+    // });
     function getData(url, content = null, tableId = null) {
         if (content === null) return;
         $.ajax({
@@ -247,7 +284,7 @@ $(document).ready(function () {
         }
         else if($(this).closest("#blog-content").length){
             let blog = blogs.find(blog => blog.id == id);
-            
+
             $("#blog-id").val(blog.id);
             $("#category-id").val(blog.learning_category_id).change();
             $("#title").val(blog.title);
@@ -286,9 +323,10 @@ $(document).ready(function () {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response){
-                    categories = response.categories;
+                    // Handle both possible response formats
+                    categories = response.categories || response.categorys;
                     populateCategory(categories);
-                    refreshDataTable('learning-category-dataTable', response.categories, 'learning-category');
+                    refreshDataTable('learning-category-dataTable', categories, 'learning-category');
                 },
                 error: function(xhr) {
                     console.error("Error deleting category:", xhr.responseText);
@@ -340,7 +378,10 @@ $(document).ready(function () {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response){
-                    refreshDataTable('quiz-category-dataTable', response, 'quiz-category');
+                    // Handle both possible response formats
+                    const categories = response.quizCategories || response.quizCategorys || response.quizCategory;
+                    updateQuizCategoriesDropdown(categories);
+                    refreshDataTable('quiz-category-dataTable', categories, 'quiz-category');
                 },
                 error: function(xhr) {
                     console.error("Error deleting quiz category:", xhr.responseText);
@@ -369,8 +410,8 @@ $(document).ready(function () {
     });
     function refreshDataTable(tableId, data, content){
         var table = $("#" + tableId).DataTable().clear().draw();
-        
-        data.forEach(function (item) {
+
+        $.each(data, function (index, item) {
             if (content === "blog-content") {
                 var textContent =item.content; // Extract text content only
                 var words = textContent.split(/\s+/).slice(0, 25).join(' '); // Get first 25 words
@@ -384,7 +425,7 @@ $(document).ready(function () {
             } else if (content === "question-content") {
                 // get few words of the options
                 var optionsText = item.options.map(option => option.option ? option.option.split(/\s+/).slice(0, 10).join(' ') : "N/A").join(" | ");
-                // Read only few wrods of the question . 
+                // Read only few wrods of the question .
                 var questionText = item.question.split(/\s+/).slice(0, 20).join(' ');
                  // Extract correct answer text(s)
                 var correctAnswers = item.options.filter(option => option.is_correct == 1) // Filter correct answers
@@ -418,11 +459,12 @@ $(document).ready(function () {
                     getActionbuttons(item.id)
                 ]).draw(false);
             } else if (content == 'quiz-category'){
+                // Add quiz category to the table
                 table.row.add([
                     item.id,
                     item.name,
                     getActionbuttons(item.id),
-                ]).draw(false);   
+                ]).draw(false);
             }
         });
     }
@@ -485,7 +527,7 @@ $(document).ready(function () {
             placeholder: 'Write your question here...',
             callbacks: {
                 onImageUpload: function(files) {
-                    console.log("Here in the Image Upload ");
+                    // Handle image upload
                     for(let i = 0; i < files.length; i++) {
                         if(files[i].size > 5000000) { // 5MB limit
                             alert('Image file is too large (max 5MB)');
@@ -497,10 +539,27 @@ $(document).ready(function () {
             }
         });
     }
+    // Function to update the quiz categories dropdown
+    function updateQuizCategoriesDropdown(quizCategories) {
+        // Get the quiz category dropdown
+        const dropdown = $('#quiz-category-id');
+
+        // If dropdown exists, update it
+        if (dropdown.length) {
+            // Clear existing options except the first one (Select Quiz Category)
+            dropdown.find('option:not(:first)').remove();
+
+            // Add new options
+            $.each(quizCategories, function(index, category) {
+                dropdown.append(new Option(category.name, category.id));
+            });
+        }
+    }
+
     function uploadImage(file, editor) {
         const formData = new FormData();
         formData.append('file', file);
-        
+
         $.ajax({
             url: '/upload-image',
             method: 'POST',
@@ -531,7 +590,7 @@ $(document).ready(function () {
     function populateCategory(categories){
         let select = $(".category-id");
         select.find('option:not(:first)').remove();
-        $.each(categories,function(_,category){
+        $.each(categories, function(index, category){
            let option = `<option value="${category.id}">${category.name}</option>`;
            select.append(option);
         });

@@ -56,6 +56,30 @@
                     @endif
                 </h1>
             </div>
+
+            <!-- Category Filter -->
+            <div class="row mb-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="category-filter" class="form-label fw-bold">Filter by Category:</label>
+                        <select class="form-select" id="category-filter">
+                            <option value="">All Categories</option>
+                            @php $quiz_categories = \App\Models\QuizCategory::all(); @endphp
+                            @foreach ($quiz_categories as $cat)
+                                <option value="{{ $cat->id }}" {{ isset($category) && $category->id == $cat->id ? 'selected' : '' }}>
+                                    {{ $cat->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                @if(isset($category))
+                <div class="col-md-6 col-lg-4 d-flex align-items-end">
+                    <a href="{{ url('qa/quiz') }}" class="btn btn-outline-primary">View All Quizzes</a>
+                </div>
+                @endif
+            </div>
             <div class="d-flex gap-4">
                 <div class="panel-heading fadeInUp wow" data-wow-delay=".5s">
                     <p class="heading-text d-flex justify-content-center mb-n5 p-4 h4">@if(isset($category)) {{ $category->name }} @endif topic based tests - foundation level
@@ -128,3 +152,26 @@
     </div>
 
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        // Handle category filter change
+        $('#category-filter').on('change', function() {
+            const categoryId = $(this).val();
+
+            if (categoryId) {
+                // Find the category in the dropdown
+                const categoryName = $('#category-filter option:selected').text().trim();
+                const categorySlug = categoryName.toLowerCase().replace(/\s+/g, '-');
+
+                // Redirect to the category-specific page
+                window.location.href = "{{ url('qa/quiz') }}/" + categorySlug;
+            } else {
+                // Redirect to the main quiz page
+                window.location.href = "{{ url('qa/quiz') }}";
+            }
+        });
+    });
+</script>
+@endpush

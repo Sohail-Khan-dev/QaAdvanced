@@ -76,7 +76,7 @@
     <div class="hidden" id="otp-login" role="tabpanel" aria-labelledby="otp-tab">
         <form method="POST" action="{{ route('otp.send') }}">
             @csrf
-
+            log this is otp
             <!-- Email Address -->
             <div>
                 <x-input-label for="email_otp" :value="__('Email')" />
@@ -102,32 +102,19 @@
     </div>
 
     @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Simple tab functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('[data-tabs-target]');
-            const tabContents = document.querySelectorAll('[role="tabpanel"]');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const target = document.querySelector(tab.dataset.tabsTarget);
-
-                    tabContents.forEach(tabContent => {
-                        tabContent.classList.add('hidden');
-                    });
-
-                    tabs.forEach(t => {
-                        t.classList.remove('active', 'border-indigo-600', 'text-indigo-600');
-                        t.classList.add('border-transparent');
-                        t.setAttribute('aria-selected', false);
-                    });
-
-                    tab.classList.add('active', 'border-indigo-600', 'text-indigo-600');
-                    tab.classList.remove('border-transparent');
-                    tab.setAttribute('aria-selected', true);
-
-                    target.classList.remove('hidden');
-                });
+        $(function() {
+            $('[data-tabs-target]').on('click', function() {
+                var targetId = $(this).data('tabs-target');
+                // Hide all tab panels
+                $('[role="tabpanel"]').addClass('hidden');
+                // Remove active classes from all tabs
+                $('[data-tabs-target]').removeClass('active border-indigo-600 text-indigo-600').addClass('border-transparent').attr('aria-selected', 'false');
+                // Show the selected tab panel
+                $(targetId).removeClass('hidden');
+                // Set the clicked tab as active
+                $(this).addClass('active border-indigo-600 text-indigo-600').removeClass('border-transparent').attr('aria-selected', 'true');
             });
         });
     </script>

@@ -5,27 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\TopicName;
 use App\Models\BlogDetails;
 use App\Models\QuizCategory;
+use App\Models\Quiz;
 
 class CommonController extends Controller
 {
     //
     public function showView($routeName, $route2Name = null , $id = null){
-        if($routeName === 'quiz' && $route2Name){
-            // The $route2Name is a slug, we need to find the category by converting the slug back to a name
-            // Since we don't have a slug column, we need to find all categories and filter by slug
-            $categories = QuizCategory::all();
-            $category = null;
+        if($routeName === 'quiz'){
+            if($route2Name){
+                // Find the category by slug using the new method
+                $category = QuizCategory::findBySlug($route2Name);
 
-            foreach($categories as $cat) {
-                if($cat->slug === $route2Name) {
-                    $category = $cat;
-                    break;
+                if($category) {
+                    $quizzes = collect($category->getQuizes($category->id));
+                    return view('qa/' . $routeName, compact('category', 'quizzes'));
                 }
-            }
-
-            if($category) {
-                $quizzes = collect($category->getQuizes($category->id));
-                return view('qa/' . $routeName, compact('category', 'quizzes'));
+            } else {
+                // If no category is specified, show all quizzes
+                $quizzes = collect(Quiz::all());
+                return view('qa/' . $routeName, compact('quizzes'));
             }
         }
         if($id){
