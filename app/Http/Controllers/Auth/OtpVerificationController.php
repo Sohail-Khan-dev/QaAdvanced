@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OtpMail;
 
 class OtpVerificationController extends Controller
 {
@@ -49,9 +51,16 @@ class OtpVerificationController extends Controller
 
         $user = User::where('email', $request->email)->first();
         $otp = $user->generateOtp();
-
-        // Send OTP via notification
-        $user->notify(new OtpNotification($otp));
+       
+        // Send OTP via email
+        try {
+            Mail::raw("Your OTP code is: " . $otp, function($message) use ($user) {
+                $message->to($user->email)
+                    ->subject('Your OTP Verification Code');
+            });
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => 'Failed to send OTP email. Please try again.']);
+        }
 
         return Redirect::route('otp.verify')
             ->with('status', 'We have sent an OTP to your email address.')

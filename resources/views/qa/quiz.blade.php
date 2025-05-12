@@ -58,7 +58,7 @@
             </div>
 
             <!-- Category Filter -->
-            <div class="row mb-4">
+            <!-- <div class="row mb-4">
                 <div class="col-md-6 col-lg-4">
                     <div class="form-group">
                         <label for="category-filter" class="form-label fw-bold">Filter by Category:</label>
@@ -79,7 +79,7 @@
                     <a href="{{ url('qa/quiz') }}" class="btn btn-outline-primary">View All Quizzes</a>
                 </div>
                 @endif
-            </div>
+            </div> -->
             <div class="d-flex gap-4">
                 <div class="panel-heading fadeInUp wow" data-wow-delay=".5s">
                     <p class="heading-text d-flex justify-content-center mb-n5 p-4 h4">@if(isset($category)) {{ $category->name }} @endif topic based tests - foundation level
@@ -109,8 +109,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- // below we will show the last tried Qizzes -->
                 <div class="panel-heading fadeInUp wow m-0" data-wow-delay=".5s">
-                    <p class="heading-text d-flex justify-content-center p-4 h4">ISTQB full mock tests - foundation level </p>
+                    <p class="heading-text d-flex justify-content-center p-4 h4">Last tried Quizzes </p>
                     <div class="quiz-links w-100 bg-white rounded-bottom">
                         <div class="d-flex align-items-center justify-content-evenly pt-2">
                             <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
