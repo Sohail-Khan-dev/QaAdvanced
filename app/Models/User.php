@@ -101,6 +101,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get the quiz attempts for the user.
+     */
+    public function quizAttempts()
+    {
+        return $this->hasMany(QuizAttempt::class);
+    }
+
+    /**
      * Get the role that owns the user.
      */
     public function role()

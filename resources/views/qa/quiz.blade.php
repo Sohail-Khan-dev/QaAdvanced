@@ -109,42 +109,40 @@
                         </div>
                     </div>
                 </div>
-                <!-- // below we will show the last tried Qizzes -->
-                <div class="panel-heading fadeInUp wow m-0" data-wow-delay=".5s">
-                    <p class="heading-text d-flex justify-content-center p-4 h4">Last tried Quizzes </p>
+                <!-- Recent Quiz Attempts -->
+                <div class="panel-heading fadeInUp wow m-0 w-100 h-100 " data-wow-delay=".5s">
+                    <p class="heading-text d-flex justify-content-center p-4 h5">Last Attempted Quizzes</p>
                     <div class="quiz-links w-100 bg-white rounded-bottom">
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-evenly pt-2">
-                            <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-green"></i><i class="fa fa-unlock-alt fa-stack-1x fa-inverse"></i></span>
-                            <a href="mode.php?tn=17" class="style2"> ISTQB foundation level test 1</a>
-                        </div>
+                        @guest
+                            <div class="p-4 text-center">
+                                <p>Please <a href="{{ route('login') }}" class="text-primary">login</a> to see your quiz attempts.</p>
+                            </div>
+                        @else
+                            @if(isset($recentAttempts) && $recentAttempts->count() > 0)
+                                @foreach($recentAttempts as $attempt)
+                                    <div class="d-flex align-items-center justify-content-between pt-2 px-3">
+                                        <div class="d-flex align-items-center">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                                <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            <a href="{{ route('quiz-detail', $attempt->quiz_id) }}" class="ms-2">
+                                                {{ $attempt->quiz->title }}
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-primary">Score: {{ $attempt->score }}</span> </br>
+                                            <small class="text-muted ms-2">{{ $attempt->completed_at->diffForHumans(['parts' => 1, 'short' => true]) }}</small>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="p-4 text-center">
+                                    <p>You haven't attempted any quizzes yet.</p>
+                                    <p>Start solving quizzes to see your attempts here!</p>
+                                </div>
+                            @endif
+                        @endguest
                     </div>
                 </div>
             </div>

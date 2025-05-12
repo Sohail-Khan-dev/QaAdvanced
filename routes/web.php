@@ -72,6 +72,10 @@ Route::get('/get-questions', [QuizController::class, 'getQuestions']);
 Route::post('/store-question', [QuizController::class, 'storeQuestion']);
 Route::delete('/delete-question/{id}', [QuizController::class, 'deleteQuestion']);
 
+// Quiz Attempt Routes
+Route::post('/store-quiz-attempt', [QuizController::class, 'storeQuizAttempt'])->middleware('auth');
+Route::get('/user-quiz-attempts/{limit?}', [QuizController::class, 'getUserQuizAttempts'])->middleware('auth');
+
 // QA Routes
 Route::get('/qa/quiz-detail/{id}/{view_questions?}', [QuizController::class, 'showQuizDetail'])->name('quiz-detail');
 Route::get('/qa/{routeName}/{route2Name?}/{id?}', [CommonController::class, 'showView']);

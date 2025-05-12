@@ -291,6 +291,7 @@
                 // In quiz mode, process the answer
                 if (!isviewQuestions) {
                     // If this is a new question (not previously answered)
+
                     if (!userAnswers[questionIndex]) {
                         // If option selected, count as attempted
                         if (selectedOption) {
@@ -298,16 +299,8 @@
                         }
 
                         // Compare with correct option
-                        let correctOption = questions[questionIndex].correctOption.option;
-                        let isCorrect = !correctOption || selectedOption == correctOption; // Consider it correct if no correct option exists
-
-                        // Store user's answer
-                        userAnswers[questionIndex] = {
-                            question: questions[questionIndex].question,
-                            userAnswer: selectedOption,
-                            correctAnswer: correctOption || 'No correct answer defined',
-                            isCorrect: isCorrect
-                        };
+                        var correctOption = questions[questionIndex].correctOption.option;
+                        var isCorrect = !correctOption || selectedOption == correctOption; // Consider it correct if no correct option exists
 
                         if (isCorrect) {
                             score++;
@@ -315,6 +308,13 @@
                             wrongAnswers++;
                         }
                     }
+                        // Store user's answer
+                        userAnswers[questionIndex] = {
+                            question: questions[questionIndex].question,
+                            userAnswer: selectedOption,
+                            correctAnswer: correctOption || 'No correct answer defined',
+                            isCorrect: isCorrect
+                        };
                 }
 
                 questionIndex++;
@@ -424,6 +424,27 @@
 
                 // Create pie chart
                 createResultsChart(score, wrongAnswers, totalQuestions - attemptedQuestions);
+
+                // Store quiz attempt in database if user is logged in
+                @auth
+                    $.ajax({
+                        url: '/store-quiz-attempt',
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        data: {
+                            quiz_id: {{ $quizDetail->id }},
+                            score: score
+                        },
+                        success: function(response) {
+                            console.log('Quiz attempt saved successfully');
+                        },
+                        error: function(xhr) {
+                            console.error('Error saving quiz attempt:', xhr.responseText);
+                        }
+                    });
+                @endauth
             }
 
             function createResultsChart(correct, wrong, unattempted) {

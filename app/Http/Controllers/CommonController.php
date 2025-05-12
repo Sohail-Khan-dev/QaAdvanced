@@ -6,24 +6,32 @@ use App\Models\TopicName;
 use App\Models\BlogDetails;
 use App\Models\QuizCategory;
 use App\Models\Quiz;
+use App\Models\QuizAttempt;
+use Illuminate\Support\Facades\Auth;
 
 class CommonController extends Controller
 {
     //
     public function showView($routeName, $route2Name = null , $id = null){
         if($routeName === 'quiz'){
+            // Get recent quiz attempts if user is logged in
+            $recentAttempts = null;
+            if (Auth::check()) {
+                $recentAttempts = QuizAttempt::getRecentAttemptsByUser(Auth::id());
+            }
+
             if($route2Name){
                 // Find the category by slug using the new method
                 $category = QuizCategory::findBySlug($route2Name);
 
                 if($category) {
                     $quizzes = collect($category->getQuizes($category->id));
-                    return view('qa/' . $routeName, compact('category', 'quizzes'));
+                    return view('qa/' . $routeName, compact('category', 'quizzes', 'recentAttempts'));
                 }
             } else {
                 // If no category is specified, show all quizzes
                 $quizzes = collect(Quiz::all());
-                return view('qa/' . $routeName, compact('quizzes'));
+                return view('qa/' . $routeName, compact('quizzes', 'recentAttempts'));
             }
         }
         if($id){
