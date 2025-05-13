@@ -113,7 +113,7 @@
                 <h4 class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">ISTQB Quizzes</h4>
                 <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">ISTQB Quizzes Preparation</h1>
             </div>
-            <div class="class-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
+            {{-- <div class="class-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="class-item bg-white rounded wow fadeInUp" data-wow-delay="0.1s">
                     <div class="class-img rounded-top">
                         <img src="img/class-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
@@ -169,7 +169,7 @@
                         <a class="btn btn-primary rounded-pill text-white py-2 px-4" href="#">Explore Details</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- Dance Class End -->
