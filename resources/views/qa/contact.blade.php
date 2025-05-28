@@ -120,7 +120,7 @@
                     <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="rounded h-100 pb-3">
                             <iframe class="rounded w-100" style="height: 500px;"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.793630989168!2d73.07283937619167!3d33.63904213943465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df950035bca841%3A0x6490e1ce06004910!2sRabi%20center%202%20Rb2!5e1!3m2!1sen!2s!4v1747132512204!5m2!1sen!2s"
+                                src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d130312.61228171784!2d74.17309380764812!3d31.46482481880627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x391901b4f5bd7785%3A0xe94730b26ed322f9!2sIOI%20Technologies%20Private%20Limited%2C%20Plot%2038%2C%20Sector%20B-1%20Block%20A%201%20Block%2017%20Township%2C%20Lahore%2C%20Punjab%2054000%2C%20Pakistan!3m2!1d31.4648512!2d74.25549509999999!5e1!3m2!1sen!2s!4v1748427351809!5m2!1sen!2s"
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
