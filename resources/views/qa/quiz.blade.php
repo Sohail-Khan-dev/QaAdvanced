@@ -81,7 +81,7 @@
                 @endif
             </div> -->
             <div class="d-flex gap-4">
-                <div class="panel-heading fadeInUp wow" data-wow-delay=".5s">
+                <div class="panel-heading fadeInUp wow" data-wow-delay=".5s" style="width: 70%;">
                     <p class="heading-text d-flex justify-content-center mb-n5 p-4 h4">@if(isset($category)) {{ $category->name }} @endif topic based tests - foundation level
                     </p>
                     <div class="pt-5 w-100 bg-white mt-5 rounded-bottom quiz-parent-div">
