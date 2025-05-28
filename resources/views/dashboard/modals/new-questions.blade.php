@@ -89,37 +89,29 @@
     var quizzes = @json($quizzes);
 
     // Log quizzes data to verify it's loaded correctly
-    console.log("Quizzes data loaded:", quizzes.length, "quizzes available");
+    // console.log("Quizzes data loaded:", quizzes.length, "quizzes available");
 
     // Use jQuery when document is ready
     $(document).ready(function() {
-            // Function called when the modal is shown
-            $('#new-question-modal').on('show.bs.modal', function (event) {
-                console.log("Modal is being shown, resetting form...");
-                // Reset the form completely
-                $('#new-question-form')[0].reset();
-                resetQuizForm();
-            });
-
             // Also reset when the button is clicked
             $('#new-question-btn').on('click', function() {
-                console.log("New question button clicked, will reset form...");
+                // console.log("New question button clicked, will reset form...");
                 setTimeout(function() {
-                    $('#new-question-form')[0].reset();
+                    // $('#new-question-form')[0].reset();
                     resetQuizForm();
                 }, 100); // Small delay to ensure modal is open
             });
 
             // Handle category selection change
             $("#quiz_category").on("change", function(){
-                console.log("Category selection changed");
+                // console.log("Category selection changed");
 
                 // Clear any previous error messages
                 $("#correct-option-error").remove();
 
                 // Get the selected category ID
                 const categoryId = $(this).val();
-                console.log("Selected category ID:", categoryId);
+                // console.log("Selected category ID:", categoryId);
 
                 // Reset the quiz dropdown completely
                 $("#quiz").empty();
@@ -143,12 +135,12 @@
             function getQuizzes(category_id){
                 // If no category is selected, return
                 if (!category_id) {
-                    console.log("No category ID provided");
+                    // console.log("No category ID provided");
                     return;
                 }
 
-                console.log("Filtering quizzes for category ID:", category_id);
-                console.log("Total quizzes before filtering:", quizzes.length);
+                // console.log("Filtering quizzes for category ID:", category_id);
+                // console.log("Total quizzes before filtering:", quizzes.length);
 
                 // Filter quizzes by category ID
                 let filteredQuizzes = quizzes.filter(quiz => {
@@ -156,19 +148,19 @@
                     return String(quiz.quiz_category_id) === String(category_id);
                 });
 
-                console.log("Filtered quizzes:", filteredQuizzes.length);
+                // console.log("Filtered quizzes:", filteredQuizzes.length);
 
                 // Log the first few filtered quizzes for debugging
-                if (filteredQuizzes.length > 0) {
-                    console.log("Sample filtered quizzes:", filteredQuizzes.slice(0, 3));
-                }
+                // if (filteredQuizzes.length > 0) {
+                    // console.log("Sample filtered quizzes:", filteredQuizzes.slice(0, 3));
+                // }
 
                 populateQuizDropdown(filteredQuizzes);
             }
 
             // Function to populate quiz dropdown
             function populateQuizDropdown(filteredQuizzes) {
-                console.log("Populating quiz dropdown with", filteredQuizzes.length, "quizzes");
+                // console.log("Populating quiz dropdown with", filteredQuizzes.length, "quizzes");
 
                 let $select = $('#quiz');
                 // We don't need to remove options as we've already emptied the dropdown
@@ -177,11 +169,11 @@
                 if (filteredQuizzes.length === 0) {
                     // No quizzes found for this category
                     $select.append('<option value="" disabled>No quizzes found for this category</option>');
-                    console.log("No quizzes found for this category");
+                    // console.log("No quizzes found for this category");
                 } else {
                     // Add each quiz to the dropdown
                     $.each(filteredQuizzes, function(_, quiz) {
-                        console.log("Adding quiz:", quiz.id, quiz.title);
+                        // console.log("Adding quiz:", quiz.id, quiz.title);
                         let option = `<option value="${quiz.id}">${quiz.title}</option>`;
                         $select.append(option);
                     });
@@ -190,19 +182,7 @@
 
             // Function to reset the quiz form
             function resetQuizForm() {
-                console.log("Executing resetQuizForm...");
-
-                // Reset the entire form first
-                document.getElementById('new-question-form').reset();
-
-                // Reset category dropdown - force it to be empty
-                $("#quiz_category").val("").trigger('change');
-
-                // Reset and disable quiz dropdown
-                $("#quiz").empty(); // Remove all options
-                $("#quiz").append('<option value="">Select a category first</option>'); // Add default option
-                $("#quiz").prop("disabled", true);
-
+                
                 // Reset question and options using Summernote if available
                 if (typeof $('.topic-html').summernote === 'function') {
                     $('.topic-html').each(function() {
@@ -210,16 +190,16 @@
                     });
                 }
 
-                // Reset option inputs explicitly
-                $("input.option").val("");
+                // // Reset option inputs explicitly
+                // $("input.option").val("");
 
-                // Uncheck all radio buttons
-                $('input[name="correct_option"]').prop('checked', false);
+                // // Uncheck all radio buttons
+                // $('input[name="correct_option"]').prop('checked', false);
 
-                // Remove any error messages
-                $("#correct-option-error").remove();
+                // // Remove any error messages
+                // $("#correct-option-error").remove();
 
-                console.log("Form reset complete");
+                // console.log("Form reset complete");
             }
     });
   </script>

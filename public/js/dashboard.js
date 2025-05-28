@@ -500,8 +500,7 @@ $(document).ready(function () {
         // Reset quiz dropdown selects
         $("#question-html").summernote('code', '');
         $("#question-html").trigger('summernote.change'); // Force event trigger
-        // $("#quiz").val("");
-        // $("#quiz_category").val("");
+       
     }
     function loadSummernote() {
         $('.topic-html').summernote({
