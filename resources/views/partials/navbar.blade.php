@@ -23,7 +23,8 @@
                 </div>
             </div>
             <a href={{ url("qa/guide") }} class="nav-item nav-link">ISTQB Guide</a>
-            <div class="nav-item dropdown">
+            {{-- Below Code will be Used in Futrue if we add Multiple categories  --}}
+            {{-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Learn</a>
                 <div class="dropdown-menu m-0">
                     @php $categories = \App\Models\LearningCategory::all(); @endphp
@@ -31,7 +32,8 @@
                     <a href="{{ route('show.syllabus', ['category_id' => $category->id]) }}" class="dropdown-item">{{ $category->name }}</a>
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
+            <a href="{{ route('show.syllabus', ['category_id' => $category->id]) }}" class="nav-link nav-item"> ISTQB Topics</a>
             {{-- <div class="nav-item dropdown"> --}}
                 <a href={{ url("qa/automation") }}  class="nav-link nav-item">Automation</a>
                 {{-- <div class="dropdown-menu m-0">

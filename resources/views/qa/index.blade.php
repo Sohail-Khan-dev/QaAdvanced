@@ -185,7 +185,7 @@
                         <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">ISTQB Topic-Wise Quizzes</h1>
                     </div>
                     <div class="col-xl-4 text-xl-end pb-3 wow fadeInUp" data-wow-delay="0.3s">
-                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">View All Quizzes</a>
+                        <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('qa/quiz') }}">View All Quizzes</a>
                     </div>
                 </div>
             </div>
@@ -206,7 +206,7 @@
                 <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Our Latest News & Articles</h1>
             </div>
             <div class="blog-carousel owl-carousel pt-5 wow fadeInUp" data-wow-delay="0.1s">
-                <H1>Comming Soon . . .</H1>
+                <H1>Coming Soon . . .</H1>
             </div>
         </div>
     </div>
