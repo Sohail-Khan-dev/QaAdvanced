@@ -19,9 +19,7 @@
         
         <!-- Critical CSS -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/common.css') }}" rel="stylesheet">
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+        @vite(['resources/css/style.css', 'resources/css/common.css', 'resources/css/app.css'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0 bg-gray-100">
@@ -39,7 +37,7 @@
         <!-- Critical JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @vite('resources/js/app.js')
     </body>
 </html>
 

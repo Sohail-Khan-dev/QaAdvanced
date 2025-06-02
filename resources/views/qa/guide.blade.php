@@ -2,7 +2,7 @@
 
 @section('title', 'ISTQB Guide')
 @push('styles')
-    <link href="{{ asset('css/guide.css') }}" rel="stylesheet">
+    @vite(['resources/css/guide.css'])
 @endpush
 @section('content')
 <style>

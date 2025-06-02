@@ -7,7 +7,8 @@
     <!-- Bootstrap CSS -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="css/dashboard.css">
+        
+        @vite(['resources/css/dashboard.css'])
         <!-- include summernote css -->
         <link href="summernote-bs5.css" rel="stylesheet">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -260,7 +261,7 @@
     <!-- Bootstrap Bundle (includes Popper.js) - must be after jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="summernote-bs5.js"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    @vite(['resources/js/dashboard.js'])
 
 </body>
 

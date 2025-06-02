@@ -1,20 +1,59 @@
 {
-  "_vendor-CHnKZQaP.js": {
-    "file": "assets/vendor-CHnKZQaP.js",
-    "name": "vendor"
+  "public/img/breadcrumb.jpg": {
+    "file": "assets/breadcrumb-CSUJTM8T.jpg",
+    "src": "public/img/breadcrumb.jpg"
+  },
+  "public/img/counter-bg.jpg": {
+    "file": "assets/counter-bg-BaRgfiDV.jpg",
+    "src": "public/img/counter-bg.jpg"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Djfxt-kV.css",
+    "file": "assets/app-4fGqZnlV.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/css/common.css": {
+    "file": "assets/common-BTd2X4bI.css",
+    "src": "resources/css/common.css",
+    "isEntry": true
+  },
+  "resources/css/dashboard.css": {
+    "file": "assets/dashboard-DENanmHQ.css",
+    "src": "resources/css/dashboard.css",
+    "isEntry": true
+  },
+  "resources/css/guide.css": {
+    "file": "assets/guide-DHSaN9P7.css",
+    "src": "resources/css/guide.css",
+    "isEntry": true
+  },
+  "resources/css/style.css": {
+    "file": "assets/style-D9UxBFuI.css",
+    "src": "resources/css/style.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
-    "file": "assets/app-DILnsqc8.js",
+    "file": "assets/app-CITVGEXT.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true,
-    "imports": [
-      "_vendor-CHnKZQaP.js"
-    ]
+    "isEntry": true
+  },
+  "resources/js/dashboard.js": {
+    "file": "assets/dashboard-Br6mVTgs.js",
+    "name": "dashboard",
+    "src": "resources/js/dashboard.js",
+    "isEntry": true
+  },
+  "resources/js/lazy-load.js": {
+    "file": "assets/lazy-load-B9zVXFTc.js",
+    "name": "lazy-load",
+    "src": "resources/js/lazy-load.js",
+    "isEntry": true
+  },
+  "resources/js/main.js": {
+    "file": "assets/main-D8QBkXzH.js",
+    "name": "main",
+    "src": "resources/js/main.js",
+    "isEntry": true
   }
 }

@@ -369,7 +369,7 @@
 .bg-breadcrumb {
 	position: relative;
 	padding: 145px 0 50px 0;
-    background: linear-gradient(rgba(17, 139, 0, 0.1), #d1dbe7), url(../img/breadcrumb.jpg);
+    background: linear-gradient(rgba(17, 139, 0, 0.1), #d1dbe7), url('@/../../public/img/breadcrumb.jpg');
     background-position: center top;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -388,7 +388,7 @@
 /*** Counter Facts Start ***/
 
 .counter-facts {
-    background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, 0.7)), url(../img/counter-bg.jpg);
+    background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, 0.7)), url('@/../../public/img/counter-bg.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;

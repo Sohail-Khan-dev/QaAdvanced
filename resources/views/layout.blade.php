@@ -11,8 +11,8 @@
     <!-- Preload critical assets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="{{ asset('css/bootstrap.min.css') }}" as="style">
-    <link rel="preload" href="{{ asset('css/style.css') }}" as="style">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+   
 
     <!-- Google Web Fonts - Load asynchronously -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -22,8 +22,7 @@
 
     <!-- Critical CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/common.css') }}" rel="stylesheet">
+    @vite(['resources/css/style.css', 'resources/css/common.css'])
 
     <!-- Non-critical CSS - Load asynchronously -->
     <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet" media="print" onload="this.media='all'">
@@ -70,8 +69,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Lazy Loading Script -->
-    <script src="{{ asset('js/lazy-load.js') }}"></script>
-
+    @vite(['resources/js/lazy-load.js'])
     <!-- Non-critical JavaScript - Load deferred -->
     <script src="{{ asset('lib/wow/wow.min.js') }}" defer></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}" defer></script>
@@ -82,7 +80,7 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer></script>
 
     <!-- Template Javascript -->
-    <script src="{{ asset('js/main.js') }}?v=1.0.1"></script>
+    @vite(['resources/js/main.js'])
 
     @stack('scripts')
 </body>
