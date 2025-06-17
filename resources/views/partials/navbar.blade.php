@@ -33,7 +33,7 @@
                     @endforeach
                 </div>
             </div> --}}
-            <a href="{{ route('show.syllabus', ['category_id' => $category->id]) }}" class="nav-link nav-item"> ISTQB Topics</a>
+            <a href="{{ route('show.syllabus', ['category_id' => 1]) }}" class="nav-link nav-item"> ISTQB Topics</a>
             {{-- <div class="nav-item dropdown"> --}}
                 <a href={{ url("qa/automation") }}  class="nav-link nav-item">Automation</a>
                 {{-- <div class="dropdown-menu m-0">
