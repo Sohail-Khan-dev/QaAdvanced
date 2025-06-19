@@ -18,4 +18,4 @@ yarn-error.log
 # /public/hot
 *.md
 pythonAI/
-
+/.env.production
