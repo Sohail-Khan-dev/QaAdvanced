@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/css/dashboard.css',
 
                 'resources/js/app.js',
+                'resources/js/firebase.js',
                 'resources/js/main.js',
                 'resources/js/dashboard.js',
                 'resources/js/lazy-load.js'
