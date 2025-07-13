@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(\App\Providers\TelescopeServiceProvider::class);
         }
+        $this->app->register(\App\Providers\FirebaseServiceProvider::class);
     }
 
     public function boot(): void
