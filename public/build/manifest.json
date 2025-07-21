@@ -44,6 +44,12 @@
     "src": "resources/js/dashboard.js",
     "isEntry": true
   },
+  "resources/js/firebase.js": {
+    "file": "assets/firebase-DBjyakBA.js",
+    "name": "firebase",
+    "src": "resources/js/firebase.js",
+    "isEntry": true
+  },
   "resources/js/lazy-load.js": {
     "file": "assets/lazy-load-B9zVXFTc.js",
     "name": "lazy-load",

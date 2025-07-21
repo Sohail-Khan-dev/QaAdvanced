@@ -40,6 +40,11 @@
 
     <!-- Include the stack for styles -->
     @stack('styles')
+
+    <!-- Firebase Config for JS -->
+    <script>
+        window.firebaseConfig = @json($firebaseConfig ?? []);
+    </script>
 </head>
 
 <body>
@@ -69,7 +74,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Lazy Loading Script -->
-    @vite(['resources/js/lazy-load.js'])
+    @vite(['resources/js/lazy-load.js', 'resources/js/firebase.js'])
     <!-- Non-critical JavaScript - Load deferred -->
     <script src="{{ asset('lib/wow/wow.min.js') }}" defer></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}" defer></script>
