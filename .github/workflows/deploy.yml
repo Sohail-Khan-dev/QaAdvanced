@@ -20,7 +20,7 @@ jobs:
 
       - name: Copy files via SSH (rsync)
         run: |
-          rsync -avz --delete --exclude='.env' --exclude='storage/' --exclude='vendor/' ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:public_html/
+          rsync -avz -e "ssh -p 21098" --delete --exclude='.env' --exclude='storage/' --exclude='vendor/' ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:public_html/
 
       # - name: Copy files via FTP (fallback)
       #   uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -38,7 +38,7 @@ jobs:
 
       - name: Run Laravel deployment commands over SSH
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} '
+          ssh -p 21098 -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} '
             cd public_html &&
             composer install --no-interaction --prefer-dist --optimize-autoloader &&
             php artisan migrate --force &&
