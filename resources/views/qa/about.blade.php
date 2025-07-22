@@ -6,7 +6,7 @@
     <!-- Header Start -->
     <div class="container-fluid mt-5">
         <div class="container text-center py-5 mt-5" style="max-width: 900px;">
-            <h3 class="text-primary display-3 wow fadeInDown mt-3" data-wow-delay="0.1s">About Us testing</h1>
+            <h3 class="text-primary display-3 wow fadeInDown mt-3" data-wow-delay="0.1s">About Us</h1>
                
         </div>
     </div>
