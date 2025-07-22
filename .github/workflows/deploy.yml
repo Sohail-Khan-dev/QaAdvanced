@@ -1,4 +1,4 @@
-name: Deploy to Namecheap Shared Hosting (SSH)
+name: Deploy to Namecheap Production Server
 
 on:
   push:
@@ -8,33 +8,54 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Set up SSH key
-        uses: webfactory/ssh-agent@v0.9.0
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Add SSH host to known_hosts
+      - name: Deploy to Server
+        env:
+          SERVER_IP: 198.54.125.67
+          SERVER_USER: qaadxdgj
+          REPO_URL: git@github.com:Sohail-Khan-dev/QaAdvanced.git 
         run: |
-          ssh-keyscan -p 21098 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Copy files via SSH (rsync)
-        run: |
-          rsync -avz -e "ssh -p 21098" --delete \
-            --exclude='.env' --exclude='storage/' --exclude='vendor/' \
-            ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:public_html/
-
-      - name: Run Laravel deployment commands over SSH
-        run: |
-          ssh -p 21098 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} '
-            cd public_html &&
-            composer install --no-interaction --prefer-dist --optimize-autoloader &&
-            php artisan migrate --force &&
-            php artisan config:cache &&
-            php artisan route:cache &&
-            php artisan view:cache &&
-            php artisan storage:link
-          '
+            ssh -p 21098 -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
+            SITE_ROOT=$(find /home/$SERVER_USER -name public_html -type d)
+            if [ -z "$SITE_ROOT" ]; then
+                echo "Could not find public_html directory"
+                exit 1
+            fi
+            cd "$SITE_ROOT"
+            if [ ! -d .git ]; then
+                echo "Initializing git repository"
+                git init
+                git remote add origin $REPO_URL
+                git fetch origin
+                git checkout -b master origin/master
+            else
+                git pull origin master
+            fi
+            if [ -f composer.json ]; then
+                if ! command -v composer &> /dev/null; then
+                    echo "Composer is not installed. Please install it on the server."
+                    exit 1
+                fi
+                composer install --no-interaction --prefer-dist --optimize-autoloader
+            fi
+            if [ -f artisan ]; then
+                php artisan migrate --force
+                php artisan config:clear
+                php artisan cache:clear
+                php artisan view:clear
+                php artisan route:clear
+                php artisan optimize
+                chmod -R 775 storage bootstrap/cache
+                chown -R $USER:www-data storage bootstrap/cache
+            fi
+            exit
+            EOF
