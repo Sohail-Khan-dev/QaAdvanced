@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .endpoint {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">API Test Page</h1>
+        
+        <div class="endpoint">
+            <h3>Test API</h3>
+            <p>A simple test endpoint to verify the API is working</p>
+            <button class="btn btn-primary mb-3" onclick="testApi()">Test API</button>
+            <pre id="test-result">Results will appear here...</pre>
+        </div>
+        
+        <div class="endpoint">
+            <h3>Get All Quiz Categories</h3>
+            <p>Returns all quiz categories</p>
+            <button class="btn btn-primary mb-3" onclick="getCategories()">Get Categories</button>
+            <pre id="categories-result">Results will appear here...</pre>
+        </div>
+        
+        <div class="endpoint">
+            <h3>Get Quiz Category by ID</h3>
+            <p>Returns a specific quiz category by ID</p>
+            <div class="input-group mb-3">
+                <input type="number" id="category-id" class="form-control" placeholder="Category ID" value="1">
+                <button class="btn btn-primary" onclick="getCategoryById()">Get Category</button>
+            </div>
+            <pre id="category-result">Results will appear here...</pre>
+        </div>
+        
+        <div class="endpoint">
+            <h3>Get Quizzes by Category</h3>
+            <p>Returns all quizzes belonging to a specific category</p>
+            <div class="input-group mb-3">
+                <input type="number" id="quizzes-category-id" class="form-control" placeholder="Category ID" value="1">
+                <button class="btn btn-primary" onclick="getQuizzesByCategory()">Get Quizzes</button>
+            </div>
+            <pre id="quizzes-result">Results will appear here...</pre>
+        </div>
+        
+        <div class="endpoint">
+            <h3>Get Quiz Detail</h3>
+            <p>Returns detailed information about a quiz, including questions and options</p>
+            <div class="input-group mb-3">
+                <input type="number" id="quiz-id" class="form-control" placeholder="Quiz ID" value="1">
+                <button class="btn btn-primary" onclick="getQuizDetail()">Get Quiz Detail</button>
+            </div>
+            <pre id="quiz-detail-result">Results will appear here...</pre>
+        </div>
+    </div>
+    
+    <script>
+        async function fetchApi(url) {
+            try {
+                const response = await fetch(url);
+                return await response.json();
+            } catch (error) {
+                return { error: error.message };
+            }
+        }
+        
+        async function testApi() {
+            const result = await fetchApi('/api/test');
+            document.getElementById('test-result').textContent = JSON.stringify(result, null, 2);
+        }
+        
+        async function getCategories() {
+            const result = await fetchApi('/api/quiz/categories');
+            document.getElementById('categories-result').textContent = JSON.stringify(result, null, 2);
+        }
+        
+        async function getCategoryById() {
+            const id = document.getElementById('category-id').value;
+            const result = await fetchApi(`/api/quiz/category/${id}`);
+            document.getElementById('category-result').textContent = JSON.stringify(result, null, 2);
+        }
+        
+        async function getQuizzesByCategory() {
+            const id = document.getElementById('quizzes-category-id').value;
+            const result = await fetchApi(`/api/quiz/category/${id}/quizzes`);
+            document.getElementById('quizzes-result').textContent = JSON.stringify(result, null, 2);
+        }
+        
+        async function getQuizDetail() {
+            const id = document.getElementById('quiz-id').value;
+            const result = await fetchApi(`/api/quiz/detail/${id}`);
+            document.getElementById('quiz-detail-result').textContent = JSON.stringify(result, null, 2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+{
+    "categories": [
+      {
+        "name": "AI Tools for Image",
+        "tools": [
+          {
+            "name": "DALL·E",
+            "url": "https://openai.com/dall-e"
+          },
+          {
+            "name": "RunwayML",
+            "url": "https://runwayml.com/"
+          },
+          {
+            "name": "Deep Dream Generator",
+            "url": "https://deepdreamgenerator.com/"
+          },
+          {
+            "name": "Artbreeder",
+            "url": "https://www.artbreeder.com/"
+          }
+          
+        ]
+      },
+      {
+        "name": "AI Tools for Video",
+        "tools": [
+          {
+            "name": "Synthesia",
+            "url": "https://www.synthesia.io/"
+          },
+          {
+            "name": "Pictory",
+            "url": "https://pictory.ai/"
+          },
+          {
+            "name": "Lumen5",
+            "url": "https://www.lumen5.com/"
+          },
+          {
+            "name": "Magisto",
+            "url": "https://www.magisto.com/"
+          }
+        ]
+      },
+      {
+        "name": "AI Tools for Code",
+        "tools": [
+          {
+            "name": "GitHub Copilot",
+            "url": "https://github.com/features/copilot"
+          },
+          {
+            "name": "Tabnine",
+            "url": "https://www.tabnine.com/"
+          },
+          {
+            "name": "Kite",
+            "url": "https://www.kite.com/"
+          }
+        ]
+      },
+      {
+        "name": "AI Tools for Text",
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "url": "https://openai.com/chatgpt"
+          },
+          {
+            "name": "Jasper AI",
+            "url": "https://www.jasper.ai/"
+          },
+          {
+            "name": "Grammarly",
+            "url": "https://www.grammarly.com/"
+          },
+          {
+            "name": "Writesonic",
+            "url": "https://writesonic.com/"
+          }
+        ]
+      },
+      {
+        "name": "AI Tools for Audio",
+        "tools": [
+          {
+            "name": "Descript",
+            "url": "https://www.descript.com/"
+          },
+          {
+            "name": "AIVA",
+            "url": "https://www.aiva.ai/"
+          },
+          {
+            "name": "Murf.ai",
+            "url": "https://murf.ai/"
+          },
+          {
+            "name": "Voicery",
+            "url": "https://www.voicery.com/"
+          }
+        ]
+      },
+      {
+        "name": "AI Tools for Data Analysis",
+        "tools": [
+          {
+            "name": "Tableau",
+            "url": "https://www.tableau.com/"
+          },
+          {
+            "name": "Power BI",
+            "url": "https://powerbi.microsoft.com/"
+          },
+          {
+            "name": "DataRobot",
+            "url": "https://www.datarobot.com/"
+          },
+          {
+            "name": "RapidMiner",
+            "url": "https://rapidminer.com/"
+          }
+        ]
+      },
+      {
+        "name": "AI Tools for Chatbots",
+        "tools": [
+          {
+            "name": "Dialogflow",
+            "url": "https://cloud.google.com/dialogflow"
+          },
+          {
+            "name": "Rasa",
+            "url": "https://rasa.com/"
+          },
+          {
+            "name": "Botpress",
+            "url": "https://botpress.com/"
+          },
+          {
+            "name": "ManyChat",
+            "url": "https://manychat.com/"
+          }
+        ]
+      }
+    ]
+  }
+  

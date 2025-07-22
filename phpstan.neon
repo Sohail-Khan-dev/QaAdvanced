@@ -1,0 +1,18 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+
+    # Level 10 is the highest level
+    level: 5
+
+#    ignoreErrors:
+#        - '#PHPDoc tag @var#'
+        - '#Relation [a-zA-Z0-9\\_]+ is not found in [a-zA-Z0-9\\_]+ model#'
+#
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php

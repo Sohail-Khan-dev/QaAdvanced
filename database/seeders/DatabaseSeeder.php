@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlogDetails;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,11 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Run the role seeder first
+        $this->call(RoleSeeder::class);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Then create the admin user
+        $this->call(AdminSeeder::class);
+
+        // Uncomment these if needed
+        // $this->call([
+        //     LearningCategorySeeder::class,
+        //     TopicNameSeeder::class,
+        // ]);
     }
 }
