@@ -12,33 +12,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-
       - name: Set up SSH key
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Add SSH host to known_hosts
+        run: |
+          ssh-keyscan -p 21098 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
       - name: Copy files via SSH (rsync)
         run: |
-          rsync -avz -e "ssh -p 21098" --delete --exclude='.env' --exclude='storage/' --exclude='vendor/' ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:public_html/
-
-      # - name: Copy files via FTP (fallback)
-      #   uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      #   with:
-      #     server: ${{ secrets.FTP_HOST }}
-      #     username: ${{ secrets.FTP_USERNAME }}
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: ./
-      #     server-dir: public_html/
-      #     exclude: |
-      #       **/.git*
-      #       **/.env
-      #       storage/**
-      #       vendor/**
+          rsync -avz -e "ssh -p 21098" --delete \
+            --exclude='.env' --exclude='storage/' --exclude='vendor/' \
+            ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:public_html/
 
       - name: Run Laravel deployment commands over SSH
         run: |
-          ssh -p 21098 -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} '
+          ssh -p 21098 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} '
             cd public_html &&
             composer install --no-interaction --prefer-dist --optimize-autoloader &&
             php artisan migrate --force &&
@@ -47,6 +38,3 @@ jobs:
             php artisan view:cache &&
             php artisan storage:link
           '
-
-      # NOTE: With FTP-only deployment, you cannot run remote Laravel commands automatically.
-      # You must run `composer install`, `php artisan migrate`, etc. manually on the server (via SSH or a web interface) after deployment.
