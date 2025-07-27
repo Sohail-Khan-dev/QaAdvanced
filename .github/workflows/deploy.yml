@@ -16,9 +16,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Add SSH host key to known_hosts
-        run: |
-          echo "[qaadvance.com]:21098 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJBbPJw6Wp+w5qrr0yr5mChpySH68TGHnVpRM/iT34rm6OkH8ybb8P3l4f1Rcx5vNKsDDea4v44AHE90qVt3TtY4Zxj1Bb1V4SoUP/DOeJerovKngF1Ccvv7aRYlbSOWeBRrm5rNevLAtgkJjiP+O91oD8ngs3iNF9Nzm0qToGVO35kpdQy/V4OoSioejj22H/UVEZpEBFfGOy131ayXpz5VIYuAkq3p0baQW6bUm2VUtwRM1myxWvfw+0KC8M3wAvfX9TWzrE/FsJd6BNf8i2gk+ZMrRU5AXBE7AtJQY5I0UCW9O+/kGmbt8+jWi3308QBeireX1qXfciN9g95u7bAdstcJASSDRIFMMvxp6isG9+G1II1vSq3hiXJBBWUsOiDZhgaOWqb7eCwHsqI6+m+l54zNcFuJgSDPH/Cb+pnzcvwoK2z5fV97ikZF6ELWQ16p37p4bLjg5SUwkH/pvdkIBTl70XKn4BkShr3zojzCjIijVL0Ijq+eYXbuHi29k=" >> ~/.ssh/known_hosts
       
       - name: Add SSH host to known_hosts
         run: |
