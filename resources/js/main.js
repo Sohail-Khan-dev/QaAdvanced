@@ -1,6 +1,14 @@
 (function ($) {
     "use strict";
 
+    // Firebase Analytics - will be available globally
+    let firebaseAnalytics = null;
+
+    // Initialize Firebase Analytics when available
+    if (window.firebaseAnalytics) {
+        firebaseAnalytics = window.firebaseAnalytics;
+    }
+
     // Spinner
     var spinner = function () {
         setTimeout(function () {
@@ -14,6 +22,56 @@
     
     // Initiate the wowjs
     new WOW().init();
+
+    // Track page load completion
+    $(window).on('load', function() {
+        if (firebaseAnalytics) {
+            firebaseAnalytics.trackUserEngagement('page_load_complete', {
+                page_name: window.location.pathname,
+                load_time: performance.now()
+            });
+        }
+    });
+
+    // Track button clicks globally
+    $(document).on('click', 'button, .btn, a[href]', function() {
+        if (firebaseAnalytics) {
+            const buttonText = $(this).text().trim() || $(this).attr('class') || 'unknown_button';
+            const buttonType = $(this).is('button') ? 'button' : ($(this).is('a') ? 'link' : 'element');
+            firebaseAnalytics.trackButtonClick(buttonText, window.location.pathname);
+            firebaseAnalytics.trackUserEngagement('button_interaction', {
+                button_text: buttonText,
+                button_type: buttonType,
+                page_name: window.location.pathname
+            });
+        }
+    });
+
+    // Track form submissions
+    $(document).on('submit', 'form', function() {
+        if (firebaseAnalytics) {
+            const formName = $(this).attr('id') || $(this).attr('class') || 'unknown_form';
+            firebaseAnalytics.trackFormSubmission(formName, true);
+        }
+    });
+
+    // Track scroll depth
+    let maxScrollDepth = 0;
+    $(window).on('scroll', function() {
+        const scrollTop = $(window).scrollTop();
+        const docHeight = $(document).height() - $(window).height();
+        const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+        
+        if (scrollPercent > maxScrollDepth && firebaseAnalytics) {
+            maxScrollDepth = scrollPercent;
+            if (scrollPercent % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+                firebaseAnalytics.trackUserEngagement('scroll_depth', {
+                    depth_percentage: scrollPercent,
+                    page_name: window.location.pathname
+                });
+            }
+        }
+    });
 
 
     // Sticky Navbar

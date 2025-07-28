@@ -47,7 +47,13 @@
     </script>
 </head>
 
-<body>
+<body
+    @auth
+        data-auth-user="true"
+        data-user-id="{{ auth()->id() }}"
+        data-user-role="{{ auth()->user()->role->name ?? 'user' }}"
+    @endauth
+>
     <!-- Spinner Start -->
     @include('partials.spinner')
     <!-- Spinner End -->
@@ -73,8 +79,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Lazy Loading Script -->
-    @vite(['resources/js/lazy-load.js', 'resources/js/firebase.js'])
+    <!-- Analytics Scripts -->
+    @vite(['resources/js/lazy-load.js', 'resources/js/firebase.js', 'resources/js/quiz-analytics.js', 'resources/js/blog-analytics.js', 'resources/js/user-analytics.js'])
     <!-- Non-critical JavaScript - Load deferred -->
     <script src="{{ asset('lib/wow/wow.min.js') }}" defer></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}" defer></script>

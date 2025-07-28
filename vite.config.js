@@ -15,7 +15,10 @@ export default defineConfig({
                 'resources/js/firebase.js',
                 'resources/js/main.js',
                 'resources/js/dashboard.js',
-                'resources/js/lazy-load.js'
+                'resources/js/lazy-load.js',
+                'resources/js/quiz-analytics.js',
+                'resources/js/blog-analytics.js',
+                'resources/js/user-analytics.js'
             ],
             refresh: true,
         }),

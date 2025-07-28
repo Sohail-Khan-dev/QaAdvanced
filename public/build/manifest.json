@@ -38,14 +38,20 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/js/blog-analytics.js": {
+    "file": "assets/blog-analytics-qj7jVAVx.js",
+    "name": "blog-analytics",
+    "src": "resources/js/blog-analytics.js",
+    "isEntry": true
+  },
   "resources/js/dashboard.js": {
-    "file": "assets/dashboard-Br6mVTgs.js",
+    "file": "assets/dashboard-B22Mia3z.js",
     "name": "dashboard",
     "src": "resources/js/dashboard.js",
     "isEntry": true
   },
   "resources/js/firebase.js": {
-    "file": "assets/firebase-DBjyakBA.js",
+    "file": "assets/firebase-Cvr7F6iz.js",
     "name": "firebase",
     "src": "resources/js/firebase.js",
     "isEntry": true
@@ -57,9 +63,21 @@
     "isEntry": true
   },
   "resources/js/main.js": {
-    "file": "assets/main-D8QBkXzH.js",
+    "file": "assets/main-DsTMCtv-.js",
     "name": "main",
     "src": "resources/js/main.js",
+    "isEntry": true
+  },
+  "resources/js/quiz-analytics.js": {
+    "file": "assets/quiz-analytics-DUtKmu33.js",
+    "name": "quiz-analytics",
+    "src": "resources/js/quiz-analytics.js",
+    "isEntry": true
+  },
+  "resources/js/user-analytics.js": {
+    "file": "assets/user-analytics-CZuvKE0E.js",
+    "name": "user-analytics",
+    "src": "resources/js/user-analytics.js",
     "isEntry": true
   }
 }
