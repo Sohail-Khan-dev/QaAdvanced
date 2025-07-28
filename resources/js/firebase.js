@@ -4,14 +4,39 @@ import { getAnalytics, logEvent, setUserId, setUserProperties } from "firebase/a
 // Initialize Firebase from environment variables
 const firebaseConfig = window.firebaseConfig || {};
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// Check if Firebase configuration is complete
+const requiredConfigKeys = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'];
+const missingKeys = requiredConfigKeys.filter(key => !firebaseConfig[key]);
+
+if (missingKeys.length > 0) {
+    console.warn('Firebase configuration is incomplete. Missing keys:', missingKeys);
+    console.warn('Please check your environment variables: FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN, FIREBASE_PROJECT_ID, FIREBASE_STORAGE_BUCKET, FIREBASE_MESSAGING_SENDER_ID, FIREBASE_APP_ID');
+}
+
+// Initialize Firebase only if we have the minimum required configuration
+let app = null;
+let analytics = null;
+
+try {
+    if (firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId) {
+        app = initializeApp(firebaseConfig);
+        analytics = getAnalytics(app);
+        console.log('Firebase Analytics initialized successfully');
+    } else {
+        console.warn('Firebase Analytics not initialized - missing required configuration');
+    }
+} catch (error) {
+    console.error('Error initializing Firebase:', error);
+}
 
 // Firebase Analytics Event Tracking Functions
 export const firebaseAnalytics = {
     // Track page views
     trackPageView: (pageName, pageTitle = null) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - page view not tracked');
+            return;
+        }
         try {
             logEvent(analytics, 'page_view', {
                 page_title: pageTitle || pageName,
@@ -26,6 +51,10 @@ export const firebaseAnalytics = {
 
     // Track user engagement events
     trackUserEngagement: (eventName, parameters = {}) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - user engagement not tracked');
+            return;
+        }
         try {
             logEvent(analytics, eventName, {
                 ...parameters,
@@ -40,6 +69,10 @@ export const firebaseAnalytics = {
 
     // Track button clicks
     trackButtonClick: (buttonName, pageName = null) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - button click not tracked');
+            return;
+        }
         try {
             logEvent(analytics, 'button_click', {
                 button_name: buttonName,
@@ -54,6 +87,10 @@ export const firebaseAnalytics = {
 
     // Track form submissions
     trackFormSubmission: (formName, success = true, errorMessage = null) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - form submission not tracked');
+            return;
+        }
         try {
             logEvent(analytics, 'form_submission', {
                 form_name: formName,
@@ -69,6 +106,10 @@ export const firebaseAnalytics = {
 
     // Track quiz interactions
     trackQuizInteraction: (action, quizId = null, questionId = null, category = null) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - quiz interaction not tracked');
+            return;
+        }
         try {
             logEvent(analytics, 'quiz_interaction', {
                 action: action,
@@ -85,6 +126,10 @@ export const firebaseAnalytics = {
 
     // Track blog interactions
     trackBlogInteraction: (action, blogId = null, category = null) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - blog interaction not tracked');
+            return;
+        }
         try {
             logEvent(analytics, 'blog_interaction', {
                 action: action,
@@ -100,6 +145,10 @@ export const firebaseAnalytics = {
 
     // Track search events
     trackSearch: (searchTerm, resultsCount = 0) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - search not tracked');
+            return;
+        }
         try {
             logEvent(analytics, 'search', {
                 search_term: searchTerm,
@@ -114,6 +163,10 @@ export const firebaseAnalytics = {
 
     // Track navigation events
     trackNavigation: (fromPage, toPage, navigationType = 'link') => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - navigation not tracked');
+            return;
+        }
         try {
             logEvent(analytics, 'navigation', {
                 from_page: fromPage,
@@ -129,6 +182,10 @@ export const firebaseAnalytics = {
 
     // Set user ID for authenticated users
     setUser: (userId, userProperties = {}) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - user not set');
+            return;
+        }
         try {
             setUserId(analytics, userId);
             if (Object.keys(userProperties).length > 0) {
@@ -142,6 +199,10 @@ export const firebaseAnalytics = {
 
     // Track custom events
     trackCustomEvent: (eventName, parameters = {}) => {
+        if (!analytics) {
+            console.warn('Firebase Analytics not available - custom event not tracked');
+            return;
+        }
         try {
             logEvent(analytics, eventName, {
                 ...parameters,

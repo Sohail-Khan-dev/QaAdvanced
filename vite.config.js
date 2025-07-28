@@ -18,7 +18,8 @@ export default defineConfig({
                 'resources/js/lazy-load.js',
                 'resources/js/quiz-analytics.js',
                 'resources/js/blog-analytics.js',
-                'resources/js/user-analytics.js'
+                'resources/js/user-analytics.js',
+                'resources/js/firebase-debug.js'
             ],
             refresh: true,
         }),

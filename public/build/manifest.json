@@ -45,13 +45,19 @@
     "isEntry": true
   },
   "resources/js/dashboard.js": {
-    "file": "assets/dashboard-B22Mia3z.js",
+    "file": "assets/dashboard-Br6mVTgs.js",
     "name": "dashboard",
     "src": "resources/js/dashboard.js",
     "isEntry": true
   },
+  "resources/js/firebase-debug.js": {
+    "file": "assets/firebase-debug-BZLEkvLc.js",
+    "name": "firebase-debug",
+    "src": "resources/js/firebase-debug.js",
+    "isEntry": true
+  },
   "resources/js/firebase.js": {
-    "file": "assets/firebase-Cvr7F6iz.js",
+    "file": "assets/firebase-Bn7rPjdv.js",
     "name": "firebase",
     "src": "resources/js/firebase.js",
     "isEntry": true
