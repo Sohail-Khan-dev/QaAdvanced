@@ -57,6 +57,13 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            {!! NoCaptcha::display() !!}
+            @if ($errors->has('g-recaptcha-response'))
+                <span class="text-red-500 text-xs">{{ $errors->first('g-recaptcha-response') }}</span>
+            @endif
+        </div>
+
         <script>
             function togglePasswordVisibility(inputId) {
             var input = document.getElementById(inputId);
@@ -86,4 +93,5 @@
             </x-primary-button>
         </div>
     </form>
+    {!! NoCaptcha::renderJs() !!}
 </x-guest-layout>
